@@ -46,7 +46,7 @@ class PrayersDetailsViewController: UIViewController {
     }
     
     private func configureBackButton() {
-        let backButton = BackBarButtonItem(title: "ÎNAPOI", menuTitle: prayer)
+        let backButton = BackBarButtonItem(title: "Înapoi", menuTitle: prayer)
         backButton.tintColor = .navigationBarTintColor
         navigationItem.backBarButtonItem = backButton
     }
@@ -54,10 +54,10 @@ class PrayersDetailsViewController: UIViewController {
     // MARK: Notification handling
     
     private func registerNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(favouritesSelectionChanged), name: Notifications.favouritesSelectionChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(favouritesSelectionChanged(_:)), name: .favouritesSelectionChanged)
     }
     
-    @objc private func favouritesSelectionChanged() {
+    @objc private func favouritesSelectionChanged(_ notification: Notification) {
         guard self == navigationController?.topViewController else {
             logWarn("How did you get here?")
             return

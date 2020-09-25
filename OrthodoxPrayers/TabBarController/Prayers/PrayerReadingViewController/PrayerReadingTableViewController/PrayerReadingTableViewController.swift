@@ -15,8 +15,6 @@ class PrayerReadingTableViewController: TableViewController {
     
     private var dataSource: PrayerReadingTableDataSource!
     
-    private var statusBarVisibleHeight: CGFloat = 0
-    
     // MARK: Initialization
     
     convenience init(prayerTitle: String, parentPrayerTitle: String?, section: String) {
@@ -44,37 +42,5 @@ class PrayerReadingTableViewController: TableViewController {
         let cell = PrayerReadingCell()
         cell.attributedString = dataSource.prayerItem(at: index)
         return cell
-    }
-    
-    // MARK: UIScrollViewDelegate
-    
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let navBarHidden = navigationController?.isNavigationBarHidden ?? false
-        if navBarHidden && statusBarVisibleHeight > 0 {
-            notifyStatusBarAppearanceUpdate(animation: .slide)
-        }
-    }
-    
-    // MARK: Status bar appearance update
-    
-    override func viewSafeAreaInsetsDidChange() {
-        let navBarHidden = navigationController?.isNavigationBarHidden ?? false
-        if navBarHidden && view.safeAreaInsets.top > 0 {
-            statusBarVisibleHeight = view.safeAreaInsets.top
-            notifyStatusBarAppearanceUpdate(animation: .fade)
-        }
-    }
-    
-    private func textOverlapsStatusBar() -> Bool {
-        guard let firstCell = tableView.cells.first as? PrayerReadingCell else { return false }
-        let cellFrameInView = view.convert(firstCell.frame, from: tableView)
-        let textTopMargin = firstCell.dropCapTextView.textTopMargin
-        return cellFrameInView.origin.y + textTopMargin < statusBarVisibleHeight
-    }
-    
-    private func notifyStatusBarAppearanceUpdate(animation: UIStatusBarAnimation) {
-        let hidden = textOverlapsStatusBar()
-        let appearance = StatusBarAppearance(hidden: hidden, animation: animation)
-        notifyStatusBarAppearanceUpdate(appearance: appearance)
     }
 }

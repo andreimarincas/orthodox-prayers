@@ -12,18 +12,14 @@ class PrayerReadingFooter: UIView {
     private var imageView: UIImageView!
     private let bottomMargin: CGFloat = 22
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    convenience init() {
+        self.init(frame: .zero)
         backgroundColor = .clear
         let divider = UIImage(named: "olivetreeDivider")!
         imageView = UIImageView(image: divider)
         imageView.contentMode = .center
         imageView.backgroundColor = .clear
         addSubview(imageView)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {

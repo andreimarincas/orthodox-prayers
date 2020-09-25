@@ -33,7 +33,7 @@
                 <constraint firstItem="ynl-Tl-pFn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="100" id="chL-Vo-Y7t"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ynl-Tl-pFn" secondAttribute="trailing" constant="100" id="zZx-qo-siq"/>
             </constraints>
-            <point key="canvasLocation" x="133" y="141"/>
+            <point key="canvasLocation" x="131.8840579710145" y="140.625"/>
         </view>
     </objects>
     <resources>

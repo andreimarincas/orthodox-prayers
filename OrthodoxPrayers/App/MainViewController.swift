@@ -9,48 +9,55 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    @IBOutlet weak var safeAreaTopBar: UIView!
+    @IBOutlet weak var safeAreaBottomBar: UIView!
     
-    let hideShowStatusBarDuration = UINavigationController.hideShowBarDuration
+    let hideShowSafeAreaBarsDuration = UINavigationController.hideShowBarDuration
     
     // MARK: View life-cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Add tab bar controller
+        configureTabBarController()
+        registerNotifications()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // Keep safe area bars on top
+        view.bringSubviewToFront(safeAreaTopBar)
+        view.bringSubviewToFront(safeAreaBottomBar)
+    }
+    
+    // MARK: Configure methods
+    
+    private func configureTabBarController() {
         let tabBarController = TabBarController()
         addChildController(tabBarController)
-        // Register for status bar appearance updates
-        NotificationCenter.default.addObserver(self, selector: #selector(updateStatusBarAppearance), name: Notifications.needsStatusBarAppearanceUpdate, object: nil)
     }
     
-    // MARK: Status bar appearance
+    private func registerNotifications() {
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(enterFullscreen(_:)), name: .enterFullscreen)
+        center.addObserver(self, selector: #selector(exitFullscreen(_:)), name: .exitFullscreen)
+    }
     
-    private var statusBarAppearance = StatusBarAppearance.default {
-        didSet {
-            if statusBarAppearance != oldValue {
-                let animated = (statusBarAppearance.animation != .none)
-                let duration = animated ? TimeInterval(hideShowStatusBarDuration) : 0
-                UIView.animate(withDuration: duration) {
-                    self.setNeedsStatusBarAppearanceUpdate()
-                }
-            }
+    // MARK: Enter/exit fullscreen
+    
+    @objc private func enterFullscreen(_ notification: NSNotification) {
+        setSafeAreaBarsHidden(false, animated: true)
+    }
+    
+    @objc private func exitFullscreen(_ notification: NSNotification) {
+        setSafeAreaBarsHidden(true, animated: true)
+    }
+    
+    private func setSafeAreaBarsHidden(_ hidden: Bool, animated: Bool) {
+        let duration = animated ? TimeInterval(hideShowSafeAreaBarsDuration) : 0
+        let alpha: CGFloat = hidden ? 0 : 1
+        UIView.animate(withDuration: duration) {
+            self.safeAreaTopBar.alpha = alpha
+            self.safeAreaBottomBar.alpha = alpha
         }
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return statusBarAppearance.hidden
-    }
-    
-    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
-        return statusBarAppearance.animation
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return statusBarAppearance.style
-    }
-    
-    @objc private func updateStatusBarAppearance(_ notification: NSNotification) {
-        guard let appearance = notification.userInfo?["appearance"] as? StatusBarAppearance else { return }
-        statusBarAppearance = appearance
     }
 }

@@ -9,6 +9,7 @@
 import UIKit
 
 class PrayersViewController: UIViewController {
+    @IBOutlet weak var tableViewContainer: UIView!
     @IBOutlet weak var noFavouritesLabel: UILabel!
     private var tableViewController: PrayersTableViewController!
     private var needsReload = false
@@ -56,7 +57,7 @@ class PrayersViewController: UIViewController {
     }
     
     private func configureBackButton() {
-        let backButton = BackBarButtonItem(title: "ÎNAPOI", menuTitle: "Rugăciuni")
+        let backButton = BackBarButtonItem(title: "Înapoi", menuTitle: "Rugăciuni")
         backButton.tintColor = .navigationBarTintColor
         navigationItem.backBarButtonItem = backButton
     }
@@ -64,9 +65,9 @@ class PrayersViewController: UIViewController {
     // MARK: Notification handling
     
     private func registerNotifications() {
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(favouritesSelectionChanged(_:)), name: Notifications.favouritesSelectionChanged, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(prayerEditingChanged(_:)), name: Notifications.prayerEditingChanged, object: nil)
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(favouritesSelectionChanged(_:)), name: .favouritesSelectionChanged)
+        center.addObserver(self, selector: #selector(prayerEditingChanged(_:)), name: .prayerEditingChanged)
     }
     
     @objc private func favouritesSelectionChanged(_ notification: NSNotification) {

@@ -15,6 +15,8 @@ class PrayerReadingViewController: UIViewController {
     
     private var tableViewController: PrayerReadingTableViewController!
     
+    private var isFullscreen = false
+    
     // MARK: Initialization
     
     convenience init(prayer: String, parentPrayer: String?, section: String) {
@@ -61,14 +63,14 @@ class PrayerReadingViewController: UIViewController {
 
 extension PrayerReadingViewController: UIGestureRecognizerDelegate {
     @IBAction func handleTap(_ gestureRecognizer: UITapGestureRecognizer) {
-        //guard let navigationController = self.navigationController else { return }
-        var hidden = navigationController?.isNavigationBarHidden ?? false
-        hidden.toggle()
-        navigationController?.setNavigationBarHidden(hidden, animated: true)
-        if !hidden {
-            showStatusBar()
-        }
+        // Toggle fullscreen mode
+        isFullscreen.toggle()
+        // Hide/show navigation bar
+        navigationController?.setNavigationBarHidden(isFullscreen, animated: true)
+        // Hide/show tab bar
         let tabBarController = self.tabBarController as? TabBarController
-        tabBarController?.setTabBarHidden(hidden, animated: true)
+        tabBarController?.setTabBarHidden(isFullscreen, animated: true)
+        // Notify enter/exit fullscreen
+        NotificationCenter.default.post(name: isFullscreen ? .enterFullscreen : .exitFullscreen)
     }
 }

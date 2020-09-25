@@ -23,7 +23,7 @@ class Prayer {
         set {
             managedPrayer.isFavourite = newValue
             Prayer.dataProvider.saveContext()
-            NotificationCenter.default.post(name: Notifications.prayerEditingChanged, object: self)
+            NotificationCenter.default.post(name: .prayerEditingChanged, object: self)
         }
     }
     

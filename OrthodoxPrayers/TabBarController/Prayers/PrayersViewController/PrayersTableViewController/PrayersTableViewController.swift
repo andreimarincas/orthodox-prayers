@@ -90,26 +90,26 @@ class PrayersTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let prayerCell = tableView.dequeueReusableCell(withIdentifier: PrayerCell.reuseID, for: indexPath) as? PrayerCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PrayerCell.reuseID, for: indexPath) as? PrayerCell else {
             fatalError("Failed to dequeue reusable PrayerCell.")
         }
-        let prayerItem = dataSource.prayerItem(at: indexPath.row, inSectionAt: indexPath.section)
-        prayerCell.textLabel?.text = prayerItem
-        return prayerCell
+        let prayer = dataSource.prayerItem(at: indexPath.row, inSectionAt: indexPath.section)
+        cell.textLabel?.text = prayer
+        return cell
     }
     
     // MARK: Table View Delegate
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let sectionTitle = dataSource.title(forSectionAt: section) else { return nil }
-        let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: PrayerSectionHeader.reuseID) as? PrayerSectionHeader ?? PrayerSectionHeader()
-        sectionHeader.titleLabel.text = sectionTitle
-        return sectionHeader
+        guard let title = dataSource.title(forSectionAt: section) else { return nil }
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: PrayerSectionHeader.reuseID) as? PrayerSectionHeader ?? PrayerSectionHeader()
+        header.titleLabel.text = title
+        return header
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let sectionTitle = dataSource.title(forSectionAt: section)
-        return (sectionTitle != nil) ? sectionHeaderHeight : emptyRowHeight
+        let title = dataSource.title(forSectionAt: section)
+        return (title != nil) ? sectionHeaderHeight : emptyRowHeight
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

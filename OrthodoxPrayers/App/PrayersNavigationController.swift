@@ -48,7 +48,7 @@ class PrayersNavigationController: UINavigationController {
     @objc private func favouritesSelectionChanged(_ favouritesControl: SegmentedControl) {
         log("selected index: \(favouritesControl.selectedSegmentIndex)")
         favouritesOnly = (favouritesControl.selectedSegmentIndex == 1)
-        NotificationCenter.default.post(name: Notifications.favouritesSelectionChanged, object: nil)
+        NotificationCenter.default.post(name: .favouritesSelectionChanged)
     }
 }
 

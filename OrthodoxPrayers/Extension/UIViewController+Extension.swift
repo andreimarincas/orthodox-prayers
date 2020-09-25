@@ -15,15 +15,4 @@ extension UIViewController {
         view.addSubviewAligned(childController.view)
         childController.didMove(toParent: self)
     }
-    
-    // MARK: Status bar appearance update
-    
-    func showStatusBar() {
-        notifyStatusBarAppearanceUpdate(appearance: .default)
-    }
-    
-    func notifyStatusBarAppearanceUpdate(appearance: StatusBarAppearance) {
-        let userInfo: [AnyHashable : Any] = ["appearance": appearance]
-        NotificationCenter.default.post(name: Notifications.needsStatusBarAppearanceUpdate, object: self, userInfo: userInfo)
-    }
 }

@@ -13,7 +13,7 @@ class TableViewLayoutManager {
     private var needsLayout = false
     private var lastWidth: CGFloat = 0
     
-    let setContentInsetDuration = UINavigationController.hideShowBarDuration
+    let adjustContentInsetDuration = UINavigationController.hideShowBarDuration
     
     init(tableView: TableView) {
         self.tableView = tableView
@@ -24,34 +24,23 @@ class TableViewLayoutManager {
         tableView.setNeedsLayout()
     }
     
-    var frame: CGRect {
-        return tableView.frame
-    }
+    var frame: CGRect { return tableView.frame }
     
     // MARK: Content size & inset
     
     var contentSize: CGSize {
-        return tableView.contentSize
+        get { return tableView.contentSize }
+        set { return tableView.contentSize = newValue }
     }
     
     var contentInset: UIEdgeInsets {
-        return tableView.contentInset
+        get { return tableView.contentInset }
+        set { tableView.contentInset = newValue }
     }
     
     var contentOffset: CGPoint {
-        return tableView.contentOffset
-    }
-    
-    func setContentInset(_ inset: UIEdgeInsets, animated: Bool) {
-        let contentScrolledToTop = (contentOffset.y == -contentInset.top)
-        let duration = animated ? TimeInterval(setContentInsetDuration) : 0
-        UIView.animate(withDuration: duration) {
-            self.tableView.contentInset = inset
-            self.tableView.scrollIndicatorInsets = inset
-            if contentScrolledToTop {
-                self.tableView.contentOffset = CGPoint(x: 0, y: -inset.top)
-            }
-        }
+        get { return tableView.contentOffset }
+        set { tableView.contentOffset = newValue }
     }
     
     func contentSizeDidChange() {
@@ -60,13 +49,8 @@ class TableViewLayoutManager {
     
     // MARK: Safe area size & insets
     
-    var safeAreaSize: CGSize {
-        return tableView.safeAreaSize
-    }
-    
-    var safeAreaInsets: UIEdgeInsets {
-        return tableView.safeAreaInsets
-    }
+    var safeAreaSize: CGSize { return tableView.safeAreaSize }
+    var safeAreaInsets: UIEdgeInsets { return tableView.safeAreaInsets }
     
     func safeAreaInsetsDidChange() {
         adjustContentInset(animated: true)
@@ -89,7 +73,7 @@ class TableViewLayoutManager {
             footer.frame = CGRect(x: 0, y: y, width: frame.width, height: footerSize.height)
             y += footerSize.height
         }
-        tableView.contentSize = CGSize(width: frame.width, height: y)
+        contentSize = CGSize(width: frame.width, height: y)
         needsLayout = false
         lastWidth = frame.width
     }
@@ -107,10 +91,26 @@ class TableViewLayoutManager {
             if let footer = tableView.footerView {
                 let adjustedContentHeight = frame.height - inset.top - inset.bottom
                 let y = adjustedContentHeight - footer.frame.height
-                footer.frame = CGRect(x: 0, y: y, width: frame.width, height: footer.frame.height)
+                // Animate footer frame change if needed
+                let duration = animated ? TimeInterval(adjustContentInsetDuration) : 0
+                UIView.animate(withDuration: duration) {
+                    footer.frame = CGRect(x: 0, y: y, width: self.frame.width, height: footer.frame.height)
+                }
             }
         } else {
             setContentInset(safeAreaInsets, animated: animated)
+        }
+    }
+    
+    private func setContentInset(_ inset: UIEdgeInsets, animated: Bool) {
+        let isContentScrolledToTop = (contentOffset.y == -contentInset.top)
+        let duration = animated ? TimeInterval(adjustContentInsetDuration) : 0
+        UIView.animate(withDuration: duration) {
+            self.contentInset = inset
+            self.tableView.scrollIndicatorInsets = inset
+            if isContentScrolledToTop {
+                self.contentOffset = CGPoint(x: 0, y: -inset.top)
+            }
         }
     }
 }

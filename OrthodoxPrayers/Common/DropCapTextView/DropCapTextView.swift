@@ -42,10 +42,6 @@ class DropCapTextView: UIView {
         layoutManager.layoutSubviews()
     }
     
-    var textTopMargin: CGFloat {
-        return textView.frame.origin.y + textView.textContainerInset.top
-    }
-    
     // MARK: Text & glyph update
     
     func setAttributedText(_ attrText: NSAttributedString?, dropCap: Bool) {

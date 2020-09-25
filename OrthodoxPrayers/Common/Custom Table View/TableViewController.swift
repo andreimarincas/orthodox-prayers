@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewController: UIViewController, UIScrollViewDelegate, TableViewDataSource {
+class TableViewController: UIViewController, TableViewDataSource {
     private(set) var tableView: TableView!
     
     // MARK: View life-cycle
@@ -36,7 +36,6 @@ class TableViewController: UIViewController, UIScrollViewDelegate, TableViewData
     private func configureTableView() {
         tableView = TableView()
         tableView.dataSource = self
-        tableView.delegate = self
         view.addSubviewAligned(tableView)
     }
     
@@ -48,11 +47,5 @@ class TableViewController: UIViewController, UIScrollViewDelegate, TableViewData
     
     func tableView(_ tableView: TableView, cellForRowAt index: Int) -> UIView {
         return UIView()
-    }
-    
-    // MARK: UIScrollViewDelegate
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // No implementation needed
     }
 }
