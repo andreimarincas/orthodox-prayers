@@ -9,13 +9,7 @@
 import Foundation
 
 class PrayersDetailsTableDataSource {
-    let title: String
     private let prayerItems: [String]
-    
-    init() {
-        title = ""
-        prayerItems = []
-    }
     
     init(prayer: String, section: String, favouritesOnly: Bool, parser: PrayersContentsParser = .shared) {
         var prayerItems = parser.parsePrayerDetailedItems(forPrayer: prayer, inSection: section)
@@ -23,7 +17,6 @@ class PrayersDetailsTableDataSource {
             let favouritePrayers = Set(Prayer.favourites.map { $0.title })
             prayerItems = prayerItems.filter { favouritePrayers.contains($0) }
         }
-        self.title = prayer
         self.prayerItems = prayerItems
     }
     

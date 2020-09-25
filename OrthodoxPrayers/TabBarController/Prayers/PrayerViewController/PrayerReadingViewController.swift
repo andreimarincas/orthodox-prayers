@@ -9,15 +9,18 @@
 import UIKit
 
 class PrayerReadingViewController: UIViewController {
-    private var prayerReadingTableViewController: PrayerReadingTableViewController!
     private let prayerTitle: String
     private let parentPrayerTitle: String?
+    private let section: String
+    
+    private var prayerReadingTableViewController: PrayerReadingTableViewController!
     
     // MARK: Initialization
     
-    init(prayerTitle: String, parentPrayerTitle: String?) {
+    init(prayerTitle: String, parentPrayerTitle: String?, section: String) {
         self.prayerTitle = prayerTitle
         self.parentPrayerTitle = parentPrayerTitle
+        self.section = section
         super.init(nibName: "PrayerReadingViewController", bundle: .main)
     }
     
@@ -29,7 +32,7 @@ class PrayerReadingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tableViewController = PrayerReadingTableViewController(prayerTitle: prayerTitle, parentPrayerTitle: parentPrayerTitle)
+        let tableViewController = PrayerReadingTableViewController(prayerTitle: prayerTitle, parentPrayerTitle: parentPrayerTitle, section: section)
         addChildController(tableViewController)
         self.prayerReadingTableViewController = tableViewController
     }

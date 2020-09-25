@@ -13,16 +13,20 @@ protocol PrayerViewControllerDelegate: NSObjectProtocol {
 }
 
 class PrayerViewController: UIViewController {
-    private var prayerReadingViewController: PrayerReadingViewController!
     private let prayer: Prayer
     private let parentPrayerTitle: String?
+    private let section: String
+    
+    private var prayerReadingViewController: PrayerReadingViewController!
+    
     weak var delegate: PrayerViewControllerDelegate?
     
     // MARK: Initialization
     
-    init(prayer: Prayer, parentPrayerTitle: String? = nil) {
+    init(prayer: Prayer, parentPrayerTitle: String?, section: String) {
         self.prayer = prayer
         self.parentPrayerTitle = parentPrayerTitle
+        self.section = section
         super.init(nibName: "PrayerViewController", bundle: .main)
     }
     
@@ -58,7 +62,7 @@ class PrayerViewController: UIViewController {
     }
     
     private func configurePrayerReadingViewController() {
-        let prayerReadingViewController = PrayerReadingViewController(prayerTitle: prayer.title, parentPrayerTitle: parentPrayerTitle)
+        let prayerReadingViewController = PrayerReadingViewController(prayerTitle: prayer.title, parentPrayerTitle: parentPrayerTitle, section: section)
         addChildController(prayerReadingViewController)
         self.prayerReadingViewController = prayerReadingViewController
     }

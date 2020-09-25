@@ -9,7 +9,6 @@
 import UIKit
 
 class RTFPrayerParser {
-    let titleFont = UIFont(name: "Georgia", size: 24)!
     let subtitleFont = UIFont(name: "Georgia-BoldItalic", size: 15)!
     let normalFont = UIFont(name: "Georgia", size: 16.5)!
     let boldFont = UIFont(name: "Georgia-Bold", size: 16.5)!
@@ -18,17 +17,14 @@ class RTFPrayerParser {
     
     let paragraphSpacing: CGFloat = 22
     let minimumParagraphSpacing: CGFloat = 8
-    
-    let titleColor = UIColor.readingTextColor
+    let hyphenationFactor: Float = 0.9
+    let firstLineHeadIndent: CGFloat = 20
     
     func parsePrayer(_ rtfPrayer: NSAttributedString) -> [NSAttributedString] {
         let prayer = updatePrayer(rtfPrayer: rtfPrayer)
         var lines = prayer.components(separatedBy: "\n")
-        if !lines.isEmpty {
-            lines[0] = stylizeTitle(lines[0])
-        }
         adjustParagraphSpacing(&lines)
-        return lines
+        return groupByDropCap(lines)
     }
     
     // MARK: Private methods
@@ -59,7 +55,7 @@ class RTFPrayerParser {
             attributes[.font] = normalFont
         } else if font.fontName == "TimesNewRomanPS-ItalicMT" { // comment
             attributes[.font] = commentFont
-        } else if font.fontName == "TimesNewRomanPS-BoldMT" { // non-arhaic first letter
+        } else if font.fontName == "TimesNewRomanPS-BoldMT" { // title (all caps) OR non-arhaic first letter (capital)
             attributes[.font] = boldFont
         } else if font.fontName == "TimesNewRomanPS-BoldItalicMT" { // subtitle
             attributes[.font] = subtitleFont
@@ -84,30 +80,50 @@ class RTFPrayerParser {
             newParagraphStyle.paragraphSpacing = paragraphSpacing
         }
         if paragraphStyle.alignment != .center {
-            newParagraphStyle.hyphenationFactor = 1
+            newParagraphStyle.hyphenationFactor = hyphenationFactor
         }
         attributes[.paragraphStyle] = newParagraphStyle
     }
     
-    private func stylizeTitle(_ title: NSAttributedString) -> NSAttributedString {
-        let newTitle = title.mutableCopy() as! NSMutableAttributedString
-        newTitle.addAttribute(.font, value: titleFont)
-        newTitle.addAttribute(.foregroundColor, value: titleColor)
-        newTitle.addParagraphSpacingBefore(paragraphSpacing)
-        return newTitle
-    }
-    
-    /// Adjust paragraph spacing for the drop cap letter
     private func adjustParagraphSpacing(_ lines: inout [NSAttributedString]) {
+        guard !lines.isEmpty else { return }
+        // Add paragraph spacing before title
+        lines[0] = lines[0].addingParagraphSpacingBefore(paragraphSpacing)
         for i in 1..<lines.count {
-            guard lines[i].isFirstLetterArhaic else { continue }
-            let dropCapTopOffset = lines[i].dropCapTopOffset
-            let paragraphSpacing = lines[i - 1].paragraphSpacing.after
-            let minParagraphSpacing: CGFloat = minimumParagraphSpacing
-            let newParagraphSpacing = max(paragraphSpacing - dropCapTopOffset, minParagraphSpacing)
-            if newParagraphSpacing != paragraphSpacing {
-                lines[i - 1] = lines[i - 1].addingParagraphSpacing(newParagraphSpacing)
+            if lines[i].isFirstLetterArhaic {
+                // Adjust paragraph spacing for the drop cap letter
+                let dropCapTopOffset = lines[i].dropCapTopOffset
+                let paragraphSpacing = lines[i - 1].paragraphSpacing.after
+                let minParagraphSpacing: CGFloat = minimumParagraphSpacing
+                let newParagraphSpacing = max(paragraphSpacing - dropCapTopOffset, minParagraphSpacing)
+                if newParagraphSpacing != paragraphSpacing {
+                    lines[i - 1] = lines[i - 1].addingParagraphSpacing(newParagraphSpacing)
+                }
+            } else {
+                lines[i] = lines[i].addingFirstLineHeadIndent(firstLineHeadIndent)
             }
         }
+    }
+    
+    private func groupByDropCap(_ lines: [NSAttributedString]) -> [NSAttributedString] {
+        var result = [NSAttributedString]()
+        var composedString = NSMutableAttributedString()
+        for line in lines {
+            if line.isFirstLetterArhaic {
+                if composedString.length > 0 {
+                    result.append(composedString)
+                }
+                composedString = NSMutableAttributedString(attributedString: line)
+            } else {
+                if composedString.length > 0 {
+                    composedString.append(NSAttributedString(string: "\n"))
+                }
+                composedString.append(line)
+            }
+        }
+        if composedString.length > 0 {
+            result.append(composedString)
+        }
+        return result
     }
 }

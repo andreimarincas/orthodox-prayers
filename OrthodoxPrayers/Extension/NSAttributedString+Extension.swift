@@ -57,19 +57,39 @@ extension NSAttributedString {
         return attribute(.paragraphStyle, at: 0) as? NSParagraphStyle
     }
     
-    var isParagraph: Bool {
+    var isTitle: Bool {
         guard let paragraphStyle = self.paragraphStyle else { return false }
-        return paragraphStyle.alignment != .center // `center` is for title only
+        return paragraphStyle.alignment == .center
+    }
+    
+    var isParagraph: Bool {
+        return !isTitle
     }
     
     var paragraphSpacing: (before: CGFloat, after: CGFloat) {
-        guard let paragraphStyle = self.paragraphStyle else { return (before: 0, after: 0) }
-        return (before: paragraphStyle.paragraphSpacingBefore, after: paragraphStyle.paragraphSpacing)
+        let range = NSRange(location: 0, length: length)
+        let options: NSAttributedString.EnumerationOptions = [.longestEffectiveRangeNotRequired]
+        var before: CGFloat?
+        var after: CGFloat?
+        enumerateAttribute(.paragraphStyle, in: range, options: options) { (value, range, stop) in
+            guard let paragraphStyle = value as? NSParagraphStyle else { return }
+            if before == nil {
+                before = paragraphStyle.paragraphSpacingBefore
+            }
+            after = paragraphStyle.paragraphSpacing
+        }
+        return (before ?? 0, after ?? 0)
     }
     
-    func addingParagraphSpacing(_ paragraphSpacing: CGFloat) -> NSAttributedString {
+    func addingParagraphSpacingBefore(_ spacingBefore: CGFloat) -> NSAttributedString {
         let mutableStr = mutableCopy() as! NSMutableAttributedString
-        mutableStr.addParagraphSpacing(paragraphSpacing)
+        mutableStr.addParagraphSpacingBefore(spacingBefore)
+        return mutableStr
+    }
+    
+    func addingParagraphSpacing(_ spacing: CGFloat) -> NSAttributedString {
+        let mutableStr = mutableCopy() as! NSMutableAttributedString
+        mutableStr.addParagraphSpacing(spacing)
         return mutableStr
     }
     
@@ -88,8 +108,8 @@ extension NSAttributedString {
         return text.dropCapTopOffset(forGlyph: glyph)
     }
     
-    // The drop cap offset for the given glyph relative to the text.
-    // Discussion: Calculates how many lines fit in glyph's height and returns the remaining value + the font's descender value, so that the glyph takes as many lines as possible and the glyph's bottom line is aligned with the text.
+    /// The drop cap offset for the given glyph relative to the text.
+    /// Discussion: Calculates how many lines fit in glyph's height and returns the remaining value + the font's descender value, so that the glyph takes as many lines as possible and the glyph's bottom line is aligned with the text.
     func dropCapTopOffset(forGlyph glyph: Glyph) -> CGFloat {
         let glyphHeight = glyph.bounds.height
         let lineHeight = self.lineHeight

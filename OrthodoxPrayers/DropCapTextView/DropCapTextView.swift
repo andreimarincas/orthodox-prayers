@@ -1,5 +1,5 @@
 //
-//  PrayerTextView.swift
+//  DropCapTextView.swift
 //  OrthodoxPrayers
 //
 //  Created by Andrei Marincas on 08/09/2020.
@@ -8,22 +8,23 @@
 
 import UIKit
 
-class PrayerTextView: UIView {
+class DropCapTextView: UIView {
     private(set) var textView: UITextView!
     private(set) var glyphView: GlyphView!
     
     private(set) var attributedText: NSAttributedString?
     private(set) var dropCap: Bool = true
     
-    private var layoutManager: PrayerTextLayoutManager!
+    private var layoutManager: DropCapLayoutManager!
     
     // MARK: Initialization
     
     init() {
         super.init(frame: .zero)
+        backgroundColor = .clear
         configureTextView()
         configureGlyphView()
-        layoutManager = PrayerTextLayoutManager(view: self)
+        layoutManager = DropCapLayoutManager(view: self)
     }
     
     required init?(coder: NSCoder) {
@@ -34,10 +35,6 @@ class PrayerTextView: UIView {
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         return layoutManager.sizeThatFits(size)
-    }
-    
-    override var intrinsicContentSize: CGSize {
-        return layoutManager.intrinsicContentSize
     }
     
     override func layoutSubviews() {
@@ -58,8 +55,7 @@ class PrayerTextView: UIView {
         } else {
             textView.textContainer.exclusionPaths = []
         }
-        setNeedsLayout()
-        invalidateIntrinsicContentSize()
+        layoutManager.setNeedsLayout()
     }
     
     // MARK: Configure subviews (private)

@@ -11,12 +11,10 @@ import Foundation
 class RTFPrayerLoader {
     static let rtfPrayersDirectory = "Prayers"
     
-    func loadPrayerFromRtf(fileNamed prayerFileName: String, parent: String?) -> NSAttributedString? {
-        var subdir: String!
+    func loadPrayerFromRtf(fileNamed prayerFileName: String, parent: String?, section: String) -> NSAttributedString? {
+        var subdir = RTFPrayerLoader.rtfPrayersDirectory + "/" + section
         if let parent = parent {
-            subdir = RTFPrayerLoader.rtfPrayersDirectory + "/" + parent
-        } else {
-            subdir = RTFPrayerLoader.rtfPrayersDirectory
+            subdir += "/" + parent
         }
         guard let url = Bundle.main.url(forResource: prayerFileName, withExtension: "rtf", subdirectory: subdir) else {
             logError("Resource not found: \(prayerFileName)")

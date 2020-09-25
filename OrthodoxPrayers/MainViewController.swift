@@ -36,6 +36,7 @@ class MainViewController: UIViewController {
     
     private func configureTabBar() {
         tabBar.tintColor = .activeColor
+        tabBar.unselectedItemTintColor = .tabBarItemUnselectedColor
     }
     
     private func configureControllers() {
@@ -44,11 +45,11 @@ class MainViewController: UIViewController {
         let prayersTabItem = UITabBarItem(title: "Rugăciuni", image: UIImage(named: "prayingIcon"), tag: 0)
         prayersNavigationController.tabBarItem = prayersTabItem
         
-        let iconViewController = IconViewController.fromNib()
+        let iconViewController = IconViewController()
         let iconTabItem = UITabBarItem(title: "Icoană", image: UIImage(named: "candleIcon"), tag: 1)
         iconViewController.tabBarItem = iconTabItem
         
-        let textViewController = TextViewController.fromNib()
+        let textViewController = TextViewController()
         let textTabItem = UITabBarItem(title: "Text", image: UIImage(named: "textIcon"), tag: 2)
         textViewController.tabBarItem = textTabItem
         

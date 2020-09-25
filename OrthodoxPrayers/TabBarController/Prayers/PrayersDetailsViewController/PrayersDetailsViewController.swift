@@ -11,9 +11,22 @@ import UIKit
 class PrayersDetailsViewController: UIViewController {
     private var prayersDetailsTableViewController: PrayersDetailsTableViewController!
     
-    var prayer: String?
-    var section: String?
-    var favouritesOnly: Bool = false
+    private let prayer: String
+    private let section: String
+    private let favouritesOnly: Bool
+    
+    // MARK: Initialization
+    
+    init(prayer: String, section: String, favouritesOnly: Bool) {
+        self.prayer = prayer
+        self.section = section
+        self.favouritesOnly = favouritesOnly
+        super.init(nibName: "PrayersDetailsViewController", bundle: .main)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: View life-cycle
     
@@ -21,23 +34,15 @@ class PrayersDetailsViewController: UIViewController {
         super.viewDidLoad()
         configureBackButton()
         configureTableViewController()
-        loadTableViewData()
     }
     
     // MARK: Private methods
     
     private func configureTableViewController() {
-        let tableViewController = PrayersDetailsTableViewController.fromNib()
+        let tableViewController = PrayersDetailsTableViewController(prayer: prayer, section: section, favouritesOnly: favouritesOnly)
         tableViewController.delegate = self
         addChildController(tableViewController)
         self.prayersDetailsTableViewController = tableViewController
-    }
-    
-    private func loadTableViewData() {
-        let prayer = self.prayer ?? ""
-        let section = self.section ?? ""
-        let dataSource = PrayersDetailsTableDataSource(prayer: prayer, section: section, favouritesOnly: favouritesOnly)
-        prayersDetailsTableViewController.dataSource = dataSource
     }
     
     private func configureBackButton() {
@@ -53,7 +58,7 @@ extension PrayersDetailsViewController: PrayersDetailsTableDelegate {
     func didSelectPrayer(_ selectedPrayerTitle: String) {
         log("did select prayer: \(selectedPrayerTitle)")
         let selectedPrayer = Prayer(title: selectedPrayerTitle)!
-        let prayerViewController = PrayerViewController(prayer: selectedPrayer, parentPrayerTitle: self.prayer!)
+        let prayerViewController = PrayerViewController(prayer: selectedPrayer, parentPrayerTitle: self.prayer, section: self.section)
         prayerViewController.delegate = self
         navigationController?.pushViewController(prayerViewController, animated: true)
     }

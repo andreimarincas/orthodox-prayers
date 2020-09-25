@@ -66,11 +66,7 @@ class PrayersViewController: UIViewController {
     
     private func configureFavouritesControl() {
         let favouritesControl = SegmentedControl()
-        favouritesControl.padding = UIEdgeInsets(top: 1, left: 15, bottom: 1, right: 15)
-        favouritesControl.backgroundColor = .favouritesBackgroundColor
-        favouritesControl.tintColor = .favouritesBackgroundColor // selected background color
-        favouritesControl.selectedSegmentTintColor = .favouritesSelectedColor
-        favouritesControl.layoutMargins = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 50)
+        favouritesControl.padding = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
         favouritesControl.insertSegment(withTitle: "Toate", at: 0, animated: false)
         favouritesControl.insertSegment(withTitle: "Favorite", at: 1, animated: false)
         favouritesControl.selectedSegmentIndex = favouritesOnly ? 1 : 0
@@ -102,14 +98,11 @@ extension PrayersViewController: PrayersTableDelegate {
             return
         }
         if isDetailedItem {
-            let prayersDetailsViewController = PrayersDetailsViewController.fromNib()
-            prayersDetailsViewController.prayer = selectedPrayerTitle
-            prayersDetailsViewController.section = section
-            prayersDetailsViewController.favouritesOnly = favouritesOnly
-            navigationController?.pushViewController(prayersDetailsViewController, animated: true)
+            let detailsViewController = PrayersDetailsViewController(prayer: selectedPrayerTitle, section: section, favouritesOnly: favouritesOnly)
+            navigationController?.pushViewController(detailsViewController, animated: true)
         } else {
-            let prayer = Prayer(title: selectedPrayerTitle)!
-            let prayerViewController = PrayerViewController(prayer: prayer)
+            let selectedPrayer = Prayer(title: selectedPrayerTitle)!
+            let prayerViewController = PrayerViewController(prayer: selectedPrayer, parentPrayerTitle: nil, section: section)
             navigationController?.pushViewController(prayerViewController, animated: true)
         }
     }

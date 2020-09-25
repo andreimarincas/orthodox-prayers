@@ -12,14 +12,23 @@ class PrayersTableViewController: UITableViewController {
     var dataSource: PrayersTableDataSourceProtocol = PrayersTableDataSource()
     weak var delegate: PrayersTableDelegate?
     
+    let sectionHeaderHeight: CGFloat = 62
+    let emptyRowHeight: CGFloat = 36
+    
     // MARK: View life-cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Register cell
         let cellNib = UINib(nibName: "PrayerCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: PrayerCell.reuseID)
+        // Register section header
         let headerNib = UINib(nibName: "PrayerSectionHeader", bundle: nil)
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: PrayerSectionHeader.reuseID)
+        // Table view footer
+        let footer = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: emptyRowHeight))
+        footer.backgroundColor = .clear
+        tableView.tableFooterView = footer
     }
     
     // MARK: Public methods
@@ -74,35 +83,30 @@ class PrayersTableViewController: UITableViewController {
         }
         let prayerItem = dataSource.prayerItem(at: indexPath.row, inSectionAt: indexPath.section)
         prayerCell.textLabel?.text = prayerItem
-        if !prayerItem.isEmpty {
-            prayerCell.backgroundColor = .prayerCellBackgroundColor
-            prayerCell.selectionStyle = .default
-            prayerCell.accessoryType = .disclosureIndicator
-            prayerCell.isUserInteractionEnabled = true
-        } else {
-            prayerCell.backgroundColor = .clear
-            prayerCell.selectionStyle = .none
-            prayerCell.accessoryType = .none
-            prayerCell.isUserInteractionEnabled = false
-        }
         return prayerCell
     }
     
     // MARK: Table View Delegate
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let sectionTitle = dataSource.title(forSectionAt: section) else { return nil }
         let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: PrayerSectionHeader.reuseID) as? PrayerSectionHeader ?? PrayerSectionHeader()
-        sectionHeader.titleLabel.text = dataSource.title(forSectionAt: section)
+        sectionHeader.titleLabel.text = sectionTitle
         return sectionHeader
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
+        let sectionTitle = dataSource.title(forSectionAt: section)
+        return sectionTitle != nil ? sectionHeaderHeight : emptyRowHeight
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNormalMagnitude // hide section footer
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let prayerItem = dataSource.prayerItem(at: indexPath.row, inSectionAt: indexPath.section)
-        let sectionTitle = dataSource.title(forSectionAt: indexPath.section)
+        let sectionTitle = dataSource.associatedSectionTitle(forSectionAt: indexPath.section)
         delegate?.didSelectPrayer(prayerItem, inSection: sectionTitle)
     }
 }

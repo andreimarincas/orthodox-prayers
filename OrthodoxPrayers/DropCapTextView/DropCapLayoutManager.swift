@@ -1,5 +1,5 @@
 //
-//  PrayerTextLayoutManager.swift
+//  DropCapLayoutManager.swift
 //  OrthodoxPrayers
 //
 //  Created by Andrei Marincas on 08/09/2020.
@@ -8,36 +8,39 @@
 
 import UIKit
 
-class PrayerTextLayoutManager {
-    weak var view: PrayerTextView!
+class DropCapLayoutManager {
+    weak var view: DropCapTextView!
     
-    init(view: PrayerTextView) {
+    private var needsLayoutUpdate = false
+    private var textBodyHeightCache = [CGFloat: CGFloat]()
+    
+    init(view: DropCapTextView) {
         self.view = view
     }
     
     func sizeThatFits(_ size: CGSize) -> CGSize {
-        let height = self.contentHeight(forWidth: size.width)
+        let height = contentHeight(forWidth: size.width)
         return CGSize(width: size.width, height: height)
     }
     
-    var intrinsicContentSize: CGSize {
-        guard let superview = view.superview else {
-            return .zero
-        }
-        let width = superview.frame.width
-        let height = contentHeight(forWidth: width)
-        return CGSize(width: width, height: height)
-    }
-    
     func layoutSubviews() {
+        guard needsLayoutUpdate else { return }
         // Update body text frame
         let textBodyOrigin = CGPoint(x: 0, y: glyphTopOffset)
         textView.frame = CGRect(origin: textBodyOrigin, size: textBodySize)
         // Update glyph frame
-        glyphView.sizeToFit()
         let glyphOrigin = CGPoint(x: textView.textContainerInset.left, y: textView.textContainerInset.top)
-        let glyphSize = glyphView.frame.size
+        let glyphSize = glyphView.sizeThatFits(.zero)
         glyphView.frame = CGRect(origin: glyphOrigin, size: glyphSize)
+        // Turn off layout updates until new data
+        needsLayoutUpdate = false
+    }
+    
+    // Call this when view data changes
+    func setNeedsLayout() {
+        needsLayoutUpdate = true
+        textBodyHeightCache.removeAll()
+        view.setNeedsLayout()
     }
     
     var glyphExclusionPath: UIBezierPath? {
@@ -66,19 +69,19 @@ class PrayerTextLayoutManager {
         return textBodyHeight(forWidth: fixedWidth) + glyphTopOffset
     }
     
-    private var textBodySize: CGSize {
-        guard let superview = view.superview else {
-            return textView.sizeThatFits(.zero)
-        }
-        let width = superview.frame.width
-        let height = textBodyHeight(forWidth: width)
-        return CGSize(width: width, height: height)
-    }
-    
     private func textBodyHeight(forWidth fixedWidth: CGFloat) -> CGFloat {
+        if let cached = textBodyHeightCache[fixedWidth] {
+            return cached
+        }
         let fitSize = CGSize(width: fixedWidth, height: .greatestFiniteMagnitude)
         let newSize = textView.sizeThatFits(fitSize)
+        textBodyHeightCache[fixedWidth] = newSize.height
         return newSize.height
+    }
+    
+    private var textBodySize: CGSize {
+        let height = textBodyHeight(forWidth: view.frame.width)
+        return CGSize(width: view.frame.width, height: height)
     }
     
     private var glyphTopOffset: CGFloat {

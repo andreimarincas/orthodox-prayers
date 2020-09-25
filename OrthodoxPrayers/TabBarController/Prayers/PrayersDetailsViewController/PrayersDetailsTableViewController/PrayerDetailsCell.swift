@@ -11,19 +11,18 @@ import UIKit
 class PrayerDetailsCell: UITableViewCell {
     static let reuseID = "prayerDetailsCell"
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        configureSelectionColor()
-    }
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         textLabel?.text = nil
     }
     
-    private func configureSelectionColor() {
-        let selectedBackgroundView = UIView()
-        selectedBackgroundView.backgroundColor = .prayerCellHighlightColor
-        self.selectedBackgroundView = selectedBackgroundView
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        backgroundColor = selected ? .prayerCellSelectedColor : .prayerCellBackgroundColor
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        backgroundColor = highlighted ? .prayerCellSelectedColor : .prayerCellBackgroundColor
     }
 }

@@ -11,9 +11,9 @@ import Foundation
 class PrayerReadingTableDataSource {
     private let prayerItems: [NSAttributedString]
     
-    init(prayer: String, parent: String?) {
+    init(prayer: String, parent: String?, section: String) {
         let loader = RTFPrayerLoader()
-        if let rtfPrayer = loader.loadPrayerFromRtf(fileNamed: prayer, parent: parent) {
+        if let rtfPrayer = loader.loadPrayerFromRtf(fileNamed: prayer, parent: parent, section: section) {
             let parser = RTFPrayerParser()
             prayerItems = parser.parsePrayer(rtfPrayer)
         } else {

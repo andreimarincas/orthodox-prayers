@@ -9,16 +9,39 @@
 import UIKit
 
 class PrayersDetailsTableViewController: UITableViewController {
-    var dataSource = PrayersDetailsTableDataSource()
+    private let prayer: String
+    private let dataSource: PrayersDetailsTableDataSource
     weak var delegate: PrayersDetailsTableDelegate?
+    
+    let minimumSectionHeaderHeight: CGFloat = 62
+    let emptyRowHeight: CGFloat = 36
+    
+    // MARK: Initialization
+    
+    init(prayer: String, section: String, favouritesOnly: Bool) {
+        self.prayer = prayer
+        self.dataSource = PrayersDetailsTableDataSource(prayer: prayer, section: section, favouritesOnly: favouritesOnly)
+        super.init(nibName: "PrayersDetailsTableViewController", bundle: .main)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: View life-cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Register cell
         let cellNib = UINib(nibName: "PrayerDetailsCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: PrayerDetailsCell.reuseID)
-        tableView.tableFooterView = UIView() // hide empty rows
+        // Register section header
+        let headerNib = UINib(nibName: "PrayerDetailsSectionHeader", bundle: nil)
+        tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: PrayerDetailsSectionHeader.reuseID)
+        // Table view footer
+        let footer = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: emptyRowHeight))
+        footer.backgroundColor = .clear
+        tableView.tableFooterView = footer
     }
     
     // MARK: Table View Data Source
@@ -33,21 +56,26 @@ class PrayersDetailsTableViewController: UITableViewController {
         }
         let prayer = dataSource.prayerItem(at: indexPath.row)
         prayerDetailsCell.textLabel?.text = prayer
-        if !prayer.isEmpty {
-            prayerDetailsCell.backgroundColor = .prayerCellBackgroundColor
-            prayerDetailsCell.selectionStyle = .default
-            prayerDetailsCell.accessoryType = .disclosureIndicator
-            prayerDetailsCell.isUserInteractionEnabled = true
-        } else {
-            prayerDetailsCell.backgroundColor = .clear
-            prayerDetailsCell.selectionStyle = .none
-            prayerDetailsCell.accessoryType = .none
-            prayerDetailsCell.isUserInteractionEnabled = false
-        }
         return prayerDetailsCell
     }
     
     // MARK: Table View Delegate
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: PrayerDetailsSectionHeader.reuseID) as? PrayerDetailsSectionHeader ?? PrayerDetailsSectionHeader()
+        sectionHeader.titleLabel.text = prayer
+        return sectionHeader
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let header = self.tableView(tableView, viewForHeaderInSection: section) as! PrayerDetailsSectionHeader
+        let size = header.sizeThatFits(CGSize(width: tableView.frame.width, height: .greatestFiniteMagnitude))
+        return max(size.height, minimumSectionHeaderHeight)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNormalMagnitude // hide section footer
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let prayer = dataSource.prayerItem(at: indexPath.row)

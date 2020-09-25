@@ -16,11 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="DL9-IV-d0a">
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="DL9-IV-d0a">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" name="mainBgColor"/>
+                        <color key="backgroundColor" name="mainBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="DL9-IV-d0a" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="HfF-yj-ELc"/>
                             <constraint firstAttribute="trailing" secondItem="DL9-IV-d0a" secondAttribute="trailing" id="Qoc-NZ-JVz"/>
@@ -37,7 +37,7 @@
     </scenes>
     <resources>
         <image name="BackgroundImage" width="505" height="896"/>
-        <namedColor name="mainBgColor">
+        <namedColor name="mainBackgroundColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

@@ -28,4 +28,16 @@ extension UIViewController {
         view.addSubviewAligned(childController.view)
         childController.didMove(toParent: self)
     }
+    
+    var statusBarHeight: CGFloat {
+        return view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+    }
+    
+    var navBarHeight: CGFloat {
+        return navigationController?.navigationBar.frame.height ?? 0
+    }
+    
+    var tabBarHeight: CGFloat {
+        return tabBarController?.tabBar.frame.height ?? 0
+    }
 }

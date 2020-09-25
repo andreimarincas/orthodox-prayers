@@ -12,12 +12,12 @@ class PrayerReadingFooter: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .clear
         let imageView = UIImageView()
         imageView.image = UIImage(named: "olivetreeDivider")!
         imageView.contentMode = .top
         imageView.backgroundColor = .clear
         addSubviewAligned(imageView)
-        backgroundColor = .clear
     }
     
     required init?(coder: NSCoder) {

@@ -15,24 +15,24 @@ extension NSMutableAttributedString {
         addAttribute(name, value: value, range: range)
     }
     
-    func addParagraphSpacingBefore(_ paragraphSpacingBefore: CGFloat) {
+    func addParagraphSpacingBefore(_ spacingBefore: CGFloat) {
         let range = NSRange(location: 0, length: length)
         let options: NSAttributedString.EnumerationOptions = [.longestEffectiveRangeNotRequired]
         enumerateAttribute(.paragraphStyle, in: range, options: options) { (value, range, stop) in
             guard let paragraphStyle = value as? NSParagraphStyle else { return }
             let newParagraphStyle = paragraphStyle.mutableCopy() as! NSMutableParagraphStyle
-            newParagraphStyle.paragraphSpacingBefore = paragraphSpacingBefore
+            newParagraphStyle.paragraphSpacingBefore = spacingBefore
             addAttribute(.paragraphStyle, value: newParagraphStyle, range: range)
         }
     }
     
-    func addParagraphSpacing(_ paragraphSpacing: CGFloat) {
+    func addParagraphSpacing(_ spacing: CGFloat) {
         let range = NSRange(location: 0, length: length)
         let options: NSAttributedString.EnumerationOptions = [.longestEffectiveRangeNotRequired]
         enumerateAttribute(.paragraphStyle, in: range, options: options) { (value, range, stop) in
             guard let paragraphStyle = value as? NSParagraphStyle else { return }
             let newParagraphStyle = paragraphStyle.mutableCopy() as! NSMutableParagraphStyle
-            newParagraphStyle.paragraphSpacing = paragraphSpacing
+            newParagraphStyle.paragraphSpacing = spacing
             addAttribute(.paragraphStyle, value: newParagraphStyle, range: range)
         }
     }

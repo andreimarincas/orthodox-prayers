@@ -8,39 +8,44 @@
 
 import UIKit
 
-class PrayerReadingCell: UITableViewCell {
-    static let reuseID = "prayerReadingCell"
-    
-    private var prayerTextView: PrayerTextView!
+class PrayerReadingCell: UIView {
+    private var textView: DropCapTextView!
     
     private let textInsetLeft: CGFloat = 16
     private let textInsetRight: CGFloat = 16
-    private let firstLineHeadIndent: CGFloat = 20
     
     var attributedString: NSAttributedString? {
         didSet {
-            updateTextInset()
-            updateText()
+            updateTextViewInset()
+            updateAttributedText()
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        prayerTextView = PrayerTextView()
-        prayerTextView.backgroundColor = .clear
-        contentView.addSubviewAligned(prayerTextView)
+    init() {
+        super.init(frame: .zero)
+        backgroundColor = .clear
+        textView = DropCapTextView()
+        addSubview(textView)
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        attributedString = nil
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        return textView.sizeThatFits(size)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        textView.frame = CGRect(origin: .zero, size: frame.size)
     }
     
     // MARK: Private methods
     
-    private func updateTextInset() {
+    private func updateTextViewInset() {
         guard let attributedString = self.attributedString else {
-            prayerTextView.textView.textContainerInset = .zero
+            textView.textView.textContainerInset = .zero
             return
         }
         let paragraphSpacing = attributedString.paragraphSpacing
@@ -49,20 +54,11 @@ class PrayerReadingCell: UITableViewCell {
         inset.bottom = paragraphSpacing.after
         inset.left = textInsetLeft
         inset.right = textInsetRight
-        prayerTextView.textView.textContainerInset = inset
+        textView.textView.textContainerInset = inset
     }
     
-    private func updateText() {
-        guard let attributedString = self.attributedString else {
-            prayerTextView.setAttributedText(nil, dropCap: false)
-            return
-        }
-        if attributedString.isFirstLetterArhaic {
-            prayerTextView.setAttributedText(attributedString, dropCap: true)
-        } else {
-            let firstLineHeadIndent = attributedString.isParagraph ? self.firstLineHeadIndent : 0
-            let newAttrStr = attributedString.addingFirstLineHeadIndent(firstLineHeadIndent)
-            prayerTextView.setAttributedText(newAttrStr, dropCap: false)
-        }
+    private func updateAttributedText() {
+        let isFirstLetterArhaic = attributedString?.isFirstLetterArhaic ?? false
+        textView.setAttributedText(attributedString, dropCap: isFirstLetterArhaic)
     }
 }

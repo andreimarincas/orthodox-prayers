@@ -12,15 +12,23 @@ class FavouritePrayersDataSource: PrayersTableDataSource {
     
     override init(parser: PrayersContentsParser) {
         super.init(parser: parser)
-        var filteredSections = [String]()
-        var filteredPrayerItemsPerSection = [String: [String]]()
+        var filteredSections = [String?]()
+        var filteredPrayerItemsPerSection = [Int: [String]]()
         let favouritePrayers = Set(Prayer.favourites.map { $0.title })
-        for section in sections {
-            let prayerItems = prayerItemsPerSection[section] ?? []
+        var section = ""
+        for sectionIndex in 0..<sections.count {
+            if let currentSection = sections[sectionIndex] {
+                section = currentSection
+            }
+            let prayerItems = prayerItemsPerSection[sectionIndex]!
             let filteredPrayers = filterPrayerItems(prayerItems: prayerItems, inSection: section, favouritePrayers: favouritePrayers, parser: parser)
             if !filteredPrayers.isEmpty {
-                filteredSections.append(section)
-                filteredPrayerItemsPerSection[section] = filteredPrayers
+                if filteredSections.last == section {
+                    filteredSections.append(sections[sectionIndex])
+                } else {
+                    filteredSections.append(section)
+                }
+                filteredPrayerItemsPerSection[filteredSections.count - 1] = filteredPrayers
             }
         }
         sections = filteredSections
