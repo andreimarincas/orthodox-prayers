@@ -9,6 +9,7 @@
 import Foundation
 
 class Prayer {
+    static let dataProvider = PrayersDataProvider.shared
     private let managedPrayer: ManagedPrayerItem
     
     var title: String {
@@ -21,7 +22,8 @@ class Prayer {
         }
         set {
             managedPrayer.isFavourite = newValue
-            PrayersDataProvider.shared.saveContext()
+            Prayer.dataProvider.saveContext()
+            NotificationCenter.default.post(name: Notifications.prayerEditingChanged, object: self)
         }
     }
     
@@ -30,7 +32,7 @@ class Prayer {
     }
     
     convenience init?(title: String) {
-        let context = PrayersDataProvider.shared.context
+        let context = Prayer.dataProvider.context
         guard let managedPrayer = ManagedPrayerItem.fetchPrayer(withTitle: title, from: context) else {
             logError("Failed to fetch managed prayer item with title: \(title)")
             return nil
@@ -38,9 +40,12 @@ class Prayer {
         self.init(managedPrayer: managedPrayer)
     }
     
-    static var favourites: [Prayer] {
-        let context = PrayersDataProvider.shared.context
-        let managedPrayers = ManagedPrayerItem.fetchFavourites(from: context) ?? []
+    static var favouritePrayers: [Prayer] {
+        let context = Prayer.dataProvider.context
+        guard let managedPrayers = ManagedPrayerItem.fetchFavouritePrayers(from: context) else {
+            logError("Failed to fetch managed favourite prayers.")
+            return []
+        }
         return managedPrayers.map { Prayer(managedPrayer: $0) }
     }
 }

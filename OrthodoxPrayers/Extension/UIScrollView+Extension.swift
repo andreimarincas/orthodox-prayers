@@ -13,4 +13,11 @@ extension UIScrollView {
         let offset = CGPoint(x: contentOffset.x, y: -contentInset.top)
         setContentOffset(offset, animated: animated)
     }
+    
+    /// Hides the vertical scroll indicator if currently visible but keeps the visibility setting, i.e. showsVerticalScrollIndicator remains the same.
+    func hideVerticalScrollIndicator() {
+        let shows = showsVerticalScrollIndicator
+        showsVerticalScrollIndicator = false
+        showsVerticalScrollIndicator = shows
+    }
 }

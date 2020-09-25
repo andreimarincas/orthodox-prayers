@@ -11,18 +11,11 @@ import UIKit
 class PrayersViewController: UIViewController {
     @IBOutlet weak var noFavouritesLabel: UILabel!
     private var prayersTableViewController: PrayersTableViewController!
-    var needsTableViewUpdate = false
-    
-    private var favouritesOnly: Bool {
-        didSet {
-            UserDefaults.isFavouritesSelected = favouritesOnly
-        }
-    }
+    private var needsReload = false
     
     // MARK: Initialization
     
     init() {
-        self.favouritesOnly = UserDefaults.isFavouritesSelected
         super.init(nibName: "PrayersViewController", bundle: .main)
     }
     
@@ -34,75 +27,92 @@ class PrayersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        noFavouritesLabel.text = "Nu ai salvat nicio rugăciune la favorite" // TODO: Localize
-        configureFavouritesControl()
+        configureTableViewController()
+        configureNoFavouritesLabel()
         configureBackButton()
-        configurePrayersTableViewController()
-        updateTableView(animated: false)
+        registerNotifications()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if needsTableViewUpdate {
-            updateTableView(animated: true)
-            needsTableViewUpdate = false
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if needsReload {
+            reloadTableViewData(animated: false)
+            needsReload = false
         }
     }
     
     // MARK: Private methods
     
-    private func configurePrayersTableViewController() {
-        let prayersTableViewController = PrayersTableViewController.fromNib()
-        prayersTableViewController.delegate = self
-        addChildController(prayersTableViewController)
-        self.prayersTableViewController = prayersTableViewController
+    private var favouritesOnly: Bool {
+        let prayersNavigationController = navigationController as? PrayersNavigationController
+        return prayersNavigationController?.favouritesOnly ?? false
     }
     
-    private func updateTableView(animated: Bool) {
-        let dataSource = favouritesOnly ? FavouritePrayersDataSource(parser: .shared) : PrayersTableDataSource(parser: .shared)
-        prayersTableViewController.updateTableView(data: dataSource, animated: animated)
-        noFavouritesLabel.isHidden = !(favouritesOnly && dataSource.isEmpty)
+    private func configureTableViewController() {
+        let tableViewController = PrayersTableViewController(favouritesOnly: favouritesOnly)
+        tableViewController.delegate = self
+        addChildController(tableViewController)
+        self.prayersTableViewController = tableViewController
     }
     
-    private func configureFavouritesControl() {
-        let favouritesControl = SegmentedControl()
-        favouritesControl.padding = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
-        favouritesControl.insertSegment(withTitle: "Toate", at: 0, animated: false)
-        favouritesControl.insertSegment(withTitle: "Favorite", at: 1, animated: false)
-        favouritesControl.selectedSegmentIndex = favouritesOnly ? 1 : 0
-        favouritesControl.addTarget(self, action: #selector(favouritesSelectionChanged(_:)), for: .valueChanged)
-        navigationItem.titleView = favouritesControl
+    private func reloadTableViewData(animated: Bool) {
+        prayersTableViewController.reloadData(favouritesOnly: favouritesOnly, animated: animated)
+        noFavouritesLabel.isHidden = !(favouritesOnly && prayersTableViewController.dataSource.isEmpty)
     }
     
-    @objc private func favouritesSelectionChanged(_ favouritesControl: SegmentedControl) {
-        log("selected index: \(favouritesControl.selectedSegmentIndex)")
-        favouritesOnly = favouritesControl.selectedSegmentIndex == 1
-        updateTableView(animated: true)
+    private func configureNoFavouritesLabel() {
+        noFavouritesLabel.text = "Nu ai salvat nicio rugăciune la favorite" // TODO: Localize
+        noFavouritesLabel.isHidden = !(favouritesOnly && prayersTableViewController.dataSource.isEmpty)
     }
     
     private func configureBackButton() {
-        let backButton = UIBarButtonItem(title: "ÎNAPOI", style: .plain, target: nil, action: nil)
+//        let backButton = BarButtonItem(title: "ÎNAPOI", style: .plain, target: nil, action: nil)
+//        let backButton = BarButtonItem(title: "ÎNAPOI", menuTitle: "Rugăciuni", menuHandler: { _ in
+//            self.navigationController?.popToViewController(self, animated: true)
+//        })
+//        let backButton = BarButtonItem(title: "ÎNAPOI", menuTitle: "Rugăciuni", menuHandler: { _ in
+//            self.navigationController?.popToViewController(self, animated: true)
+//        })
+        let backButton = BackBarButtonItem(title: "ÎNAPOI", menuTitle: "Rugăciuni")
         backButton.tintColor = .navigationBarTintColor
         navigationItem.backBarButtonItem = backButton
     }
+    
+    // MARK: Notification handling
+    
+    private func registerNotifications() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(favouritesSelectionChanged(_:)), name: Notifications.favouritesSelectionChanged, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(prayerEditingChanged(_:)), name: Notifications.prayerEditingChanged, object: nil)
+    }
+    
+    @objc private func favouritesSelectionChanged(_ notification: NSNotification) {
+        if self == navigationController?.topViewController {
+            reloadTableViewData(animated: true)
+        } else {
+            needsReload = true
+        }
+    }
+    
+    @objc private func prayerEditingChanged(_ notification: NSNotification) {
+        if navigationController?.viewControllers.first(where: { $0 is PrayersDetailsViewController }) != nil {
+            if favouritesOnly {
+                needsReload = true
+            }
+        }
+    }
 }
 
-// MARK: PrayersTableDelegate
+// MARK: PrayersTableViewControllerDelegate
 
-extension PrayersViewController: PrayersTableDelegate {
-    func didSelectPrayer(_ selectedPrayerTitle: String, inSection section: String) {
-        log("did select prayer: \(selectedPrayerTitle)")
-        let parser = PrayersContentsParser.shared
-        guard let isDetailedItem = parser.isDetailedItem(prayerItem: selectedPrayerTitle, inSection: section) else {
-            logError("Couldn't find prayer: \(selectedPrayerTitle) in section: \(section)")
-            return
-        }
+extension PrayersViewController: PrayersTableViewControllerDelegate {
+    func didSelectPrayer(_ selectedPrayer: String, inSection section: String, isDetailedItem: Bool) {
+        log("did select prayer: \(selectedPrayer)")
         if isDetailedItem {
-            let detailsViewController = PrayersDetailsViewController(prayer: selectedPrayerTitle, section: section, favouritesOnly: favouritesOnly)
+            let detailsViewController = PrayersDetailsViewController(prayer: selectedPrayer, section: section)
             navigationController?.pushViewController(detailsViewController, animated: true)
         } else {
-            let selectedPrayer = Prayer(title: selectedPrayerTitle)!
-            let prayerViewController = PrayerViewController(prayer: selectedPrayer, parentPrayerTitle: nil, section: section)
+            let prayerViewController = PrayerViewController(prayer: selectedPrayer, parentPrayer: nil, section: section)
             navigationController?.pushViewController(prayerViewController, animated: true)
         }
     }

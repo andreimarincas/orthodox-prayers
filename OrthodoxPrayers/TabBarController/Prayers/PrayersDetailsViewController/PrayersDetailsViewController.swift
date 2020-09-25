@@ -9,18 +9,16 @@
 import UIKit
 
 class PrayersDetailsViewController: UIViewController {
-    private var prayersDetailsTableViewController: PrayersDetailsTableViewController!
-    
     private let prayer: String
     private let section: String
-    private let favouritesOnly: Bool
+    
+    private var prayersDetailsTableViewController: PrayersDetailsTableViewController!
     
     // MARK: Initialization
     
-    init(prayer: String, section: String, favouritesOnly: Bool) {
+    init(prayer: String, section: String) {
         self.prayer = prayer
         self.section = section
-        self.favouritesOnly = favouritesOnly
         super.init(nibName: "PrayersDetailsViewController", bundle: .main)
     }
     
@@ -32,11 +30,17 @@ class PrayersDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureBackButton()
         configureTableViewController()
+        configureBackButton()
+        registerNotifications()
     }
     
     // MARK: Private methods
+    
+    private var favouritesOnly: Bool {
+        let prayersNavigationController = navigationController as? PrayersNavigationController
+        return prayersNavigationController?.favouritesOnly ?? false
+    }
     
     private func configureTableViewController() {
         let tableViewController = PrayersDetailsTableViewController(prayer: prayer, section: section, favouritesOnly: favouritesOnly)
@@ -46,31 +50,45 @@ class PrayersDetailsViewController: UIViewController {
     }
     
     private func configureBackButton() {
-        let backButton = UIBarButtonItem(title: "ÎNAPOI", style: .plain, target: nil, action: nil)
+//        let backButton = BarButtonItem(title: "ÎNAPOI", style: .plain, target: nil, action: nil)
+//        let backButton = BarButtonItem(title: "ÎNAPOI", menuTitle: prayer, menuHandler: { _ in
+//            self.navigationController?.popToViewController(self, animated: true)
+//        })
+        let backButton = BackBarButtonItem(title: "ÎNAPOI", menuTitle: prayer)
         backButton.tintColor = .navigationBarTintColor
         navigationItem.backBarButtonItem = backButton
     }
-}
-
-// MARK: PrayersDetailsTableDelegate
-
-extension PrayersDetailsViewController: PrayersDetailsTableDelegate {
-    func didSelectPrayer(_ selectedPrayerTitle: String) {
-        log("did select prayer: \(selectedPrayerTitle)")
-        let selectedPrayer = Prayer(title: selectedPrayerTitle)!
-        let prayerViewController = PrayerViewController(prayer: selectedPrayer, parentPrayerTitle: self.prayer, section: self.section)
-        prayerViewController.delegate = self
-        navigationController?.pushViewController(prayerViewController, animated: true)
+    
+//    private func configureBackButton() {
+//        let backButton = UIBarButtonItem(title: "ÎNAPOI", style: .done, target: self, action: #selector(popViewController(_:)))
+//        navigationItem.leftBarButtonItem = backButton
+//    }
+//
+//    @objc func popViewController(_ sender: UIBarButtonItem) {
+//       navigationController?.popViewController(animated: true)
+//    }
+    
+    // MARK: Notification handling
+    
+    private func registerNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(favouritesSelectionChanged), name: Notifications.favouritesSelectionChanged, object: nil)
+    }
+    
+    @objc private func favouritesSelectionChanged() {
+        guard self == navigationController?.topViewController else {
+            logWarn("How did you get here?")
+            return
+        }
+        prayersDetailsTableViewController.reloadData(prayer: prayer, section: section, favouritesOnly: favouritesOnly, animated: true)
     }
 }
 
-// MARK: PrayerViewControllerDelegate
+// MARK: PrayersDetailsTableViewControllerDelegate
 
-extension PrayersDetailsViewController: PrayerViewControllerDelegate {
-    func didEditPrayer(_ prayer: Prayer) {
-        if favouritesOnly {
-            let prayersViewController = navigationController?.viewControllers.first as? PrayersViewController
-            prayersViewController?.needsTableViewUpdate = true
-        }
+extension PrayersDetailsViewController: PrayersDetailsTableViewControllerDelegate {
+    func didSelectPrayer(_ selectedPrayer: String) {
+        log("did select prayer: \(selectedPrayer)")
+        let prayerViewController = PrayerViewController(prayer: selectedPrayer, parentPrayer: self.prayer, section: self.section)
+        navigationController?.pushViewController(prayerViewController, animated: true)
     }
 }

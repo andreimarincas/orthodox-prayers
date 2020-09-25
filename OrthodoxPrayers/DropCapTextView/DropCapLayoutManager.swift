@@ -70,9 +70,9 @@ class DropCapLayoutManager {
     }
     
     private func textBodyHeight(forWidth fixedWidth: CGFloat) -> CGFloat {
-        if let cached = textBodyHeightCache[fixedWidth] {
-            return cached
-        }
+//        if let cached = textBodyHeightCache[fixedWidth] {
+//            return cached
+//        }
         let fitSize = CGSize(width: fixedWidth, height: .greatestFiniteMagnitude)
         let newSize = textView.sizeThatFits(fitSize)
         textBodyHeightCache[fixedWidth] = newSize.height

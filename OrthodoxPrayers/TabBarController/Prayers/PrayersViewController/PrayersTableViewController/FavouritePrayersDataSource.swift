@@ -8,30 +8,27 @@
 
 import Foundation
 
-class FavouritePrayersDataSource: PrayersTableDataSource {
+class FavouritePrayersDataSource: PrayersDataSource {
     
-    override init(parser: PrayersContentsParser) {
+    override init(parser: PrayersContentsParser = .shared) {
         super.init(parser: parser)
         var filteredSections = [String?]()
+        var filteredAssociatedSections = [String]()
         var filteredPrayerItemsPerSection = [Int: [String]]()
-        let favouritePrayers = Set(Prayer.favourites.map { $0.title })
-        var section = ""
+        let favouritePrayers = Set(Prayer.favouritePrayers.map { $0.title })
         for sectionIndex in 0..<sections.count {
-            if let currentSection = sections[sectionIndex] {
-                section = currentSection
-            }
             let prayerItems = prayerItemsPerSection[sectionIndex]!
-            let filteredPrayers = filterPrayerItems(prayerItems: prayerItems, inSection: section, favouritePrayers: favouritePrayers, parser: parser)
+            let filteredPrayers = filterPrayerItems(prayerItems: prayerItems,
+                                                    inSection: associatedSections[sectionIndex],
+                                                    favouritePrayers: favouritePrayers, parser: parser)
             if !filteredPrayers.isEmpty {
-                if filteredSections.last == section {
-                    filteredSections.append(sections[sectionIndex])
-                } else {
-                    filteredSections.append(section)
-                }
+                filteredSections.append(sections[sectionIndex])
+                filteredAssociatedSections.append(associatedSections[sectionIndex])
                 filteredPrayerItemsPerSection[filteredSections.count - 1] = filteredPrayers
             }
         }
         sections = filteredSections
+        associatedSections = filteredAssociatedSections
         prayerItemsPerSection = filteredPrayerItemsPerSection
     }
     

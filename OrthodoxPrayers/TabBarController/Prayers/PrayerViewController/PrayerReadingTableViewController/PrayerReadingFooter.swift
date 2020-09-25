@@ -9,12 +9,14 @@
 import UIKit
 
 class PrayerReadingFooter: UIView {
+    private var imageView: UIImageView!
+//    private let padding: UI
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .clear
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "olivetreeDivider")!
+        let divider = UIImage(named: "olivetreeDivider")!
+        imageView = UIImageView(image: divider)
         imageView.contentMode = .top
         imageView.backgroundColor = .clear
         addSubviewAligned(imageView)

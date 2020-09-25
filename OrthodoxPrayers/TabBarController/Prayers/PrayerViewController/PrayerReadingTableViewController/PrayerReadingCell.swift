@@ -10,9 +10,7 @@ import UIKit
 
 class PrayerReadingCell: UIView {
     private var textView: DropCapTextView!
-    
-    private let textInsetLeft: CGFloat = 16
-    private let textInsetRight: CGFloat = 16
+    private let textMargin: (left: CGFloat, right: CGFloat) = (left: 16, right: 16)
     
     var attributedString: NSAttributedString? {
         didSet {
@@ -52,8 +50,8 @@ class PrayerReadingCell: UIView {
         var inset = UIEdgeInsets()
         inset.top = paragraphSpacing.before
         inset.bottom = paragraphSpacing.after
-        inset.left = textInsetLeft
-        inset.right = textInsetRight
+        inset.left = textMargin.left
+        inset.right = textMargin.right
         textView.textView.textContainerInset = inset
     }
     

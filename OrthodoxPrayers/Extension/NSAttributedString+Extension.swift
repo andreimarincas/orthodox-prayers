@@ -68,7 +68,7 @@ extension NSAttributedString {
     
     var paragraphSpacing: (before: CGFloat, after: CGFloat) {
         let range = NSRange(location: 0, length: length)
-        let options: NSAttributedString.EnumerationOptions = [.longestEffectiveRangeNotRequired]
+        let options: NSAttributedString.EnumerationOptions = .longestEffectiveRangeNotRequired
         var before: CGFloat?
         var after: CGFloat?
         enumerateAttribute(.paragraphStyle, in: range, options: options) { (value, range, stop) in

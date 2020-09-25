@@ -62,7 +62,7 @@ class ManagedPrayerItem: NSManagedObject {
         }
     }
     
-    static func fetchFavourites(from context: NSManagedObjectContext) -> [ManagedPrayerItem]? {
+    static func fetchFavouritePrayers(from context: NSManagedObjectContext) -> [ManagedPrayerItem]? {
         let request = makeFetchRequest()
         request.predicate = NSPredicate(format: "isFavourite = %d", true)
         do {

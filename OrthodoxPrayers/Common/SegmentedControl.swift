@@ -13,6 +13,6 @@ class SegmentedControl: UISegmentedControl {
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         let fitSize = super.sizeThatFits(size)
-        return fitSize.offsetBy(padding)
+        return fitSize.addingInset(padding)
     }
 }

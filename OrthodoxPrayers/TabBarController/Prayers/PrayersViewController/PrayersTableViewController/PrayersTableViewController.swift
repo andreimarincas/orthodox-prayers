@@ -8,12 +8,31 @@
 
 import UIKit
 
+protocol PrayersTableViewControllerDelegate: class {
+    func didSelectPrayer(_ selectedPrayerTitle: String, inSection section: String, isDetailedItem: Bool)
+}
+
 class PrayersTableViewController: UITableViewController {
-    var dataSource: PrayersTableDataSourceProtocol = PrayersTableDataSource()
-    weak var delegate: PrayersTableDelegate?
+    private(set) var dataSource: PrayersDataSource
+    weak var delegate: PrayersTableViewControllerDelegate?
     
-    let sectionHeaderHeight: CGFloat = 62
+    let sectionHeaderHeight: CGFloat = 60
     let emptyRowHeight: CGFloat = 36
+    
+    var favouritesOnly: Bool {
+        return dataSource is FavouritePrayersDataSource
+    }
+    
+    // MARK: Initialization
+    
+    init(favouritesOnly: Bool) {
+        dataSource = favouritesOnly ? FavouritePrayersDataSource() : PrayersDataSource()
+        super.init(nibName: "PrayersTableViewController", bundle: .main)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: View life-cycle
     
@@ -33,9 +52,9 @@ class PrayersTableViewController: UITableViewController {
     
     // MARK: Public methods
     
-    func updateTableView(data newDataSource: PrayersTableDataSource, animated: Bool) {
-        let oldDataSource = self.dataSource
-        self.dataSource = newDataSource
+    func reloadData(favouritesOnly: Bool, animated: Bool) {
+        let oldDataSource = dataSource
+        dataSource = favouritesOnly ? FavouritePrayersDataSource() : PrayersDataSource()
         if !animated {
             tableView?.reloadData()
             return
@@ -44,20 +63,20 @@ class PrayersTableViewController: UITableViewController {
         var sectionsToDelete = IndexSet()
         var sectionsToReload = IndexSet()
         let m = oldDataSource.numberOfSections
-        let n = newDataSource.numberOfSections
+        let n = dataSource.numberOfSections
         if m < n {
             sectionsToInsert.insert(integersIn: m..<n)
         } else if m > n {
             sectionsToDelete.insert(integersIn: n..<m)
         }
-        for i in 0..<min(m, n) {
-            let oldTitle = oldDataSource.title(forSectionAt: i)
-            let newTitle = newDataSource.title(forSectionAt: i)
+        for index in 0..<min(m, n) {
+            let oldTitle = oldDataSource.title(forSectionAt: index)
+            let newTitle = dataSource.title(forSectionAt: index)
             if newTitle == oldTitle {
-                sectionsToReload.insert(i)
+                sectionsToReload.insert(index)
             } else {
-                sectionsToInsert.insert(i)
-                sectionsToDelete.insert(i)
+                sectionsToInsert.insert(index)
+                sectionsToDelete.insert(index)
             }
         }
         tableView?.performBatchUpdates({
@@ -65,6 +84,7 @@ class PrayersTableViewController: UITableViewController {
             tableView?.deleteSections(sectionsToDelete, with: .fade)
             tableView?.reloadSections(sectionsToReload, with: .fade)
         })
+        tableView?.hideVerticalScrollIndicator()
     }
     
     // MARK: Table View Data Source
@@ -97,7 +117,7 @@ class PrayersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let sectionTitle = dataSource.title(forSectionAt: section)
-        return sectionTitle != nil ? sectionHeaderHeight : emptyRowHeight
+        return (sectionTitle != nil) ? sectionHeaderHeight : emptyRowHeight
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -107,6 +127,7 @@ class PrayersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let prayerItem = dataSource.prayerItem(at: indexPath.row, inSectionAt: indexPath.section)
         let sectionTitle = dataSource.associatedSectionTitle(forSectionAt: indexPath.section)
-        delegate?.didSelectPrayer(prayerItem, inSection: sectionTitle)
+        let isDetailed = dataSource.isDetailedItem(prayerItem: prayerItem, inSection: sectionTitle)
+        delegate?.didSelectPrayer(prayerItem, inSection: sectionTitle, isDetailedItem: isDetailed)
     }
 }

@@ -16,10 +16,12 @@
 					<string>Rugăciunile meselor</string>
 					<key>Items</key>
 					<array>
-						<string>Rugăciune înaintea mesei de dimineaţă şi prânz</string>
-						<string>Rugăciune după masa de dimineaţă şi prânz</string>
-						<string>Rugăciunea înainte de masa de seară</string>
-						<string>Rugăciunea după masa de seară</string>
+						<string>Rugăciune înaintea gustării de dimineață</string>
+						<string>Rugăciune după gustarea de dimineață</string>
+						<string>Rugăciune înaintea mesei de prânz</string>
+						<string>Rugăciune după masa de prânz</string>
+						<string>Rugăciune înainte de cină</string>
+						<string>Rugăciune după cină</string>
 					</array>
 				</dict>
 				<string>Rugăciunile de seară</string>

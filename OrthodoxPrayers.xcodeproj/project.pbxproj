@@ -30,11 +30,12 @@
 		7774A62524FEAB6B00492DDA /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7774A62424FEAB6B00492DDA /* UserDefaults+Extension.swift */; };
 		7774A62724FEB45300492DDA /* UserDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7774A62624FEB45300492DDA /* UserDefaults.plist */; };
 		7774A62924FFAAB900492DDA /* Prayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7774A62824FFAAB900492DDA /* Prayer.swift */; };
+		778011BC25133DF200B0CAC3 /* PrayersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778011BB25133DF200B0CAC3 /* PrayersDataSource.swift */; };
+		778011BE25133FB600B0CAC3 /* FavouritePrayersDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778011BD25133FB600B0CAC3 /* FavouritePrayersDetailsDataSource.swift */; };
+		778011C025134A5C00B0CAC3 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778011BF25134A5C00B0CAC3 /* Notifications.swift */; };
 		7790105A250DB97E00788BAD /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77901059250DB97E00788BAD /* TableView.swift */; };
 		7790105F250DBEA600788BAD /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790105E250DBEA600788BAD /* TableViewController.swift */; };
 		77901065250DC6F300788BAD /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77901064250DC6F300788BAD /* UIScrollView+Extension.swift */; };
-		7790106B2510B0E100788BAD /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790106A2510B0E100788BAD /* UIImage+Extension.swift */; };
-		7790106D2510B13200788BAD /* UISegmentedControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790106C2510B13200788BAD /* UISegmentedControl+Extension.swift */; };
 		7790106F2510CCF000788BAD /* PrayerDetailsSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790106E2510CCF000788BAD /* PrayerDetailsSectionHeader.swift */; };
 		779010712510CD3700788BAD /* PrayerDetailsSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 779010702510CD3700788BAD /* PrayerDetailsSectionHeader.xib */; };
 		779010732511DF5700788BAD /* CGSize+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779010722511DF5600788BAD /* CGSize+Extension.swift */; };
@@ -57,8 +58,6 @@
 		77A7CDC22508D1B900920B86 /* PrayersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77A7CDA02508D1B900920B86 /* PrayersViewController.xib */; };
 		77A7CDC32508D1BA00920B86 /* PrayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A7CDA22508D1B900920B86 /* PrayerCell.swift */; };
 		77A7CDC42508D1BA00920B86 /* PrayersTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77A7CDA32508D1B900920B86 /* PrayersTableViewController.xib */; };
-		77A7CDC52508D1BA00920B86 /* PrayersTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A7CDA42508D1B900920B86 /* PrayersTableDelegate.swift */; };
-		77A7CDC62508D1BA00920B86 /* PrayersTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A7CDA52508D1B900920B86 /* PrayersTableDataSource.swift */; };
 		77A7CDC72508D1BA00920B86 /* PrayersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A7CDA62508D1B900920B86 /* PrayersTableViewController.swift */; };
 		77A7CDC82508D1BA00920B86 /* PrayerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77A7CDA72508D1B900920B86 /* PrayerCell.xib */; };
 		77A7CDC92508D1BA00920B86 /* PrayerSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77A7CDA82508D1B900920B86 /* PrayerSectionHeader.xib */; };
@@ -69,9 +68,8 @@
 		77A7CDCE2508D1BA00920B86 /* PrayersDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77A7CDAE2508D1B900920B86 /* PrayersDetailsViewController.xib */; };
 		77A7CDCF2508D1BA00920B86 /* PrayerDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77A7CDB02508D1B900920B86 /* PrayerDetailsCell.xib */; };
 		77A7CDD02508D1BA00920B86 /* PrayersDetailsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77A7CDB12508D1B900920B86 /* PrayersDetailsTableViewController.xib */; };
-		77A7CDD12508D1BA00920B86 /* PrayersDetailsTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A7CDB22508D1B900920B86 /* PrayersDetailsTableDelegate.swift */; };
 		77A7CDD22508D1BA00920B86 /* PrayersDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A7CDB32508D1B900920B86 /* PrayersDetailsTableViewController.swift */; };
-		77A7CDD32508D1BA00920B86 /* PrayersDetailsTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A7CDB42508D1B900920B86 /* PrayersDetailsTableDataSource.swift */; };
+		77A7CDD32508D1BA00920B86 /* PrayersDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A7CDB42508D1B900920B86 /* PrayersDetailsDataSource.swift */; };
 		77A7CDD42508D1BA00920B86 /* PrayerDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A7CDB52508D1B900920B86 /* PrayerDetailsCell.swift */; };
 		77A7CDD62508D1BA00920B86 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A7CDB82508D1B900920B86 /* TextViewController.swift */; };
 		77A7CDD72508D1BA00920B86 /* TextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77A7CDB92508D1B900920B86 /* TextViewController.xib */; };
@@ -87,6 +85,9 @@
 		77AB6EAB24F2B3B3005AFE17 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AB6EAA24F2B3B3005AFE17 /* UIView+Extension.swift */; };
 		77AB6EBF24F3E59F005AFE17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77AB6EBE24F3E59F005AFE17 /* LaunchScreen.storyboard */; };
 		77AB6EC924F4D31B005AFE17 /* PrayersContents.plist in Resources */ = {isa = PBXBuildFile; fileRef = 77AB6EC824F4D31B005AFE17 /* PrayersContents.plist */; };
+		77E678A02515828B00889904 /* UIMenu+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E6789F2515828B00889904 /* UIMenu+Extension.swift */; };
+		77E678AB2515848100889904 /* BackBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E678AA2515848100889904 /* BackBarButtonItem.swift */; };
+		77FFAD4E2512693A00942273 /* PrayersNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FFAD4D2512693A00942273 /* PrayersNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,11 +137,12 @@
 		7774A62424FEAB6B00492DDA /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		7774A62624FEB45300492DDA /* UserDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = UserDefaults.plist; sourceTree = "<group>"; };
 		7774A62824FFAAB900492DDA /* Prayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prayer.swift; sourceTree = "<group>"; };
+		778011BB25133DF200B0CAC3 /* PrayersDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayersDataSource.swift; sourceTree = "<group>"; };
+		778011BD25133FB600B0CAC3 /* FavouritePrayersDetailsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePrayersDetailsDataSource.swift; sourceTree = "<group>"; };
+		778011BF25134A5C00B0CAC3 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		77901059250DB97E00788BAD /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		7790105E250DBEA600788BAD /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		77901064250DC6F300788BAD /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
-		7790106A2510B0E100788BAD /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
-		7790106C2510B13200788BAD /* UISegmentedControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extension.swift"; sourceTree = "<group>"; };
 		7790106E2510CCF000788BAD /* PrayerDetailsSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerDetailsSectionHeader.swift; sourceTree = "<group>"; };
 		779010702510CD3700788BAD /* PrayerDetailsSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrayerDetailsSectionHeader.xib; sourceTree = "<group>"; };
 		779010722511DF5600788BAD /* CGSize+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extension.swift"; sourceTree = "<group>"; };
@@ -162,8 +164,6 @@
 		77A7CDA02508D1B900920B86 /* PrayersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrayersViewController.xib; sourceTree = "<group>"; };
 		77A7CDA22508D1B900920B86 /* PrayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerCell.swift; sourceTree = "<group>"; };
 		77A7CDA32508D1B900920B86 /* PrayersTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrayersTableViewController.xib; sourceTree = "<group>"; };
-		77A7CDA42508D1B900920B86 /* PrayersTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayersTableDelegate.swift; sourceTree = "<group>"; };
-		77A7CDA52508D1B900920B86 /* PrayersTableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayersTableDataSource.swift; sourceTree = "<group>"; };
 		77A7CDA62508D1B900920B86 /* PrayersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayersTableViewController.swift; sourceTree = "<group>"; };
 		77A7CDA72508D1B900920B86 /* PrayerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrayerCell.xib; sourceTree = "<group>"; };
 		77A7CDA82508D1B900920B86 /* PrayerSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrayerSectionHeader.xib; sourceTree = "<group>"; };
@@ -174,9 +174,8 @@
 		77A7CDAE2508D1B900920B86 /* PrayersDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrayersDetailsViewController.xib; sourceTree = "<group>"; };
 		77A7CDB02508D1B900920B86 /* PrayerDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrayerDetailsCell.xib; sourceTree = "<group>"; };
 		77A7CDB12508D1B900920B86 /* PrayersDetailsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrayersDetailsTableViewController.xib; sourceTree = "<group>"; };
-		77A7CDB22508D1B900920B86 /* PrayersDetailsTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayersDetailsTableDelegate.swift; sourceTree = "<group>"; };
 		77A7CDB32508D1B900920B86 /* PrayersDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayersDetailsTableViewController.swift; sourceTree = "<group>"; };
-		77A7CDB42508D1B900920B86 /* PrayersDetailsTableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayersDetailsTableDataSource.swift; sourceTree = "<group>"; };
+		77A7CDB42508D1B900920B86 /* PrayersDetailsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayersDetailsDataSource.swift; sourceTree = "<group>"; };
 		77A7CDB52508D1B900920B86 /* PrayerDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerDetailsCell.swift; sourceTree = "<group>"; };
 		77A7CDB82508D1B900920B86 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		77A7CDB92508D1B900920B86 /* TextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewController.xib; sourceTree = "<group>"; };
@@ -193,6 +192,9 @@
 		77AB6EBE24F3E59F005AFE17 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		77AB6EC824F4D31B005AFE17 /* PrayersContents.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PrayersContents.plist; sourceTree = "<group>"; };
 		77AB6F0924F502BF005AFE17 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77E6789F2515828B00889904 /* UIMenu+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIMenu+Extension.swift"; sourceTree = "<group>"; };
+		77E678AA2515848100889904 /* BackBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackBarButtonItem.swift; sourceTree = "<group>"; };
+		77FFAD4D2512693A00942273 /* PrayersNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayersNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,11 +275,7 @@
 		775ACD2424E3C26D0072EB3F /* OrthodoxPrayers */ = {
 			isa = PBXGroup;
 			children = (
-				775ACD2524E3C26D0072EB3F /* AppDelegate.swift */,
-				775ACD2724E3C26D0072EB3F /* SceneDelegate.swift */,
-				775ACD2924E3C26D0072EB3F /* MainViewController.swift */,
-				775ACD2B24E3C26D0072EB3F /* Main.storyboard */,
-				77AB6EBE24F3E59F005AFE17 /* LaunchScreen.storyboard */,
+				77FFAD4A25125CB700942273 /* App */,
 				77A7CD982508D1B900920B86 /* TabBarController */,
 				77A7CD952508D0AA00920B86 /* DropCapTextView */,
 				77A7CD8C2508CD2E00920B86 /* Common */,
@@ -351,6 +349,8 @@
 				77A7CD8D2508CD2E00920B86 /* ToggleButton.swift */,
 				77A7CD8F2508CD4700920B86 /* SegmentedControl.swift */,
 				7790105B250DBE6200788BAD /* Custom Table View */,
+				778011BF25134A5C00B0CAC3 /* Notifications.swift */,
+				77E678AA2515848100889904 /* BackBarButtonItem.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -412,8 +412,7 @@
 			children = (
 				77A7CDA62508D1B900920B86 /* PrayersTableViewController.swift */,
 				77A7CDA32508D1B900920B86 /* PrayersTableViewController.xib */,
-				77A7CDA42508D1B900920B86 /* PrayersTableDelegate.swift */,
-				77A7CDA52508D1B900920B86 /* PrayersTableDataSource.swift */,
+				778011BB25133DF200B0CAC3 /* PrayersDataSource.swift */,
 				77A7CDA92508D1B900920B86 /* FavouritePrayersDataSource.swift */,
 				77A7CDA22508D1B900920B86 /* PrayerCell.swift */,
 				77A7CDA72508D1B900920B86 /* PrayerCell.xib */,
@@ -438,8 +437,8 @@
 			children = (
 				77A7CDB32508D1B900920B86 /* PrayersDetailsTableViewController.swift */,
 				77A7CDB12508D1B900920B86 /* PrayersDetailsTableViewController.xib */,
-				77A7CDB22508D1B900920B86 /* PrayersDetailsTableDelegate.swift */,
-				77A7CDB42508D1B900920B86 /* PrayersDetailsTableDataSource.swift */,
+				77A7CDB42508D1B900920B86 /* PrayersDetailsDataSource.swift */,
+				778011BD25133FB600B0CAC3 /* FavouritePrayersDetailsDataSource.swift */,
 				77A7CDB52508D1B900920B86 /* PrayerDetailsCell.swift */,
 				77A7CDB02508D1B900920B86 /* PrayerDetailsCell.xib */,
 				7790106E2510CCF000788BAD /* PrayerDetailsSectionHeader.swift */,
@@ -490,10 +489,22 @@
 				7791E99F250514CA00C37C99 /* UIFont+Extension.swift */,
 				77A7CDF9250906DB00920B86 /* UIColor+Extension.swift */,
 				77901064250DC6F300788BAD /* UIScrollView+Extension.swift */,
-				7790106A2510B0E100788BAD /* UIImage+Extension.swift */,
-				7790106C2510B13200788BAD /* UISegmentedControl+Extension.swift */,
+				77E6789F2515828B00889904 /* UIMenu+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		77FFAD4A25125CB700942273 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				775ACD2524E3C26D0072EB3F /* AppDelegate.swift */,
+				775ACD2724E3C26D0072EB3F /* SceneDelegate.swift */,
+				775ACD2924E3C26D0072EB3F /* MainViewController.swift */,
+				775ACD2B24E3C26D0072EB3F /* Main.storyboard */,
+				77AB6EBE24F3E59F005AFE17 /* LaunchScreen.storyboard */,
+				77FFAD4D2512693A00942273 /* PrayersNavigationController.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -559,7 +570,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Andrei Marincas";
 				TargetAttributes = {
 					775ACD2124E3C26D0072EB3F = {
@@ -648,13 +659,13 @@
 				7774A62924FFAAB900492DDA /* Prayer.swift in Sources */,
 				7741187A24F61DDD00FF87AE /* PrayersContentsLoader.swift in Sources */,
 				7737C7BB250BB95000C312B9 /* PrayerReadingFooter.swift in Sources */,
-				77A7CDC52508D1BA00920B86 /* PrayersTableDelegate.swift in Sources */,
 				7794BDE2250B5DA1000301DD /* RTFPrayerLoader.swift in Sources */,
 				77A7CD8E2508CD2E00920B86 /* ToggleButton.swift in Sources */,
 				77A7CDBE2508D1B900920B86 /* PrayerViewController.swift in Sources */,
 				77AB6EA924F2B2A4005AFE17 /* UIViewController+Extension.swift in Sources */,
 				77AB6EA424F2ABAF005AFE17 /* Logs.swift in Sources */,
 				77A7CD932508D06800920B86 /* UIGlyph.swift in Sources */,
+				77E678A02515828B00889904 /* UIMenu+Extension.swift in Sources */,
 				77A7CD902508CD4700920B86 /* SegmentedControl.swift in Sources */,
 				7791E9A0250514CA00C37C99 /* UIFont+Extension.swift in Sources */,
 				77AB6EA724F2B246005AFE17 /* NSLayoutConstraint+Extension.swift in Sources */,
@@ -666,11 +677,13 @@
 				770F431725037A2F000E988D /* GlyphView.swift in Sources */,
 				77A7CDFA250906DB00920B86 /* UIColor+Extension.swift in Sources */,
 				7741185624F5053300FF87AE /* PrayersDataProvider.swift in Sources */,
+				77E678AB2515848100889904 /* BackBarButtonItem.swift in Sources */,
+				77FFAD4E2512693A00942273 /* PrayersNavigationController.swift in Sources */,
 				77A7CDD92508D1BA00920B86 /* IconViewController.swift in Sources */,
-				77A7CDC62508D1BA00920B86 /* PrayersTableDataSource.swift in Sources */,
 				77A7CDC72508D1BA00920B86 /* PrayersTableViewController.swift in Sources */,
 				775ACD2A24E3C26D0072EB3F /* MainViewController.swift in Sources */,
-				77A7CDD32508D1BA00920B86 /* PrayersDetailsTableDataSource.swift in Sources */,
+				778011BC25133DF200B0CAC3 /* PrayersDataSource.swift in Sources */,
+				77A7CDD32508D1BA00920B86 /* PrayersDetailsDataSource.swift in Sources */,
 				7741187324F549D400FF87AE /* PrayersDataModel.xcdatamodeld in Sources */,
 				7790105F250DBEA600788BAD /* TableViewController.swift in Sources */,
 				77A7CDE22508EA0100920B86 /* PrayerReadingCell.swift in Sources */,
@@ -682,19 +695,17 @@
 				77A7CDD62508D1BA00920B86 /* TextViewController.swift in Sources */,
 				77A7CDDC2508E7DF00920B86 /* PrayerReadingTableViewController.swift in Sources */,
 				77A7CD8B2507D29100920B86 /* DropCapLayoutManager.swift in Sources */,
-				77A7CDD12508D1BA00920B86 /* PrayersDetailsTableDelegate.swift in Sources */,
 				77A7CDCD2508D1BA00920B86 /* PrayersDetailsViewController.swift in Sources */,
 				77AB6EAB24F2B3B3005AFE17 /* UIView+Extension.swift in Sources */,
+				778011BE25133FB600B0CAC3 /* FavouritePrayersDetailsDataSource.swift in Sources */,
 				7794BDE4250B60AB000301DD /* RTFPrayerParser.swift in Sources */,
 				773F685B24F9457B00B4E61A /* CALayer+Extension.swift in Sources */,
-				7790106B2510B0E100788BAD /* UIImage+Extension.swift in Sources */,
 				779010732511DF5700788BAD /* CGSize+Extension.swift in Sources */,
 				770943F1250A6F120068DEFA /* NSMutableAttributedString+Extension.swift in Sources */,
 				7774A62524FEAB6B00492DDA /* UserDefaults+Extension.swift in Sources */,
 				77A7CDD42508D1BA00920B86 /* PrayerDetailsCell.swift in Sources */,
 				77A7CDD22508D1BA00920B86 /* PrayersDetailsTableViewController.swift in Sources */,
 				77A7CD7E25075AA500920B86 /* DropCapTextView.swift in Sources */,
-				7790106D2510B13200788BAD /* UISegmentedControl+Extension.swift in Sources */,
 				770F4301250253CD000E988D /* NSAttributedString+Extension.swift in Sources */,
 				7790105A250DB97E00788BAD /* TableView.swift in Sources */,
 				77901065250DC6F300788BAD /* UIScrollView+Extension.swift in Sources */,
@@ -702,6 +713,7 @@
 				77A7CD942508D06800920B86 /* Glyph.swift in Sources */,
 				77A7CDCB2508D1BA00920B86 /* PrayerSectionHeader.swift in Sources */,
 				77A7CDC12508D1B900920B86 /* PrayerReadingViewController.swift in Sources */,
+				778011C025134A5C00B0CAC3 /* Notifications.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -774,6 +786,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -834,6 +847,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

@@ -12,7 +12,7 @@ class PrayerDetailsSectionHeader: UITableViewHeaderFooterView {
     static let reuseID = "prayerDetailsSectionHeader"
     
     @IBOutlet weak var titleLabel: UILabel!
-    let titleInsets = UIEdgeInsets(top: 22, left: 16, bottom: 22, right: 16)
+    let titlePadding = UIEdgeInsets(top: 22, left: 16, bottom: 22, right: 16)
     
     convenience init() {
         self.init(reuseIdentifier: PrayerDetailsSectionHeader.reuseID)
@@ -24,8 +24,8 @@ class PrayerDetailsSectionHeader: UITableViewHeaderFooterView {
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let titleSizeToFit = size.insetBy(titleInsets)
+        let titleSizeToFit = size.subtractingInset(titlePadding)
         let titleSizeThatFits = titleLabel.sizeThatFits(titleSizeToFit)
-        return titleSizeThatFits.offsetBy(titleInsets)
+        return titleSizeThatFits.addingInset(titlePadding)
     }
 }

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,9 +14,9 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Rugăciunile zilelor săptămânii" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXX-M1-YAS">
-                    <rect key="frame" x="16" y="22" width="382" height="18"/>
-                    <fontDescription key="fontDescription" name="Georgia-BoldItalic" family="Georgia" pointSize="15"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Rugăciunile zilelor săptămânii" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXX-M1-YAS">
+                    <rect key="frame" x="16" y="22" width="382" height="18.5"/>
+                    <fontDescription key="fontDescription" name="Georgia-BoldItalic" family="Georgia" pointSize="16"/>
                     <color key="textColor" name="prayerHeaderTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -23,8 +24,7 @@
             <constraints>
                 <constraint firstItem="jXX-M1-YAS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="4qY-lm-b4E"/>
                 <constraint firstAttribute="trailing" secondItem="jXX-M1-YAS" secondAttribute="trailing" constant="16" id="G54-Kh-FH8"/>
-                <constraint firstItem="jXX-M1-YAS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="22" id="Nbr-1Z-viz"/>
-                <constraint firstAttribute="bottom" secondItem="jXX-M1-YAS" secondAttribute="bottom" constant="22" id="nZz-34-Ayw"/>
+                <constraint firstItem="jXX-M1-YAS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="J5F-ch-l4i"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>

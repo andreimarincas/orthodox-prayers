@@ -8,19 +8,26 @@
 
 import UIKit
 
+protocol PrayersDetailsTableViewControllerDelegate: class {
+    func didSelectPrayer(_ selectedPrayer: String)
+}
+
 class PrayersDetailsTableViewController: UITableViewController {
-    private let prayer: String
-    private let dataSource: PrayersDetailsTableDataSource
-    weak var delegate: PrayersDetailsTableDelegate?
+    private(set) var dataSource: PrayersDetailsDataSource
+    weak var delegate: PrayersDetailsTableViewControllerDelegate?
     
-    let minimumSectionHeaderHeight: CGFloat = 62
+//    let minimumSectionHeaderHeight: CGFloat = 65
+    let sectionHeaderHeight: CGFloat = 60
     let emptyRowHeight: CGFloat = 36
+    
+    var favouritesOnly: Bool {
+        return dataSource is FavouritePrayersDetailsDataSource
+    }
     
     // MARK: Initialization
     
     init(prayer: String, section: String, favouritesOnly: Bool) {
-        self.prayer = prayer
-        self.dataSource = PrayersDetailsTableDataSource(prayer: prayer, section: section, favouritesOnly: favouritesOnly)
+        dataSource = favouritesOnly ? FavouritePrayersDetailsDataSource(prayer: prayer, section: section) : PrayersDetailsDataSource(prayer: prayer, section: section)
         super.init(nibName: "PrayersDetailsTableViewController", bundle: .main)
     }
     
@@ -44,6 +51,18 @@ class PrayersDetailsTableViewController: UITableViewController {
         tableView.tableFooterView = footer
     }
     
+    // MARK: Public methods
+    
+    func reloadData(prayer: String, section: String, favouritesOnly: Bool, animated: Bool) {
+        dataSource = favouritesOnly ? FavouritePrayersDetailsDataSource(prayer: prayer, section: section) : PrayersDetailsDataSource(prayer: prayer, section: section)
+        if animated {
+            tableView?.reloadSections(IndexSet(integer: 0), with: .fade)
+            tableView?.hideVerticalScrollIndicator()
+        } else {
+            tableView?.reloadData()
+        }
+    }
+    
     // MARK: Table View Data Source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,14 +82,15 @@ class PrayersDetailsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: PrayerDetailsSectionHeader.reuseID) as? PrayerDetailsSectionHeader ?? PrayerDetailsSectionHeader()
-        sectionHeader.titleLabel.text = prayer
+        sectionHeader.titleLabel.text = dataSource.prayerTitle
         return sectionHeader
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let header = self.tableView(tableView, viewForHeaderInSection: section) as! PrayerDetailsSectionHeader
-        let size = header.sizeThatFits(CGSize(width: tableView.frame.width, height: .greatestFiniteMagnitude))
-        return max(size.height, minimumSectionHeaderHeight)
+        return sectionHeaderHeight
+//        let header = self.tableView(tableView, viewForHeaderInSection: section) as! PrayerDetailsSectionHeader
+//        let size = header.sizeThatFits(CGSize(width: tableView.frame.width, height: .greatestFiniteMagnitude))
+//        return max(size.height, minimumSectionHeaderHeight)
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

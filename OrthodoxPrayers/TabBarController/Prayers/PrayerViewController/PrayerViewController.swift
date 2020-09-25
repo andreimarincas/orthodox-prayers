@@ -8,24 +8,18 @@
 
 import UIKit
 
-protocol PrayerViewControllerDelegate: NSObjectProtocol {
-    func didEditPrayer(_ prayer: Prayer)
-}
-
 class PrayerViewController: UIViewController {
-    private let prayer: Prayer
-    private let parentPrayerTitle: String?
+    private let prayer: Prayer!
+    private let parentPrayer: String?
     private let section: String
     
     private var prayerReadingViewController: PrayerReadingViewController!
     
-    weak var delegate: PrayerViewControllerDelegate?
-    
     // MARK: Initialization
     
-    init(prayer: Prayer, parentPrayerTitle: String?, section: String) {
-        self.prayer = prayer
-        self.parentPrayerTitle = parentPrayerTitle
+    init(prayer: String, parentPrayer: String?, section: String) {
+        self.prayer = Prayer(title: prayer)
+        self.parentPrayer = parentPrayer
         self.section = section
         super.init(nibName: "PrayerViewController", bundle: .main)
     }
@@ -58,11 +52,10 @@ class PrayerViewController: UIViewController {
         log("is selected: \(favouriteButton.isSelected)")
         favouriteButton.toggle()
         prayer.isFavourite = favouriteButton.isSelected
-        delegate?.didEditPrayer(prayer)
     }
     
     private func configurePrayerReadingViewController() {
-        let prayerReadingViewController = PrayerReadingViewController(prayerTitle: prayer.title, parentPrayerTitle: parentPrayerTitle, section: section)
+        let prayerReadingViewController = PrayerReadingViewController(prayerTitle: prayer.title, parentPrayerTitle: parentPrayer, section: section)
         addChildController(prayerReadingViewController)
         self.prayerReadingViewController = prayerReadingViewController
     }

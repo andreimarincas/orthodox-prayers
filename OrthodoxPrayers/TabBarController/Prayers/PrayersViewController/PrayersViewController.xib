@@ -47,7 +47,7 @@
     <resources>
         <image name="BackgroundImage" width="505" height="896"/>
         <namedColor name="mainBackgroundColor">
-            <color red="0.94901960784313721" green="0.27627312483212452" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="noFavouritesTextColor">
             <color red="0.58799999952316284" green="0.58799999952316284" blue="0.58799999952316284" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

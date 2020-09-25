@@ -40,8 +40,7 @@ class MainViewController: UIViewController {
     }
     
     private func configureControllers() {
-        let prayersViewController = PrayersViewController()
-        let prayersNavigationController = UINavigationController(rootViewController: prayersViewController)
+        let prayersNavigationController = PrayersNavigationController()
         let prayersTabItem = UITabBarItem(title: "Rugăciuni", image: UIImage(named: "prayingIcon"), tag: 0)
         prayersNavigationController.tabBarItem = prayersTabItem
         
