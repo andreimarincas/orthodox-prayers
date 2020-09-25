@@ -1,0 +1,675 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		775ACD2624E3C26D0072EB3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775ACD2524E3C26D0072EB3F /* AppDelegate.swift */; };
+		775ACD2824E3C26D0072EB3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775ACD2724E3C26D0072EB3F /* SceneDelegate.swift */; };
+		775ACD2A24E3C26D0072EB3F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775ACD2924E3C26D0072EB3F /* MainViewController.swift */; };
+		775ACD2D24E3C26D0072EB3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 775ACD2B24E3C26D0072EB3F /* Main.storyboard */; };
+		775ACD3D24E3C2700072EB3F /* OrthodoxPrayersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775ACD3C24E3C2700072EB3F /* OrthodoxPrayersTests.swift */; };
+		775ACD4824E3C2700072EB3F /* OrthodoxPrayersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775ACD4724E3C2700072EB3F /* OrthodoxPrayersUITests.swift */; };
+		775ACD5A24E3CDB10072EB3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 775ACD5824E3CDB10072EB3F /* Assets.xcassets */; };
+		77AB6E9824F2A6D6005AFE17 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AB6E9724F2A6D6005AFE17 /* TabBarController.swift */; };
+		77AB6E9F24F2A9CC005AFE17 /* UIStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AB6E9C24F2A9CC005AFE17 /* UIStyle.swift */; };
+		77AB6EA124F2A9CC005AFE17 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AB6E9E24F2A9CC005AFE17 /* Notifications.swift */; };
+		77AB6EA424F2ABAF005AFE17 /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AB6EA324F2ABAF005AFE17 /* Logs.swift */; };
+		77AB6EA724F2B246005AFE17 /* NSLayoutConstraint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AB6EA624F2B246005AFE17 /* NSLayoutConstraint+Extension.swift */; };
+		77AB6EA924F2B2A4005AFE17 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AB6EA824F2B2A4005AFE17 /* UIViewController+Extension.swift */; };
+		77AB6EAB24F2B3B3005AFE17 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AB6EAA24F2B3B3005AFE17 /* UIView+Extension.swift */; };
+		77AB6EAF24F2C02A005AFE17 /* PrayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AB6EAE24F2C02A005AFE17 /* PrayersViewController.swift */; };
+		77AB6EB124F2C080005AFE17 /* PrayersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77AB6EB024F2C080005AFE17 /* PrayersViewController.xib */; };
+		77AB6EB324F2C13F005AFE17 /* IconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AB6EB224F2C13F005AFE17 /* IconViewController.swift */; };
+		77AB6EB524F2C15F005AFE17 /* IconViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77AB6EB424F2C15F005AFE17 /* IconViewController.xib */; };
+		77AB6EB724F2C1E1005AFE17 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AB6EB624F2C1E1005AFE17 /* TextViewController.swift */; };
+		77AB6EB924F2C206005AFE17 /* TextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77AB6EB824F2C206005AFE17 /* TextViewController.xib */; };
+		77AB6EBD24F3CEF0005AFE17 /* ScreenResolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AB6EBC24F3CEF0005AFE17 /* ScreenResolution.swift */; };
+		77AB6EBF24F3E59F005AFE17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77AB6EBE24F3E59F005AFE17 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		775ACD3924E3C2700072EB3F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 775ACD1A24E3C26D0072EB3F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 775ACD2124E3C26D0072EB3F;
+			remoteInfo = OrthodoxPrayers;
+		};
+		775ACD4424E3C2700072EB3F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 775ACD1A24E3C26D0072EB3F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 775ACD2124E3C26D0072EB3F;
+			remoteInfo = OrthodoxPrayers;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		775ACD2224E3C26D0072EB3F /* OrthodoxPrayers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrthodoxPrayers.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		775ACD2524E3C26D0072EB3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		775ACD2724E3C26D0072EB3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		775ACD2924E3C26D0072EB3F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		775ACD2C24E3C26D0072EB3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		775ACD3324E3C26F0072EB3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		775ACD3824E3C2700072EB3F /* OrthodoxPrayersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrthodoxPrayersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		775ACD3C24E3C2700072EB3F /* OrthodoxPrayersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthodoxPrayersTests.swift; sourceTree = "<group>"; };
+		775ACD3E24E3C2700072EB3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		775ACD4324E3C2700072EB3F /* OrthodoxPrayersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrthodoxPrayersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		775ACD4724E3C2700072EB3F /* OrthodoxPrayersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthodoxPrayersUITests.swift; sourceTree = "<group>"; };
+		775ACD4924E3C2700072EB3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		775ACD5824E3CDB10072EB3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		77AB6E9724F2A6D6005AFE17 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		77AB6E9C24F2A9CC005AFE17 /* UIStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStyle.swift; sourceTree = "<group>"; };
+		77AB6E9E24F2A9CC005AFE17 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		77AB6EA324F2ABAF005AFE17 /* Logs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logs.swift; sourceTree = "<group>"; };
+		77AB6EA624F2B246005AFE17 /* NSLayoutConstraint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extension.swift"; sourceTree = "<group>"; };
+		77AB6EA824F2B2A4005AFE17 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		77AB6EAA24F2B3B3005AFE17 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		77AB6EAE24F2C02A005AFE17 /* PrayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayersViewController.swift; sourceTree = "<group>"; };
+		77AB6EB024F2C080005AFE17 /* PrayersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrayersViewController.xib; sourceTree = "<group>"; };
+		77AB6EB224F2C13F005AFE17 /* IconViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconViewController.swift; sourceTree = "<group>"; };
+		77AB6EB424F2C15F005AFE17 /* IconViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconViewController.xib; sourceTree = "<group>"; };
+		77AB6EB624F2C1E1005AFE17 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
+		77AB6EB824F2C206005AFE17 /* TextViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextViewController.xib; sourceTree = "<group>"; };
+		77AB6EBC24F3CEF0005AFE17 /* ScreenResolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenResolution.swift; sourceTree = "<group>"; };
+		77AB6EBE24F3E59F005AFE17 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		775ACD1F24E3C26D0072EB3F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		775ACD3524E3C2700072EB3F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		775ACD4024E3C2700072EB3F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		775ACD1924E3C26D0072EB3F = {
+			isa = PBXGroup;
+			children = (
+				775ACD2424E3C26D0072EB3F /* OrthodoxPrayers */,
+				775ACD3B24E3C2700072EB3F /* OrthodoxPrayersTests */,
+				775ACD4624E3C2700072EB3F /* OrthodoxPrayersUITests */,
+				775ACD2324E3C26D0072EB3F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		775ACD2324E3C26D0072EB3F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				775ACD2224E3C26D0072EB3F /* OrthodoxPrayers.app */,
+				775ACD3824E3C2700072EB3F /* OrthodoxPrayersTests.xctest */,
+				775ACD4324E3C2700072EB3F /* OrthodoxPrayersUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		775ACD2424E3C26D0072EB3F /* OrthodoxPrayers */ = {
+			isa = PBXGroup;
+			children = (
+				775ACD3324E3C26F0072EB3F /* Info.plist */,
+				775ACD2524E3C26D0072EB3F /* AppDelegate.swift */,
+				775ACD2724E3C26D0072EB3F /* SceneDelegate.swift */,
+				775ACD2924E3C26D0072EB3F /* MainViewController.swift */,
+				775ACD2B24E3C26D0072EB3F /* Main.storyboard */,
+				77AB6EBE24F3E59F005AFE17 /* LaunchScreen.storyboard */,
+				77AB6E9724F2A6D6005AFE17 /* TabBarController.swift */,
+				77AB6EAE24F2C02A005AFE17 /* PrayersViewController.swift */,
+				77AB6EB024F2C080005AFE17 /* PrayersViewController.xib */,
+				77AB6EB224F2C13F005AFE17 /* IconViewController.swift */,
+				77AB6EB424F2C15F005AFE17 /* IconViewController.xib */,
+				77AB6EB624F2C1E1005AFE17 /* TextViewController.swift */,
+				77AB6EB824F2C206005AFE17 /* TextViewController.xib */,
+				77AB6E9B24F2A9CC005AFE17 /* Common */,
+				77AB6EA524F2B231005AFE17 /* Extension */,
+				77AB6EA224F2ABA0005AFE17 /* Utils */,
+				775ACD5724E3CDB10072EB3F /* Resources */,
+			);
+			path = OrthodoxPrayers;
+			sourceTree = "<group>";
+		};
+		775ACD3B24E3C2700072EB3F /* OrthodoxPrayersTests */ = {
+			isa = PBXGroup;
+			children = (
+				775ACD3C24E3C2700072EB3F /* OrthodoxPrayersTests.swift */,
+				775ACD3E24E3C2700072EB3F /* Info.plist */,
+			);
+			path = OrthodoxPrayersTests;
+			sourceTree = "<group>";
+		};
+		775ACD4624E3C2700072EB3F /* OrthodoxPrayersUITests */ = {
+			isa = PBXGroup;
+			children = (
+				775ACD4724E3C2700072EB3F /* OrthodoxPrayersUITests.swift */,
+				775ACD4924E3C2700072EB3F /* Info.plist */,
+			);
+			path = OrthodoxPrayersUITests;
+			sourceTree = "<group>";
+		};
+		775ACD5724E3CDB10072EB3F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				775ACD5824E3CDB10072EB3F /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		77AB6E9B24F2A9CC005AFE17 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				77AB6E9C24F2A9CC005AFE17 /* UIStyle.swift */,
+				77AB6E9E24F2A9CC005AFE17 /* Notifications.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		77AB6EA224F2ABA0005AFE17 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				77AB6EA324F2ABAF005AFE17 /* Logs.swift */,
+				77AB6EBC24F3CEF0005AFE17 /* ScreenResolution.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		77AB6EA524F2B231005AFE17 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				77AB6EA624F2B246005AFE17 /* NSLayoutConstraint+Extension.swift */,
+				77AB6EA824F2B2A4005AFE17 /* UIViewController+Extension.swift */,
+				77AB6EAA24F2B3B3005AFE17 /* UIView+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		775ACD2124E3C26D0072EB3F /* OrthodoxPrayers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 775ACD4C24E3C2700072EB3F /* Build configuration list for PBXNativeTarget "OrthodoxPrayers" */;
+			buildPhases = (
+				775ACD1E24E3C26D0072EB3F /* Sources */,
+				775ACD1F24E3C26D0072EB3F /* Frameworks */,
+				775ACD2024E3C26D0072EB3F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OrthodoxPrayers;
+			productName = OrthodoxPrayers;
+			productReference = 775ACD2224E3C26D0072EB3F /* OrthodoxPrayers.app */;
+			productType = "com.apple.product-type.application";
+		};
+		775ACD3724E3C2700072EB3F /* OrthodoxPrayersTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 775ACD4F24E3C2700072EB3F /* Build configuration list for PBXNativeTarget "OrthodoxPrayersTests" */;
+			buildPhases = (
+				775ACD3424E3C2700072EB3F /* Sources */,
+				775ACD3524E3C2700072EB3F /* Frameworks */,
+				775ACD3624E3C2700072EB3F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				775ACD3A24E3C2700072EB3F /* PBXTargetDependency */,
+			);
+			name = OrthodoxPrayersTests;
+			productName = OrthodoxPrayersTests;
+			productReference = 775ACD3824E3C2700072EB3F /* OrthodoxPrayersTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		775ACD4224E3C2700072EB3F /* OrthodoxPrayersUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 775ACD5224E3C2700072EB3F /* Build configuration list for PBXNativeTarget "OrthodoxPrayersUITests" */;
+			buildPhases = (
+				775ACD3F24E3C2700072EB3F /* Sources */,
+				775ACD4024E3C2700072EB3F /* Frameworks */,
+				775ACD4124E3C2700072EB3F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				775ACD4524E3C2700072EB3F /* PBXTargetDependency */,
+			);
+			name = OrthodoxPrayersUITests;
+			productName = OrthodoxPrayersUITests;
+			productReference = 775ACD4324E3C2700072EB3F /* OrthodoxPrayersUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		775ACD1A24E3C26D0072EB3F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "Andrei Marincas";
+				TargetAttributes = {
+					775ACD2124E3C26D0072EB3F = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					775ACD3724E3C2700072EB3F = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = 775ACD2124E3C26D0072EB3F;
+					};
+					775ACD4224E3C2700072EB3F = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = 775ACD2124E3C26D0072EB3F;
+					};
+				};
+			};
+			buildConfigurationList = 775ACD1D24E3C26D0072EB3F /* Build configuration list for PBXProject "OrthodoxPrayers" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 775ACD1924E3C26D0072EB3F;
+			productRefGroup = 775ACD2324E3C26D0072EB3F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				775ACD2124E3C26D0072EB3F /* OrthodoxPrayers */,
+				775ACD3724E3C2700072EB3F /* OrthodoxPrayersTests */,
+				775ACD4224E3C2700072EB3F /* OrthodoxPrayersUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		775ACD2024E3C26D0072EB3F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77AB6EB924F2C206005AFE17 /* TextViewController.xib in Resources */,
+				775ACD5A24E3CDB10072EB3F /* Assets.xcassets in Resources */,
+				77AB6EB524F2C15F005AFE17 /* IconViewController.xib in Resources */,
+				77AB6EBF24F3E59F005AFE17 /* LaunchScreen.storyboard in Resources */,
+				775ACD2D24E3C26D0072EB3F /* Main.storyboard in Resources */,
+				77AB6EB124F2C080005AFE17 /* PrayersViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		775ACD3624E3C2700072EB3F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		775ACD4124E3C2700072EB3F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		775ACD1E24E3C26D0072EB3F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77AB6EA924F2B2A4005AFE17 /* UIViewController+Extension.swift in Sources */,
+				77AB6EA124F2A9CC005AFE17 /* Notifications.swift in Sources */,
+				77AB6EA424F2ABAF005AFE17 /* Logs.swift in Sources */,
+				77AB6EA724F2B246005AFE17 /* NSLayoutConstraint+Extension.swift in Sources */,
+				77AB6E9F24F2A9CC005AFE17 /* UIStyle.swift in Sources */,
+				77AB6EAF24F2C02A005AFE17 /* PrayersViewController.swift in Sources */,
+				775ACD2A24E3C26D0072EB3F /* MainViewController.swift in Sources */,
+				77AB6EBD24F3CEF0005AFE17 /* ScreenResolution.swift in Sources */,
+				775ACD2624E3C26D0072EB3F /* AppDelegate.swift in Sources */,
+				775ACD2824E3C26D0072EB3F /* SceneDelegate.swift in Sources */,
+				77AB6EAB24F2B3B3005AFE17 /* UIView+Extension.swift in Sources */,
+				77AB6E9824F2A6D6005AFE17 /* TabBarController.swift in Sources */,
+				77AB6EB324F2C13F005AFE17 /* IconViewController.swift in Sources */,
+				77AB6EB724F2C1E1005AFE17 /* TextViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		775ACD3424E3C2700072EB3F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				775ACD3D24E3C2700072EB3F /* OrthodoxPrayersTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		775ACD3F24E3C2700072EB3F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				775ACD4824E3C2700072EB3F /* OrthodoxPrayersUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		775ACD3A24E3C2700072EB3F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 775ACD2124E3C26D0072EB3F /* OrthodoxPrayers */;
+			targetProxy = 775ACD3924E3C2700072EB3F /* PBXContainerItemProxy */;
+		};
+		775ACD4524E3C2700072EB3F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 775ACD2124E3C26D0072EB3F /* OrthodoxPrayers */;
+			targetProxy = 775ACD4424E3C2700072EB3F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		775ACD2B24E3C26D0072EB3F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				775ACD2C24E3C26D0072EB3F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		775ACD4A24E3C2700072EB3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		775ACD4B24E3C2700072EB3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		775ACD4D24E3C2700072EB3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F7U94HT3F7;
+				INFOPLIST_FILE = OrthodoxPrayers/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreimarincas.OrthodoxPrayers;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		775ACD4E24E3C2700072EB3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F7U94HT3F7;
+				INFOPLIST_FILE = OrthodoxPrayers/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreimarincas.OrthodoxPrayers;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		775ACD5024E3C2700072EB3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F7U94HT3F7;
+				INFOPLIST_FILE = OrthodoxPrayersTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreimarincas.OrthodoxPrayersTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OrthodoxPrayers.app/OrthodoxPrayers";
+			};
+			name = Debug;
+		};
+		775ACD5124E3C2700072EB3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F7U94HT3F7;
+				INFOPLIST_FILE = OrthodoxPrayersTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreimarincas.OrthodoxPrayersTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OrthodoxPrayers.app/OrthodoxPrayers";
+			};
+			name = Release;
+		};
+		775ACD5324E3C2700072EB3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F7U94HT3F7;
+				INFOPLIST_FILE = OrthodoxPrayersUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreimarincas.OrthodoxPrayersUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OrthodoxPrayers;
+			};
+			name = Debug;
+		};
+		775ACD5424E3C2700072EB3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F7U94HT3F7;
+				INFOPLIST_FILE = OrthodoxPrayersUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreimarincas.OrthodoxPrayersUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OrthodoxPrayers;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		775ACD1D24E3C26D0072EB3F /* Build configuration list for PBXProject "OrthodoxPrayers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				775ACD4A24E3C2700072EB3F /* Debug */,
+				775ACD4B24E3C2700072EB3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		775ACD4C24E3C2700072EB3F /* Build configuration list for PBXNativeTarget "OrthodoxPrayers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				775ACD4D24E3C2700072EB3F /* Debug */,
+				775ACD4E24E3C2700072EB3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		775ACD4F24E3C2700072EB3F /* Build configuration list for PBXNativeTarget "OrthodoxPrayersTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				775ACD5024E3C2700072EB3F /* Debug */,
+				775ACD5124E3C2700072EB3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		775ACD5224E3C2700072EB3F /* Build configuration list for PBXNativeTarget "OrthodoxPrayersUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				775ACD5324E3C2700072EB3F /* Debug */,
+				775ACD5424E3C2700072EB3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 775ACD1A24E3C26D0072EB3F /* Project object */;
+}
