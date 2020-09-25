@@ -13,10 +13,9 @@ protocol PrayersDetailsTableViewControllerDelegate: class {
 }
 
 class PrayersDetailsTableViewController: UITableViewController {
-    private(set) var dataSource: PrayersDetailsDataSource
+    private(set) var dataSource: PrayersDetailsDataSourceProtocol!
     weak var delegate: PrayersDetailsTableViewControllerDelegate?
     
-//    let minimumSectionHeaderHeight: CGFloat = 65
     let sectionHeaderHeight: CGFloat = 60
     let emptyRowHeight: CGFloat = 36
     
@@ -26,19 +25,16 @@ class PrayersDetailsTableViewController: UITableViewController {
     
     // MARK: Initialization
     
-    init(prayer: String, section: String, favouritesOnly: Bool) {
-        dataSource = favouritesOnly ? FavouritePrayersDetailsDataSource(prayer: prayer, section: section) : PrayersDetailsDataSource(prayer: prayer, section: section)
-        super.init(nibName: "PrayersDetailsTableViewController", bundle: .main)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    convenience init(prayer: String, section: String, favouritesOnly: Bool) {
+        self.init()
+        dataSource = favouritesOnly ? FavouritePrayersDetailsDataSource(prayer: prayer, section: section) : AllPrayersDetailsDataSource(prayer: prayer, section: section)
     }
     
     // MARK: View life-cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.scrollsToTop = false
         // Register cell
         let cellNib = UINib(nibName: "PrayerDetailsCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: PrayerDetailsCell.reuseID)
@@ -51,29 +47,42 @@ class PrayersDetailsTableViewController: UITableViewController {
         tableView.tableFooterView = footer
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Call layoutIfNeeded on table view here to fix a bug where the cell separator is not visible in some cases on interactive pop gesture.
+        tableView.layoutIfNeeded()
+    }
+    
     // MARK: Public methods
     
     func reloadData(prayer: String, section: String, favouritesOnly: Bool, animated: Bool) {
-        dataSource = favouritesOnly ? FavouritePrayersDetailsDataSource(prayer: prayer, section: section) : PrayersDetailsDataSource(prayer: prayer, section: section)
+        let newDataSource: PrayersDetailsDataSourceProtocol = favouritesOnly ? FavouritePrayersDetailsDataSource(prayer: prayer, section: section) : AllPrayersDetailsDataSource(prayer: prayer, section: section)
         if animated {
-            tableView?.reloadSections(IndexSet(integer: 0), with: .fade)
-            tableView?.hideVerticalScrollIndicator()
+            let prevSectionsCount = dataSource.numberOfSections
+            dataSource = newDataSource
+            let sectionsCount = dataSource.numberOfSections
+            tableView?.reloadDataAnimated(numberOfSections: sectionsCount, previousNumberOfSections: prevSectionsCount)
         } else {
+            dataSource = newDataSource
             tableView?.reloadData()
         }
     }
     
     // MARK: Table View Data Source
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return dataSource.numberOfSections
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.numberOfPrayers
+        return dataSource.numberOfPrayers(inSectionAt: section)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let prayerDetailsCell = tableView.dequeueReusableCell(withIdentifier: PrayerDetailsCell.reuseID, for: indexPath) as? PrayerDetailsCell else {
             fatalError("Failed to dequeue reusable PrayerDetailsCell.")
         }
-        let prayer = dataSource.prayerItem(at: indexPath.row)
+        let prayer = dataSource.prayerItem(at: indexPath.row, inSectionAt: indexPath.section)
         prayerDetailsCell.textLabel?.text = prayer
         return prayerDetailsCell
     }
@@ -81,16 +90,14 @@ class PrayersDetailsTableViewController: UITableViewController {
     // MARK: Table View Delegate
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard section == 0 else { return nil }
         let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: PrayerDetailsSectionHeader.reuseID) as? PrayerDetailsSectionHeader ?? PrayerDetailsSectionHeader()
-        sectionHeader.titleLabel.text = dataSource.prayerTitle
+        sectionHeader.titleLabel.text = dataSource.title
         return sectionHeader
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return sectionHeaderHeight
-//        let header = self.tableView(tableView, viewForHeaderInSection: section) as! PrayerDetailsSectionHeader
-//        let size = header.sizeThatFits(CGSize(width: tableView.frame.width, height: .greatestFiniteMagnitude))
-//        return max(size.height, minimumSectionHeaderHeight)
+        return (section == 0) ? sectionHeaderHeight : emptyRowHeight
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -98,7 +105,7 @@ class PrayersDetailsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let prayer = dataSource.prayerItem(at: indexPath.row)
+        let prayer = dataSource.prayerItem(at: indexPath.row, inSectionAt: indexPath.section)
         delegate?.didSelectPrayer(prayer)
     }
 }

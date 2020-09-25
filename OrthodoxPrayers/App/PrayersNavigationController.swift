@@ -11,49 +11,39 @@ import UIKit
 class PrayersNavigationController: UINavigationController {
     private var lastShowedViewController: UIViewController?
     
-    private(set) var favouritesOnly: Bool {
-        didSet {
-            UserDefaults.isFavouritesSelected = favouritesOnly
-        }
-    }
-    
-    private var favouritesControl: SegmentedControl = {
-        let favouritesControl = SegmentedControl()
-        favouritesControl.padding = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
-        favouritesControl.insertSegment(withTitle: "Toate", at: 0, animated: false)
-        favouritesControl.insertSegment(withTitle: "Favorite", at: 1, animated: false)
-        favouritesControl.sizeToFit()
-        return favouritesControl
-    }()
-    
-    init() {
-        favouritesOnly = UserDefaults.isFavouritesSelected
+    convenience init() {
         let prayersViewController = PrayersViewController()
-        super.init(rootViewController: prayersViewController)
+        self.init(rootViewController: prayersViewController)
         delegate = self
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureFavouritesControl()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        // Center favourites control if added to this view
         if favouritesControl.superview == view {
             let navBarCenter = navigationBar.frame.origin.y + navigationBar.frame.height / 2
             favouritesControl.center = CGPoint(x: view.frame.width / 2, y: navBarCenter)
         }
     }
     
-    private func configureFavouritesControl() {
+    // MARK: Favourites control
+    
+    private(set) var favouritesOnly = UserDefaults.isFavouritesSelected {
+        didSet {
+            UserDefaults.isFavouritesSelected = favouritesOnly
+        }
+    }
+    
+    private lazy var favouritesControl: SegmentedControl = {
+        let favouritesControl = SegmentedControl()
+        favouritesControl.padding = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+        favouritesControl.insertSegment(withTitle: "Toate", at: 0, animated: false)
+        favouritesControl.insertSegment(withTitle: "Favorite", at: 1, animated: false)
+        favouritesControl.sizeToFit()
         favouritesControl.selectedSegmentIndex = favouritesOnly ? 1 : 0
         favouritesControl.addTarget(self, action: #selector(favouritesSelectionChanged(_:)), for: .valueChanged)
-    }
+        return favouritesControl
+    }()
     
     @objc private func favouritesSelectionChanged(_ favouritesControl: SegmentedControl) {
         log("selected index: \(favouritesControl.selectedSegmentIndex)")
@@ -94,12 +84,9 @@ extension PrayersNavigationController: UINavigationControllerDelegate {
             navigationBar.topItem?.titleView = favouritesControl // viewController.navigationItem is the topItem here
         }
         lastShowedViewController = viewController
-        if #available(iOS 14.0, *) {
-            updateBackButtonMenu()
-        }
+        updateBackButtonMenu()
     }
     
-    @available(iOS 14.0, *)
     private func updateBackButtonMenu() {
         var menuItems = [UIMenuElement]()
         for navigationItem in navigationBar.items ?? [] {

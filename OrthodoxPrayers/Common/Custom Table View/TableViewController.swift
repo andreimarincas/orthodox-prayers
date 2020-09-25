@@ -8,18 +8,8 @@
 
 import UIKit
 
-class TableViewController: UIViewController, TableViewDataSource {
+class TableViewController: UIViewController, UIScrollViewDelegate, TableViewDataSource {
     private(set) var tableView: TableView!
-    
-    // MARK: Initialization
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     // MARK: View life-cycle
     
@@ -29,33 +19,25 @@ class TableViewController: UIViewController, TableViewDataSource {
         configureTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if tableView.isEmpty {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tableView.flashScrollIndicators()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        adjustContentInset()
-    }
-    
-    // MARK: Private methods
+    // MARK: Configure methods
     
     private func configureTableView() {
         tableView = TableView()
-        tableView.contentInsetAdjustmentBehavior = .never
-        tableView.automaticallyAdjustsScrollIndicatorInsets = false
-        tableView.alwaysBounceVertical = true
         tableView.dataSource = self
+        tableView.delegate = self
         view.addSubviewAligned(tableView)
-    }
-    
-    private func adjustContentInset() {
-        var inset = UIEdgeInsets.zero
-        inset.top = navBarHeight + statusBarHeight
-        inset.bottom = tabBarHeight
-        tableView.contentInset = inset
-        tableView.verticalScrollIndicatorInsets = inset
     }
     
     // MARK: TableViewDataSource
@@ -66,5 +48,11 @@ class TableViewController: UIViewController, TableViewDataSource {
     
     func tableView(_ tableView: TableView, cellForRowAt index: Int) -> UIView {
         return UIView()
+    }
+    
+    // MARK: UIScrollViewDelegate
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // No implementation needed
     }
 }

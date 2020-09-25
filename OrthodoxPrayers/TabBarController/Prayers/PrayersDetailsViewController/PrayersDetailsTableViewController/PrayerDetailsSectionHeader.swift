@@ -12,20 +12,21 @@ class PrayerDetailsSectionHeader: UITableViewHeaderFooterView {
     static let reuseID = "prayerDetailsSectionHeader"
     
     @IBOutlet weak var titleLabel: UILabel!
-    let titlePadding = UIEdgeInsets(top: 22, left: 16, bottom: 22, right: 16)
+//    let titleInset = UIEdgeInsets(top: 22, left: 16, bottom: 22, right: 16)
     
     convenience init() {
         self.init(reuseIdentifier: PrayerDetailsSectionHeader.reuseID)
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        titleLabel.text = nil
-    }
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//        titleLabel.text = nil
+//    }
     
-    override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let titleSizeToFit = size.subtractingInset(titlePadding)
-        let titleSizeThatFits = titleLabel.sizeThatFits(titleSizeToFit)
-        return titleSizeThatFits.addingInset(titlePadding)
-    }
+//    override func sizeThatFits(_ size: CGSize) -> CGSize {
+//        let titleSizeToFit = size.insetBy(titleInset)
+//        let titleSizeThatFits = titleLabel.sizeThatFits(titleSizeToFit)
+//        let padding = Padding(inset: titleInset)
+//        return titleSizeThatFits.with(padding)
+//    }
 }

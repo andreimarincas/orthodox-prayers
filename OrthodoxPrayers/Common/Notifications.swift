@@ -11,4 +11,5 @@ import Foundation
 struct Notifications {
     static let favouritesSelectionChanged = NSNotification.Name("OrthodoxPrayers.FavouritesSelectionChanged")
     static let prayerEditingChanged = NSNotification.Name("OrthodoxPrayers.PrayerEditingChanged")
+    static let needsStatusBarAppearanceUpdate = NSNotification.Name("OrthodoxPrayers.needsStatusBarAppearanceUpdate")
 }

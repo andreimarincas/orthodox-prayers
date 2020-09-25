@@ -9,19 +9,6 @@
 import UIKit
 
 extension UIViewController {
-    /**
-     Load a custom view-controller from nib.
-     
-     - Precondition: The nib name and the class name are the same.
-     
-     Example:
-     
-         let vc = MyViewController.fromNib()
-         vc.someCustomProperty = 5
-     */
-    static func fromNib() -> Self {
-        return self.init(nibName: String(describing: self), bundle: .main)
-    }
     
     func addChildController(_ childController: UIViewController) {
         addChild(childController)
@@ -29,15 +16,14 @@ extension UIViewController {
         childController.didMove(toParent: self)
     }
     
-    var statusBarHeight: CGFloat {
-        return view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+    // MARK: Status bar appearance update
+    
+    func showStatusBar() {
+        notifyStatusBarAppearanceUpdate(appearance: .default)
     }
     
-    var navBarHeight: CGFloat {
-        return navigationController?.navigationBar.frame.height ?? 0
-    }
-    
-    var tabBarHeight: CGFloat {
-        return tabBarController?.tabBar.frame.height ?? 0
+    func notifyStatusBarAppearanceUpdate(appearance: StatusBarAppearance) {
+        let userInfo: [AnyHashable : Any] = ["appearance": appearance]
+        NotificationCenter.default.post(name: Notifications.needsStatusBarAppearanceUpdate, object: self, userInfo: userInfo)
     }
 }

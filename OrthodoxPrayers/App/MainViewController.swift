@@ -10,54 +10,47 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    override var tabBarController: UITabBarController? {
-        return children.first as? UITabBarController
-    }
-    
-    var tabBar: UITabBar! {
-        return tabBarController?.tabBar
-    }
+    let hideShowStatusBarDuration = UINavigationController.hideShowBarDuration
     
     // MARK: View life-cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTabBarController()
-    }
-    
-    // MARK: Private methods
-    
-    private func configureTabBarController() {
-        let tabBarController = UITabBarController()
+        // Add tab bar controller
+        let tabBarController = TabBarController()
         addChildController(tabBarController)
-        configureTabBar()
-        configureControllers()
+        // Register for status bar appearance updates
+        NotificationCenter.default.addObserver(self, selector: #selector(updateStatusBarAppearance), name: Notifications.needsStatusBarAppearanceUpdate, object: nil)
     }
     
-    private func configureTabBar() {
-        tabBar.tintColor = .activeColor
-        tabBar.unselectedItemTintColor = .tabBarItemUnselectedColor
-    }
+    // MARK: Status bar appearance
     
-    private func configureControllers() {
-        let prayersNavigationController = PrayersNavigationController()
-        let prayersTabItem = UITabBarItem(title: "Rugăciuni", image: UIImage(named: "prayingIcon"), tag: 0)
-        prayersNavigationController.tabBarItem = prayersTabItem
-        
-        let iconViewController = IconViewController()
-        let iconTabItem = UITabBarItem(title: "Icoană", image: UIImage(named: "candleIcon"), tag: 1)
-        iconViewController.tabBarItem = iconTabItem
-        
-        let textViewController = TextViewController()
-        let textTabItem = UITabBarItem(title: "Text", image: UIImage(named: "textIcon"), tag: 2)
-        textViewController.tabBarItem = textTabItem
-        
-        tabBarController?.viewControllers = [prayersNavigationController, iconViewController, textViewController]
+    private var statusBarAppearance = StatusBarAppearance.default {
+        didSet {
+            if statusBarAppearance != oldValue {
+                let animated = (statusBarAppearance.animation != .none)
+                let duration = animated ? TimeInterval(hideShowStatusBarDuration) : 0
+                UIView.animate(withDuration: duration) {
+                    self.setNeedsStatusBarAppearanceUpdate()
+                }
+            }
+        }
     }
-    
-    // MARK: Status bar style
     
     override var prefersStatusBarHidden: Bool {
-        return false
+        return statusBarAppearance.hidden
+    }
+    
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return statusBarAppearance.animation
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return statusBarAppearance.style
+    }
+    
+    @objc private func updateStatusBarAppearance(_ notification: NSNotification) {
+        guard let appearance = notification.userInfo?["appearance"] as? StatusBarAppearance else { return }
+        statusBarAppearance = appearance
     }
 }

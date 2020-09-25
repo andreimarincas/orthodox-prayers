@@ -11,9 +11,6 @@ import UIKit
 class DropCapLayoutManager {
     weak var view: DropCapTextView!
     
-    private var needsLayoutUpdate = false
-    private var textBodyHeightCache = [CGFloat: CGFloat]()
-    
     init(view: DropCapTextView) {
         self.view = view
     }
@@ -24,7 +21,6 @@ class DropCapLayoutManager {
     }
     
     func layoutSubviews() {
-        guard needsLayoutUpdate else { return }
         // Update body text frame
         let textBodyOrigin = CGPoint(x: 0, y: glyphTopOffset)
         textView.frame = CGRect(origin: textBodyOrigin, size: textBodySize)
@@ -32,15 +28,6 @@ class DropCapLayoutManager {
         let glyphOrigin = CGPoint(x: textView.textContainerInset.left, y: textView.textContainerInset.top)
         let glyphSize = glyphView.sizeThatFits(.zero)
         glyphView.frame = CGRect(origin: glyphOrigin, size: glyphSize)
-        // Turn off layout updates until new data
-        needsLayoutUpdate = false
-    }
-    
-    // Call this when view data changes
-    func setNeedsLayout() {
-        needsLayoutUpdate = true
-        textBodyHeightCache.removeAll()
-        view.setNeedsLayout()
     }
     
     var glyphExclusionPath: UIBezierPath? {
@@ -70,13 +57,8 @@ class DropCapLayoutManager {
     }
     
     private func textBodyHeight(forWidth fixedWidth: CGFloat) -> CGFloat {
-//        if let cached = textBodyHeightCache[fixedWidth] {
-//            return cached
-//        }
         let fitSize = CGSize(width: fixedWidth, height: .greatestFiniteMagnitude)
-        let newSize = textView.sizeThatFits(fitSize)
-        textBodyHeightCache[fixedWidth] = newSize.height
-        return newSize.height
+        return textView.sizeThatFits(fitSize).height
     }
     
     private var textBodySize: CGSize {

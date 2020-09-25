@@ -10,18 +10,8 @@ import UIKit
 
 class PrayersViewController: UIViewController {
     @IBOutlet weak var noFavouritesLabel: UILabel!
-    private var prayersTableViewController: PrayersTableViewController!
+    private var tableViewController: PrayersTableViewController!
     private var needsReload = false
-    
-    // MARK: Initialization
-    
-    init() {
-        super.init(nibName: "PrayersViewController", bundle: .main)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     // MARK: View life-cycle
     
@@ -52,27 +42,20 @@ class PrayersViewController: UIViewController {
         let tableViewController = PrayersTableViewController(favouritesOnly: favouritesOnly)
         tableViewController.delegate = self
         addChildController(tableViewController)
-        self.prayersTableViewController = tableViewController
+        self.tableViewController = tableViewController
     }
     
     private func reloadTableViewData(animated: Bool) {
-        prayersTableViewController.reloadData(favouritesOnly: favouritesOnly, animated: animated)
-        noFavouritesLabel.isHidden = !(favouritesOnly && prayersTableViewController.dataSource.isEmpty)
+        tableViewController.reloadData(favouritesOnly: favouritesOnly, animated: animated)
+        noFavouritesLabel.isHidden = !(favouritesOnly && tableViewController.dataSource.isEmpty)
     }
     
     private func configureNoFavouritesLabel() {
         noFavouritesLabel.text = "Nu ai salvat nicio rugăciune la favorite" // TODO: Localize
-        noFavouritesLabel.isHidden = !(favouritesOnly && prayersTableViewController.dataSource.isEmpty)
+        noFavouritesLabel.isHidden = !(favouritesOnly && tableViewController.dataSource.isEmpty)
     }
     
     private func configureBackButton() {
-//        let backButton = BarButtonItem(title: "ÎNAPOI", style: .plain, target: nil, action: nil)
-//        let backButton = BarButtonItem(title: "ÎNAPOI", menuTitle: "Rugăciuni", menuHandler: { _ in
-//            self.navigationController?.popToViewController(self, animated: true)
-//        })
-//        let backButton = BarButtonItem(title: "ÎNAPOI", menuTitle: "Rugăciuni", menuHandler: { _ in
-//            self.navigationController?.popToViewController(self, animated: true)
-//        })
         let backButton = BackBarButtonItem(title: "ÎNAPOI", menuTitle: "Rugăciuni")
         backButton.tintColor = .navigationBarTintColor
         navigationItem.backBarButtonItem = backButton
@@ -106,13 +89,13 @@ class PrayersViewController: UIViewController {
 // MARK: PrayersTableViewControllerDelegate
 
 extension PrayersViewController: PrayersTableViewControllerDelegate {
-    func didSelectPrayer(_ selectedPrayer: String, inSection section: String, isDetailedItem: Bool) {
+    func didSelectPrayer(_ selectedPrayer: String, inSection section: String, hasPrayersDetails: Bool) {
         log("did select prayer: \(selectedPrayer)")
-        if isDetailedItem {
+        if hasPrayersDetails {
             let detailsViewController = PrayersDetailsViewController(prayer: selectedPrayer, section: section)
             navigationController?.pushViewController(detailsViewController, animated: true)
         } else {
-            let prayerViewController = PrayerViewController(prayer: selectedPrayer, parentPrayer: nil, section: section)
+            let prayerViewController = PrayerReadingViewController(prayer: selectedPrayer, parentPrayer: nil, section: section)
             navigationController?.pushViewController(prayerViewController, animated: true)
         }
     }

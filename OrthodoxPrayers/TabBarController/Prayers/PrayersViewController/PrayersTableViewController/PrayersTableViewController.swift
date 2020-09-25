@@ -9,11 +9,11 @@
 import UIKit
 
 protocol PrayersTableViewControllerDelegate: class {
-    func didSelectPrayer(_ selectedPrayerTitle: String, inSection section: String, isDetailedItem: Bool)
+    func didSelectPrayer(_ selectedPrayer: String, inSection section: String, hasPrayersDetails: Bool)
 }
 
 class PrayersTableViewController: UITableViewController {
-    private(set) var dataSource: PrayersDataSource
+    private(set) var dataSource: PrayersDataSourceProtocol!
     weak var delegate: PrayersTableViewControllerDelegate?
     
     let sectionHeaderHeight: CGFloat = 60
@@ -23,21 +23,20 @@ class PrayersTableViewController: UITableViewController {
         return dataSource is FavouritePrayersDataSource
     }
     
+    private var selectedPrayer: String?
+    
     // MARK: Initialization
     
-    init(favouritesOnly: Bool) {
-        dataSource = favouritesOnly ? FavouritePrayersDataSource() : PrayersDataSource()
-        super.init(nibName: "PrayersTableViewController", bundle: .main)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    convenience init(favouritesOnly: Bool) {
+        self.init()
+        dataSource = favouritesOnly ? FavouritePrayersDataSource() : AllPrayersDataSource()
     }
     
     // MARK: View life-cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.scrollsToTop = false
         // Register cell
         let cellNib = UINib(nibName: "PrayerCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: PrayerCell.reuseID)
@@ -50,41 +49,34 @@ class PrayersTableViewController: UITableViewController {
         tableView.tableFooterView = footer
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        // Re-select the prayer cell because selection was lost on reload data
+        if let selectedPrayer = self.selectedPrayer {
+            if tableView.indexPathForSelectedRow == nil {
+                let indexPath = dataSource.indexPathForPrayer(prayer: selectedPrayer)
+                tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+            }
+            self.selectedPrayer = nil
+        }
+        super.viewWillAppear(animated) // clears selection
+        // Call layoutIfNeeded on table view here to fix a bug where the cell separator is not visible in some cases on interactive pop gesture.
+        // layoutIfNeeded is also necessary for the row selection above.
+        tableView.layoutIfNeeded()
+    }
+    
     // MARK: Public methods
     
     func reloadData(favouritesOnly: Bool, animated: Bool) {
-        let oldDataSource = dataSource
-        dataSource = favouritesOnly ? FavouritePrayersDataSource() : PrayersDataSource()
-        if !animated {
+        let newDataSource: PrayersDataSourceProtocol = favouritesOnly ? FavouritePrayersDataSource() : AllPrayersDataSource()
+        if animated {
+            let prevSectionsCount = dataSource.numberOfSections
+            dataSource = newDataSource
+            let sectionsCount = dataSource.numberOfSections
+            tableView?.reloadDataAnimated(numberOfSections: sectionsCount, previousNumberOfSections: prevSectionsCount)
+        } else {
+            dataSource = newDataSource
             tableView?.reloadData()
-            return
         }
-        var sectionsToInsert = IndexSet()
-        var sectionsToDelete = IndexSet()
-        var sectionsToReload = IndexSet()
-        let m = oldDataSource.numberOfSections
-        let n = dataSource.numberOfSections
-        if m < n {
-            sectionsToInsert.insert(integersIn: m..<n)
-        } else if m > n {
-            sectionsToDelete.insert(integersIn: n..<m)
-        }
-        for index in 0..<min(m, n) {
-            let oldTitle = oldDataSource.title(forSectionAt: index)
-            let newTitle = dataSource.title(forSectionAt: index)
-            if newTitle == oldTitle {
-                sectionsToReload.insert(index)
-            } else {
-                sectionsToInsert.insert(index)
-                sectionsToDelete.insert(index)
-            }
-        }
-        tableView?.performBatchUpdates({
-            tableView?.insertSections(sectionsToInsert, with: .fade)
-            tableView?.deleteSections(sectionsToDelete, with: .fade)
-            tableView?.reloadSections(sectionsToReload, with: .fade)
-        })
-        tableView?.hideVerticalScrollIndicator()
     }
     
     // MARK: Table View Data Source
@@ -126,8 +118,9 @@ class PrayersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let prayerItem = dataSource.prayerItem(at: indexPath.row, inSectionAt: indexPath.section)
-        let sectionTitle = dataSource.associatedSectionTitle(forSectionAt: indexPath.section)
-        let isDetailed = dataSource.isDetailedItem(prayerItem: prayerItem, inSection: sectionTitle)
-        delegate?.didSelectPrayer(prayerItem, inSection: sectionTitle, isDetailedItem: isDetailed)
+        let sectionTitle = dataSource.associatedTitle(forSectionAt: indexPath.section)
+        let hasDetails = dataSource.hasPrayersDetails(forPrayerItemAt: indexPath.row, inSectionAt: indexPath.section)
+        selectedPrayer = prayerItem
+        delegate?.didSelectPrayer(prayerItem, inSection: sectionTitle, hasPrayersDetails: hasDetails)
     }
 }

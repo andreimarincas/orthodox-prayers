@@ -14,23 +14,24 @@ protocol TableViewDataSource: class {
 }
 
 class TableView: UIScrollView {
+    private var layoutManager: TableViewLayoutManager!
     weak var dataSource: TableViewDataSource?
     
     // MARK: Initialization
     
-    init() {
-        super.init(frame: .zero)
+    convenience init() {
+        self.init(frame: .zero)
+        layoutManager = TableViewLayoutManager(tableView: self)
         backgroundColor = .clear
         showsHorizontalScrollIndicator = false
+        contentInsetAdjustmentBehavior = .never
+        automaticallyAdjustsScrollIndicatorInsets = false
+        alwaysBounceVertical = true
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    // MARK: Cells management
     
-    // MARK: Cells reloading
-    
-    private var cells = [UIView]() {
+    private(set) var cells = [UIView]() {
         didSet {
             for oldCell in oldValue {
                 oldCell.removeFromSuperview()
@@ -38,8 +39,6 @@ class TableView: UIScrollView {
             for newCell in cells {
                 addSubview(newCell)
             }
-            needsLayoutUpdate = true
-            setNeedsLayout()
         }
     }
     
@@ -55,33 +54,39 @@ class TableView: UIScrollView {
             newCells.append(newCell)
         }
         cells = newCells
+        layoutManager.setNeedsLayout()
+    }
+    
+    var isEmpty: Bool {
+        return cells.isEmpty
+    }
+    
+    var footerView: UIView? {
+        didSet {
+            oldValue?.removeFromSuperview()
+            if let footer = footerView {
+                addSubview(footer)
+            }
+            layoutManager.setNeedsLayout()
+        }
     }
     
     // MARK: Layout updates
     
-    /// True when the cells are modified or when the view's width changes.
-    /// If true, cells' frames and contentSize are calculated in layoutSubviews(). If false, layoutSubviews() does nothing.
-    private var needsLayoutUpdate = false
-    
-    private var width: CGFloat = 0 {
+    override var contentSize: CGSize {
         didSet {
-            if width != oldValue {
-                needsLayoutUpdate = true
+            if contentSize != oldValue {
+                layoutManager.contentSizeDidChange()
             }
         }
     }
     
+    override func safeAreaInsetsDidChange() {
+        layoutManager.safeAreaInsetsDidChange()
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        width = frame.width
-        guard needsLayoutUpdate else { return }
-        var y: CGFloat = 0
-        for cell in cells {
-            let size = cell.sizeThatFits(CGSize(width: frame.width, height: -1))
-            cell.frame = CGRect(x: 0, y: y, width: frame.width, height: size.height)
-            y += size.height
-        }
-        contentSize = CGSize(width: frame.width, height: y)
-        needsLayoutUpdate = false
+        layoutManager.layoutSubviews()
     }
 }

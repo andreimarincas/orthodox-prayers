@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,18 +16,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="DL9-IV-d0a">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hw8-3w-PWz" userLabel="Status Bar Background">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H52-TJ-Apr">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <items>
+                                            <navigationItem title="Title" id="neb-1a-ya5"/>
+                                        </items>
+                                    </navigationBar>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="H52-TJ-Apr" firstAttribute="leading" secondItem="hw8-3w-PWz" secondAttribute="leading" id="Sn7-z5-Yqr"/>
+                                    <constraint firstAttribute="trailing" secondItem="H52-TJ-Apr" secondAttribute="trailing" id="UlZ-6l-sy2"/>
+                                    <constraint firstItem="H52-TJ-Apr" firstAttribute="top" secondItem="hw8-3w-PWz" secondAttribute="top" id="ldl-xF-cw6"/>
+                                    <constraint firstItem="H52-TJ-Apr" firstAttribute="height" secondItem="hw8-3w-PWz" secondAttribute="height" id="p8Q-Uf-RwL"/>
+                                </constraints>
+                            </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="mainBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="DL9-IV-d0a" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="HfF-yj-ELc"/>
-                            <constraint firstAttribute="trailing" secondItem="DL9-IV-d0a" secondAttribute="trailing" id="Qoc-NZ-JVz"/>
-                            <constraint firstAttribute="top" secondItem="DL9-IV-d0a" secondAttribute="top" id="gJ5-Pp-5eq"/>
-                            <constraint firstItem="DL9-IV-d0a" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="shK-YY-GPk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="hw8-3w-PWz" secondAttribute="bottom" id="ACF-8K-zgZ"/>
+                            <constraint firstAttribute="trailing" secondItem="hw8-3w-PWz" secondAttribute="trailing" id="HL2-rI-OoS"/>
+                            <constraint firstItem="hw8-3w-PWz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Nhd-Sx-uBz"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -36,9 +50,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BackgroundImage" width="505" height="896"/>
         <namedColor name="mainBackgroundColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

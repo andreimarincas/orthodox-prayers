@@ -9,6 +9,7 @@
 import UIKit
 
 class ToggleButton: UIButton {
+    
     var image: UIImage? {
         didSet {
             updateImages()
@@ -25,14 +26,6 @@ class ToggleButton: UIButton {
         didSet {
             updateImages()
         }
-    }
-    
-    init() {
-        super.init(frame: .zero)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     func toggle() {

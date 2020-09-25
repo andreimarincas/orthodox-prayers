@@ -9,10 +9,9 @@
 import UIKit
 
 class SegmentedControl: UISegmentedControl {
-    var padding = UIEdgeInsets.zero
+    var padding = UIEdgeInsets()
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let fitSize = super.sizeThatFits(size)
-        return fitSize.addingInset(padding)
+        return super.sizeThatFits(size).outsetBy(padding)
     }
 }

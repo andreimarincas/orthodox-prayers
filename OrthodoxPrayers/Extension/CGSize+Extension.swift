@@ -9,14 +9,15 @@
 import UIKit
 
 extension CGSize {
-    func addingInset(_ inset: UIEdgeInsets) -> CGSize {
-        let newWidth = width + inset.left + inset.right
-        let newHeight = height + inset.top + inset.bottom
-        return CGSize(width: newWidth, height: newHeight)
+    func insetBy(_ inset: UIEdgeInsets) -> CGSize {
+        let w = width - inset.left - inset.right
+        let h = height - inset.top - inset.bottom
+        return CGSize(width: w, height: h)
     }
-    func subtractingInset(_ inset: UIEdgeInsets) -> CGSize {
-        let newWidth = width - inset.left - inset.right
-        let newHeight = height - inset.top - inset.bottom
-        return CGSize(width: newWidth, height: newHeight)
+    
+    func outsetBy(_ inset: UIEdgeInsets) -> CGSize {
+        let w = width + inset.left + inset.right
+        let h = height + inset.top + inset.bottom
+        return CGSize(width: w, height: h)
     }
 }

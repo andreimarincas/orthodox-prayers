@@ -16,13 +16,13 @@ class PrayerCell: UITableViewCell {
         textLabel?.text = nil
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        backgroundColor = selected ? .prayerCellSelectedColor : .prayerCellBackgroundColor
-    }
-    
-    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
-        super.setHighlighted(highlighted, animated: animated)
-        backgroundColor = highlighted ? .prayerCellSelectedColor : .prayerCellBackgroundColor
+    override func updateConfiguration(using state: UICellConfigurationState) {
+        var backgroundConfiguration = UIBackgroundConfiguration.listPlainCell().updated(for: state)
+        if state.isHighlighted || state.isSelected {
+            backgroundConfiguration.backgroundColor = .prayerCellSelectedColor
+        } else {
+            backgroundConfiguration.backgroundColor = .prayerCellBackgroundColor
+        }
+        self.backgroundConfiguration = backgroundConfiguration
     }
 }

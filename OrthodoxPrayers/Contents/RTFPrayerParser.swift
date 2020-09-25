@@ -99,7 +99,7 @@ class RTFPrayerParser {
                 if newParagraphSpacing != paragraphSpacing {
                     lines[i - 1] = lines[i - 1].addingParagraphSpacing(newParagraphSpacing)
                 }
-            } else {
+            } else if lines[i].isParagraph {
                 lines[i] = lines[i].addingFirstLineHeadIndent(firstLineHeadIndent)
             }
         }

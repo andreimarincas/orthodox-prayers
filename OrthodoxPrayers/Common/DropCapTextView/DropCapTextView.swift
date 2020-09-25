@@ -42,6 +42,10 @@ class DropCapTextView: UIView {
         layoutManager.layoutSubviews()
     }
     
+    var textTopMargin: CGFloat {
+        return textView.frame.origin.y + textView.textContainerInset.top
+    }
+    
     // MARK: Text & glyph update
     
     func setAttributedText(_ attrText: NSAttributedString?, dropCap: Bool) {
@@ -55,7 +59,7 @@ class DropCapTextView: UIView {
         } else {
             textView.textContainer.exclusionPaths = []
         }
-        layoutManager.setNeedsLayout()
+        setNeedsLayout()
     }
     
     // MARK: Configure subviews (private)

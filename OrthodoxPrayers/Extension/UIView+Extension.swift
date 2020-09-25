@@ -59,4 +59,8 @@ extension UIView {
     static func fromNib() -> Self {
         return fromNib(named: String(describing: self))
     }
+    
+    var safeAreaSize: CGSize {
+        return frame.size.insetBy(safeAreaInsets)
+    }
 }
