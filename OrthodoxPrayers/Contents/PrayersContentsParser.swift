@@ -11,7 +11,7 @@ import Foundation
 class PrayersContentsParser {
     static let shared: PrayersContentsParser = {
         let loader = PrayersContentsLoader()
-        if let plistData = loader.loadPrayersPlistData() {
+        if let plistData = loader.loadPrayersData() {
             return PrayersContentsParser(plistData: plistData)
         } else {
             logError("Failed to load plist data.")

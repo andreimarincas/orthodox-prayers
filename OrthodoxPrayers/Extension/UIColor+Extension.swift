@@ -1,68 +1,29 @@
 //
-//  UIColor+Extension.swift
+//  UIColor+Assets.swift
 //  OrthodoxPrayers
 //
-//  Created by Andrei Marincas on 05/09/2020.
+//  Created by Andrei Marincas on 09/09/2020.
 //  Copyright © 2020 Andrei Marincas. All rights reserved.
 //
 
 import UIKit
 
-// TODO: Unit test this
 extension UIColor {
-    static var activeColor: UIColor {
-        return UIColor(named: "activeColor")!
-    }
+    static let activeColor = UIColor(named: "activeColor")!
+    static let favouritesBackgroundColor = UIColor(named: "favouritesBackgroundColor")!
+    static let favouritesSelectedColor = UIColor(named: "favouritesSelectedColor")!
+    static let favouritesTextColor = UIColor(named: "favouritesTextColor")!
+    static let mainBackgroundColor = UIColor(named: "mainBackgroundColor")!
+    static let navigationBarTintColor = UIColor(named: "navigationBarTintColor")!
+    static let noFavouritesTextColor = UIColor(named: "noFavouritesTextColor")!
+    static let prayerCellBackgroundColor = UIColor(named: "prayerCellBackgroundColor")!
+    static let prayerCellHighlightColor = UIColor(named: "prayerCellHighlightColor")!
+    static let prayerCellTextColor = UIColor(named: "prayerCellTextColor")!
+    static let prayerHeaderTextColor = UIColor(named: "prayerHeaderTextColor")!
+    static let readingBackgroundColor = UIColor(named: "readingBackgroundColor")!
+    static let readingTextColor = UIColor(named: "readingTextColor")!
+    static let readingTextHighlightColor = UIColor(named: "readingTextHighlightColor")!
     
-    static var favouritesBackgroundColor: UIColor {
-        return UIColor(named: "favouritesBgColor")!
-    }
-    
-    static var favouritesSelectedColor: UIColor {
-        return UIColor(named: "favouritesSelectedColor")!
-    }
-    
-    static var favouritesTextColor: UIColor {
-        return UIColor(named: "favouritesTextColor")!
-    }
-    
-    static var mainBackgroundColor: UIColor {
-        return UIColor(named: "mainBgColor")!
-    }
-    
-    static var navigationBarTintColor: UIColor {
-        return UIColor(named: "navBarTintColor")!
-    }
-    
-    static var noFavouritesTextColor: UIColor {
-        return UIColor(named: "noFavouritesTextColor")!
-    }
-    
-    static var prayerCellBackgroundColor: UIColor {
-        return UIColor(named: "prayerCellBgColor")!
-    }
-    
-    static var prayerCellHighlightColor: UIColor {
-        return UIColor(named: "prayerCellHighlightColor")!
-    }
-    
-    static var prayerCellTextColor: UIColor {
-        return UIColor(named: "prayerCellTextColor")!
-    }
-    
-    static var prayerHeaderTextColor: UIColor {
-        return UIColor(named: "prayerHeaderTextColor")!
-    }
-    
-    static var readingBackgroundColor: UIColor {
-        return UIColor(named: "readingBgColor")!
-    }
-    
-    static var readingTextColor: UIColor {
-        return UIColor(named: "readingTextColor")!
-    }
-    
-    static var readingTextHighlightColor: UIColor {
-        return UIColor(named: "readingTextHighlightColor")!
-    }
+    static let rtfTextColor = UIColor(red: 0.13725, green: 0.12157, blue: 0.12549, alpha: 1)
+    static let rtfTextHighlightColor = UIColor(red: 0.92549, green: 0, blue: 0.54902, alpha: 1)
 }

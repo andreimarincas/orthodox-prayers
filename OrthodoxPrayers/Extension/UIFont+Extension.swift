@@ -12,4 +12,8 @@ extension UIFont {
     var filled: UIFont? {
         return UIFont(name: fontName + "-Filled", size: pointSize)
     }
+    
+    var isArhaic: Bool {
+        return familyName == "Arhaic"
+    }
 }

@@ -18,7 +18,6 @@ extension UIView {
         let constraints = NSLayoutConstraint.constraints(aligning: subview, to: self)
         addSubview(subview)
         addConstraints(constraints)
-        layoutIfNeeded()
     }
     
     // MARK: Load view from nib

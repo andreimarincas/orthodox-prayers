@@ -9,7 +9,14 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    private var tabBarVC: TabBarController?
+    
+    override var tabBarController: UITabBarController? {
+        return children.first as? UITabBarController
+    }
+    
+    var tabBar: UITabBar! {
+        return tabBarController?.tabBar
+    }
     
     // MARK: View life-cycle
     
@@ -21,9 +28,31 @@ class MainViewController: UIViewController {
     // MARK: Private methods
     
     private func configureTabBarController() {
-        let tabBarController = TabBarController()
+        let tabBarController = UITabBarController()
         addChildController(tabBarController)
-        self.tabBarVC = tabBarController
+        configureTabBar()
+        configureControllers()
+    }
+    
+    private func configureTabBar() {
+        tabBar.tintColor = .activeColor
+    }
+    
+    private func configureControllers() {
+        let prayersViewController = PrayersViewController()
+        let prayersNavigationController = UINavigationController(rootViewController: prayersViewController)
+        let prayersTabItem = UITabBarItem(title: "Rugăciuni", image: UIImage(named: "prayingIcon"), tag: 0)
+        prayersNavigationController.tabBarItem = prayersTabItem
+        
+        let iconViewController = IconViewController.fromNib()
+        let iconTabItem = UITabBarItem(title: "Icoană", image: UIImage(named: "candleIcon"), tag: 1)
+        iconViewController.tabBarItem = iconTabItem
+        
+        let textViewController = TextViewController.fromNib()
+        let textTabItem = UITabBarItem(title: "Text", image: UIImage(named: "textIcon"), tag: 2)
+        textViewController.tabBarItem = textTabItem
+        
+        tabBarController?.viewControllers = [prayersNavigationController, iconViewController, textViewController]
     }
     
     // MARK: Status bar style
