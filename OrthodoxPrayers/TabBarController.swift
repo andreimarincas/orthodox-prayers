@@ -10,7 +10,7 @@ import UIKit
 
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
-    // MARK: View life-cycle
+    // MARK: - View life-cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,29 +19,29 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         self.delegate = self
     }
     
-    // MARK: Private methods
+    // MARK: - Private methods
     
     private func configureControllers() {
-        let prayersVC = PrayersViewController.fromNib()
-        prayersVC.tabBarItem = UITabBarItem(title: "Rugăciuni",
-                                            image: UIImage(named: "praying-icon"),
-                                            tag: 0)
-        let iconVC = IconViewController.fromNib()
-        iconVC.tabBarItem = UITabBarItem(title: "Icoană",
-                                         image: UIImage(named: "candle-icon"),
-                                         tag: 1)
-        let textVC = TextViewController.fromNib()
-        textVC.tabBarItem = UITabBarItem(title: "Text",
-                                         image: UIImage(named: "text-icon"),
-                                         tag: 2)
-        viewControllers = [prayersVC, iconVC, textVC]
+        let prayersNavigationController = PrayersNavigationController()
+        prayersNavigationController.tabBarItem = UITabBarItem(title: "Rugăciuni",
+                                                              image: UIImage(named: "prayingIcon"),
+                                                              tag: 0)
+        let iconViewController = IconViewController.fromNib()
+        iconViewController.tabBarItem = UITabBarItem(title: "Icoană",
+                                                     image: UIImage(named: "candleIcon"),
+                                                     tag: 1)
+        let textViewController = TextViewController.fromNib()
+        textViewController.tabBarItem = UITabBarItem(title: "Text",
+                                                     image: UIImage(named: "textIcon"),
+                                                     tag: 2)
+        viewControllers = [prayersNavigationController, iconViewController, textViewController]
     }
     
     private func configureTabBar() {
-        tabBar.tintColor = UIColor(named: "active-color")
+        tabBar.tintColor = UIColor(named: "activeColor")
     }
     
-    // MARK: UITabBarControllerDelegate
+    // MARK: - UITabBarControllerDelegate
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         log("did select view-controller: \(viewControllers!.firstIndex(of: viewController)!)")

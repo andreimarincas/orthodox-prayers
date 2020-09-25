@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Contents</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>RUGĂCIUNI</string>
+			<key>Items</key>
+			<array>
+				<string>Rugăciunile începătoare</string>
+				<string>Rugăciunile dimineții</string>
+				<dict>
+					<key>Title</key>
+					<string>Rugăciunile meselor</string>
+					<key>Items</key>
+					<array>
+						<string>Rugăciune înaintea mesei de dimineaţă şi prânz</string>
+						<string>Rugăciune după masa de dimineaţă şi prânz</string>
+						<string>Rugăciunea înainte de masa de seară</string>
+						<string>Rugăciunea după masa de seară</string>
+					</array>
+				</dict>
+				<string>Rugăciunile de seară</string>
+				<dict>
+					<key>Title</key>
+					<string>Rugăciuni pentru diferite trebuințe</string>
+					<key>Items</key>
+					<array>
+						<string>Rugăciune la începutul lucrului</string>
+						<string>Rugăciune după sfârşitul lucrului</string>
+						<string>Rugăciune înainte de călătorie</string>
+						<string>Rugăciune pentru şcolari</string>
+						<string>Rugăciune pentru bolnavi</string>
+						<string>Rugăciunea părinţilor pentru copii</string>
+						<string>Rugăciunea soţilor unul pentru altul</string>
+						<string>Rugăciunea copiilor pentru părinţi</string>
+						<string>Rugăciunea pentru fraţi şi surori</string>
+						<string>Rugăciunea văduvei</string>
+						<string>Rugăciunea orfanului</string>
+						<string>Rugăciune pentru cei răposaţi</string>
+						<string>Rugăciune pentru părintele duhovnicesc</string>
+					</array>
+				</dict>
+				<dict>
+					<key>Title</key>
+					<string>Rugăciuni în biserică</string>
+					<key>Items</key>
+					<array>
+						<string>Rugăciune la intrarea în biserică</string>
+						<string>Rugăciune la icoana Mântuitorului</string>
+						<string>Rugăciune la icoana Maicii Domnului</string>
+						<string>Rugăciune la icoana învierii Domnului</string>
+						<string>Rugăciune la ieşirea din biserică</string>
+					</array>
+				</dict>
+				<dict>
+					<key>Title</key>
+					<string>Rugăciunile zilelor săptămânii</string>
+					<key>Items</key>
+					<array>
+						<string>Rugăciunea de Duminică</string>
+						<string>Rugăciunea de Luni</string>
+						<string>Rugăciunea de Marţi</string>
+						<string>Rugăciunea de Miercuri</string>
+						<string>Rugăciunea de Joi</string>
+						<string>Rugăciunea de Vineri</string>
+						<string>Rugăciunea de Sâmbătă</string>
+					</array>
+				</dict>
+				<dict>
+					<key>Title</key>
+					<string>Rugăciuni către Dumnezeu</string>
+					<key>Items</key>
+					<array>
+						<string>Rugăciune către Preasfânta Treime</string>
+						<string>Rugăciune către Dumnezeu-Tatăl</string>
+						<string>Rugăciune către Dumnezeu-Fiul</string>
+						<string>Rugăciune către Dumnezeu-Duhul Sfânt</string>
+					</array>
+				</dict>
+				<dict>
+					<key>Title</key>
+					<string>Rugăciuni către Domnul Iisus Hristos</string>
+					<key>Items</key>
+					<array>
+						<string>Rugăciune către Domnul Hristos</string>
+						<string>Rugăciune către Mântuitorul Iisus Hristos pentru ieşirea din necazuri</string>
+						<string>Rugăciune către Mântuitorul pentru izbăvire de necazuri</string>
+						<string>Rugăciune către Mântuitorul Iisus Hristos pentru izbăvire de boală</string>
+						<string>Rugăciune pentru dăruirea răbdării, către Domnul Iisus Hristos</string>
+					</array>
+				</dict>
+				<dict>
+					<key>Title</key>
+					<string>Rugăciuni către Maica Domnului</string>
+					<key>Items</key>
+					<array>
+						<string>Rugăciune de lăsare în voia lui Dumnezeu şi a Maicii Domnului</string>
+						<string>Rugăciune către Maica Domnului „Bucurie Neaşteptată”</string>
+						<string>Rugăciune de mulţumire către Maica Domnului</string>
+						<string>Rugăciune de pocăinţă către Maica Domnului</string>
+						<string>Rugăciune către Maica Domnului pentru potolirea întristărilor</string>
+						<string>Rugăciune către Maica Domnului pentru vindecarea de boli</string>
+						<string>Rugăciune la icoana Maicii Domnului „Grabnic Ascultătoare”</string>
+					</array>
+				</dict>
+				<string></string>
+				<dict>
+					<key>Title</key>
+					<string>Rânduiala Sfintei Spovedanii</string>
+					<key>Items</key>
+					<array>
+						<string>Rugăciuni înainte de Sfânta Spovedanie</string>
+						<string>Rugăciune pentru cercetarea cugetului</string>
+						<string>Îndreptar de Spovedanie</string>
+						<string>Rugăciuni după Sfânta Spovedanie</string>
+					</array>
+				</dict>
+				<dict>
+					<key>Title</key>
+					<string>Rânduiala Sfintei Împărtășiri</string>
+					<key>Items</key>
+					<array>
+						<string>Rugăciuni înainte de împărtăşire cu Dumnezeieștile Taine</string>
+						<string>Rânduiala Sfintei Împărtășiri</string>
+						<string>Rugăciunile de mulțumire după Dumnezeiasca Împărtășire</string>
+					</array>
+				</dict>
+				<string>Rânduiala Ceasului Pascal</string>
+				<string></string>
+				<string>Tatăl nostru</string>
+				<string>Împărate Ceresc</string>
+				<string>Crezul sau Simbolul credinței</string>
+				<string>Cuvine-se cu adevărat</string>
+				<string>Veniţi să ne închinăm</string>
+				<string>Sfinte Dumnezeule (Imnul Trisaghion)</string>
+				<string>Pavecernița Mică</string>
+				<string>Rugăciunea inimii</string>
+				<string>Rugăciunea Sfântului Efrem Sirul</string>
+				<dict>
+					<key>Title</key>
+					<string>Plânsurile Sfântului Efrem Sirul</string>
+					<key>Items</key>
+					<array/>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>PSALMI</string>
+			<key>Items</key>
+			<array>
+				<string>Psalmul 6</string>
+				<string>Psalmul 22</string>
+				<string>Psalmul 23</string>
+				<string>Psalmul 50</string>
+				<string>Psalmul 64</string>
+				<string>Psalmul 69</string>
+				<string>Psalmul 115</string>
+				<string>Psalmul 142</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>ACATISTE</string>
+			<key>Items</key>
+			<array>
+				<string>Acatistul Domnului nostru Iisus Hristos</string>
+				<string>Acatistul Sfântului Acoperământ al Maicii Domnului</string>
+				<string>Acatistul Maicii Domnului „Grabnica Ajutătoare”</string>
+				<string>Acatistul Buneivestiri</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>PARACLISE</string>
+			<key>Items</key>
+			<array>
+				<string>Paraclisul Maicii Domnului</string>
+				<string>Paraclisul Preasfintei Născătoare de Dumnezeu</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>CANOANE</string>
+			<key>Items</key>
+			<array>
+				<string>Canon de pocăinţă către Domnul nostru Iisus Hristos</string>
+				<string>Canonul către Îngerul păzitor</string>
+				<string>Canon de rugăciune către Puterile Cereşti şi către toţi Sfinţii</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>TROPARE</string>
+			<key>Items</key>
+			<array>
+				<string>Troparele de umilință</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>ÎNVĂȚĂTURI</string>
+			<key>Items</key>
+			<array>
+				<string>Cele zece porunci dumnezeieşti</string>
+				<string>Cele nouă porunci bisericeşti</string>
+				<string>Cele șapte sfinte taine ale bisericii</string>
+				<string>Faptele milei sufletești</string>
+				<string>Faptele milei trupești</string>
+				<string>Fericirile</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>

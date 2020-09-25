@@ -23,4 +23,10 @@ extension UIViewController {
     static func fromNib() -> Self {
         return self.init(nibName: String(describing: self), bundle: .main)
     }
+    
+    func addChildController(_ childController: UIViewController) {
+        addChild(childController)
+        view.addSubviewAligned(childController.view)
+        childController.didMove(toParent: self)
+    }
 }

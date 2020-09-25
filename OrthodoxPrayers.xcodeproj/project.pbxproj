@@ -7,6 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		773F685724F9338600B4E61A /* PushAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773F685624F9338500B4E61A /* PushAnimationController.swift */; };
+		773F685924F9349200B4E61A /* PopAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773F685824F9349200B4E61A /* PopAnimationController.swift */; };
+		773F685B24F9457B00B4E61A /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773F685A24F9457B00B4E61A /* CALayer+Extension.swift */; };
+		773F685D24FAB7FE00B4E61A /* PrayersDetailsTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773F685C24FAB7FE00B4E61A /* PrayersDetailsTableDataSource.swift */; };
+		7741185624F5053300FF87AE /* PrayersDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7741185524F5053300FF87AE /* PrayersDataProvider.swift */; };
+		7741186324F5219800FF87AE /* ManagedPrayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7741186224F5219800FF87AE /* ManagedPrayerItem.swift */; };
+		7741187324F549D400FF87AE /* PrayersDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7741187124F549D400FF87AE /* PrayersDataModel.xcdatamodeld */; };
+		7741187A24F61DDD00FF87AE /* PrayersContentsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7741187924F61DDD00FF87AE /* PrayersContentsLoader.swift */; };
+		7741187C24F61E0300FF87AE /* PrayersContentsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7741187B24F61E0300FF87AE /* PrayersContentsParser.swift */; };
+		7741187E24F6204800FF87AE /* PrayersTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7741187D24F6204800FF87AE /* PrayersTableDataSource.swift */; };
+		7741188024F642D300FF87AE /* PrayerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7741187F24F642D300FF87AE /* PrayerCell.xib */; };
+		7741188224F642E300FF87AE /* PrayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7741188124F642E300FF87AE /* PrayerCell.swift */; };
+		7741188624F6670900FF87AE /* PrayerSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7741188524F6670900FF87AE /* PrayerSectionHeader.swift */; };
+		7741188A24F6674E00FF87AE /* PrayerSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7741188924F6674E00FF87AE /* PrayerSectionHeader.xib */; };
+		7741188C24F672E300FF87AE /* Arhaic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7741188B24F672C600FF87AE /* Arhaic.ttf */; };
+		7741188F24F77D6C00FF87AE /* PrayersNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7741188E24F77D6C00FF87AE /* PrayersNavigationController.swift */; };
+		7741189124F7821C00FF87AE /* FavouritesControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7741189024F7821C00FF87AE /* FavouritesControl.xib */; };
+		7741189324F7857200FF87AE /* FavouritesControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7741189224F7857200FF87AE /* FavouritesControl.swift */; };
+		7741189524F8DFCF00FF87AE /* PrayersTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7741189424F8DFCF00FF87AE /* PrayersTableDelegate.swift */; };
+		7741189724F8E40700FF87AE /* PrayersDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7741189624F8E40700FF87AE /* PrayersDetailsTableViewController.swift */; };
+		7741189A24F8E59C00FF87AE /* PrayersDetailsTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7741189924F8E59C00FF87AE /* PrayersDetailsTableDelegate.swift */; };
+		7741189E24F8EFFB00FF87AE /* PrayerDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7741189B24F8EFFA00FF87AE /* PrayerDetailsCell.swift */; };
+		7741189F24F8EFFB00FF87AE /* PrayerDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7741189C24F8EFFA00FF87AE /* PrayerDetailsCell.xib */; };
+		774118A024F8EFFB00FF87AE /* PrayersDetailsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7741189D24F8EFFA00FF87AE /* PrayersDetailsTableViewController.xib */; };
+		774118A224F8F20F00FF87AE /* PrayersDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774118A124F8F20F00FF87AE /* PrayersDetailsViewController.swift */; };
+		774118A424F8F25300FF87AE /* PrayersDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 774118A324F8F25300FF87AE /* PrayersDetailsViewController.xib */; };
 		775ACD2624E3C26D0072EB3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775ACD2524E3C26D0072EB3F /* AppDelegate.swift */; };
 		775ACD2824E3C26D0072EB3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775ACD2724E3C26D0072EB3F /* SceneDelegate.swift */; };
 		775ACD2A24E3C26D0072EB3F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775ACD2924E3C26D0072EB3F /* MainViewController.swift */; };
@@ -14,9 +40,12 @@
 		775ACD3D24E3C2700072EB3F /* OrthodoxPrayersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775ACD3C24E3C2700072EB3F /* OrthodoxPrayersTests.swift */; };
 		775ACD4824E3C2700072EB3F /* OrthodoxPrayersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775ACD4724E3C2700072EB3F /* OrthodoxPrayersUITests.swift */; };
 		775ACD5A24E3CDB10072EB3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 775ACD5824E3CDB10072EB3F /* Assets.xcassets */; };
+		7774A61B24FBF6B200492DDA /* PrayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7774A61A24FBF6B200492DDA /* PrayerViewController.swift */; };
+		7774A61D24FBF6C200492DDA /* PrayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7774A61C24FBF6C200492DDA /* PrayerViewController.xib */; };
+		7774A61F24FC0C8100492DDA /* PrayerReadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7774A61E24FC0C8100492DDA /* PrayerReadingViewController.swift */; };
+		7774A62124FC0C8E00492DDA /* PrayerReadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7774A62024FC0C8E00492DDA /* PrayerReadingViewController.xib */; };
+		7774A62324FD196E00492DDA /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7774A62224FD196E00492DDA /* ToggleButton.swift */; };
 		77AB6E9824F2A6D6005AFE17 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AB6E9724F2A6D6005AFE17 /* TabBarController.swift */; };
-		77AB6E9F24F2A9CC005AFE17 /* UIStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AB6E9C24F2A9CC005AFE17 /* UIStyle.swift */; };
-		77AB6EA124F2A9CC005AFE17 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AB6E9E24F2A9CC005AFE17 /* Notifications.swift */; };
 		77AB6EA424F2ABAF005AFE17 /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AB6EA324F2ABAF005AFE17 /* Logs.swift */; };
 		77AB6EA724F2B246005AFE17 /* NSLayoutConstraint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AB6EA624F2B246005AFE17 /* NSLayoutConstraint+Extension.swift */; };
 		77AB6EA924F2B2A4005AFE17 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AB6EA824F2B2A4005AFE17 /* UIViewController+Extension.swift */; };
@@ -27,8 +56,10 @@
 		77AB6EB524F2C15F005AFE17 /* IconViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77AB6EB424F2C15F005AFE17 /* IconViewController.xib */; };
 		77AB6EB724F2C1E1005AFE17 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AB6EB624F2C1E1005AFE17 /* TextViewController.swift */; };
 		77AB6EB924F2C206005AFE17 /* TextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77AB6EB824F2C206005AFE17 /* TextViewController.xib */; };
-		77AB6EBD24F3CEF0005AFE17 /* ScreenResolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AB6EBC24F3CEF0005AFE17 /* ScreenResolution.swift */; };
 		77AB6EBF24F3E59F005AFE17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77AB6EBE24F3E59F005AFE17 /* LaunchScreen.storyboard */; };
+		77AB6EC624F43320005AFE17 /* PrayersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AB6EC424F43320005AFE17 /* PrayersTableViewController.swift */; };
+		77AB6EC724F43320005AFE17 /* PrayersTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77AB6EC524F43320005AFE17 /* PrayersTableViewController.xib */; };
+		77AB6EC924F4D31B005AFE17 /* PrayersContents.plist in Resources */ = {isa = PBXBuildFile; fileRef = 77AB6EC824F4D31B005AFE17 /* PrayersContents.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,12 +80,37 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		773F685624F9338500B4E61A /* PushAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushAnimationController.swift; sourceTree = "<group>"; };
+		773F685824F9349200B4E61A /* PopAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimationController.swift; sourceTree = "<group>"; };
+		773F685A24F9457B00B4E61A /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
+		773F685C24FAB7FE00B4E61A /* PrayersDetailsTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayersDetailsTableDataSource.swift; sourceTree = "<group>"; };
+		7741185524F5053300FF87AE /* PrayersDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayersDataProvider.swift; sourceTree = "<group>"; };
+		7741186224F5219800FF87AE /* ManagedPrayerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedPrayerItem.swift; sourceTree = "<group>"; };
+		7741187224F549D400FF87AE /* PrayersDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PrayersDataModel.xcdatamodel; sourceTree = "<group>"; };
+		7741187924F61DDD00FF87AE /* PrayersContentsLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayersContentsLoader.swift; sourceTree = "<group>"; };
+		7741187B24F61E0300FF87AE /* PrayersContentsParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayersContentsParser.swift; sourceTree = "<group>"; };
+		7741187D24F6204800FF87AE /* PrayersTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayersTableDataSource.swift; sourceTree = "<group>"; };
+		7741187F24F642D300FF87AE /* PrayerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrayerCell.xib; sourceTree = "<group>"; };
+		7741188124F642E300FF87AE /* PrayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerCell.swift; sourceTree = "<group>"; };
+		7741188524F6670900FF87AE /* PrayerSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerSectionHeader.swift; sourceTree = "<group>"; };
+		7741188924F6674E00FF87AE /* PrayerSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrayerSectionHeader.xib; sourceTree = "<group>"; };
+		7741188B24F672C600FF87AE /* Arhaic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Arhaic.ttf; sourceTree = "<group>"; };
+		7741188E24F77D6C00FF87AE /* PrayersNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayersNavigationController.swift; sourceTree = "<group>"; };
+		7741189024F7821C00FF87AE /* FavouritesControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouritesControl.xib; sourceTree = "<group>"; };
+		7741189224F7857200FF87AE /* FavouritesControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesControl.swift; sourceTree = "<group>"; };
+		7741189424F8DFCF00FF87AE /* PrayersTableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayersTableDelegate.swift; sourceTree = "<group>"; };
+		7741189624F8E40700FF87AE /* PrayersDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayersDetailsTableViewController.swift; sourceTree = "<group>"; };
+		7741189924F8E59C00FF87AE /* PrayersDetailsTableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayersDetailsTableDelegate.swift; sourceTree = "<group>"; };
+		7741189B24F8EFFA00FF87AE /* PrayerDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayerDetailsCell.swift; sourceTree = "<group>"; };
+		7741189C24F8EFFA00FF87AE /* PrayerDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrayerDetailsCell.xib; sourceTree = "<group>"; };
+		7741189D24F8EFFA00FF87AE /* PrayersDetailsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrayersDetailsTableViewController.xib; sourceTree = "<group>"; };
+		774118A124F8F20F00FF87AE /* PrayersDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayersDetailsViewController.swift; sourceTree = "<group>"; };
+		774118A324F8F25300FF87AE /* PrayersDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrayersDetailsViewController.xib; sourceTree = "<group>"; };
 		775ACD2224E3C26D0072EB3F /* OrthodoxPrayers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrthodoxPrayers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		775ACD2524E3C26D0072EB3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		775ACD2724E3C26D0072EB3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		775ACD2924E3C26D0072EB3F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		775ACD2C24E3C26D0072EB3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		775ACD3324E3C26F0072EB3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		775ACD3824E3C2700072EB3F /* OrthodoxPrayersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrthodoxPrayersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		775ACD3C24E3C2700072EB3F /* OrthodoxPrayersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthodoxPrayersTests.swift; sourceTree = "<group>"; };
 		775ACD3E24E3C2700072EB3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,9 +118,12 @@
 		775ACD4724E3C2700072EB3F /* OrthodoxPrayersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthodoxPrayersUITests.swift; sourceTree = "<group>"; };
 		775ACD4924E3C2700072EB3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		775ACD5824E3CDB10072EB3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7774A61A24FBF6B200492DDA /* PrayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerViewController.swift; sourceTree = "<group>"; };
+		7774A61C24FBF6C200492DDA /* PrayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrayerViewController.xib; sourceTree = "<group>"; };
+		7774A61E24FC0C8100492DDA /* PrayerReadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerReadingViewController.swift; sourceTree = "<group>"; };
+		7774A62024FC0C8E00492DDA /* PrayerReadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrayerReadingViewController.xib; sourceTree = "<group>"; };
+		7774A62224FD196E00492DDA /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		77AB6E9724F2A6D6005AFE17 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		77AB6E9C24F2A9CC005AFE17 /* UIStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStyle.swift; sourceTree = "<group>"; };
-		77AB6E9E24F2A9CC005AFE17 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		77AB6EA324F2ABAF005AFE17 /* Logs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logs.swift; sourceTree = "<group>"; };
 		77AB6EA624F2B246005AFE17 /* NSLayoutConstraint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extension.swift"; sourceTree = "<group>"; };
 		77AB6EA824F2B2A4005AFE17 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -75,8 +134,11 @@
 		77AB6EB424F2C15F005AFE17 /* IconViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconViewController.xib; sourceTree = "<group>"; };
 		77AB6EB624F2C1E1005AFE17 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		77AB6EB824F2C206005AFE17 /* TextViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextViewController.xib; sourceTree = "<group>"; };
-		77AB6EBC24F3CEF0005AFE17 /* ScreenResolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenResolution.swift; sourceTree = "<group>"; };
 		77AB6EBE24F3E59F005AFE17 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		77AB6EC424F43320005AFE17 /* PrayersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrayersTableViewController.swift; sourceTree = "<group>"; };
+		77AB6EC524F43320005AFE17 /* PrayersTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrayersTableViewController.xib; sourceTree = "<group>"; };
+		77AB6EC824F4D31B005AFE17 /* PrayersContents.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PrayersContents.plist; sourceTree = "<group>"; };
+		77AB6F0924F502BF005AFE17 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +166,75 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7741185924F5091500FF87AE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7741185524F5053300FF87AE /* PrayersDataProvider.swift */,
+				7741186224F5219800FF87AE /* ManagedPrayerItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7741187824F61DDD00FF87AE /* Contents */ = {
+			isa = PBXGroup;
+			children = (
+				7741187924F61DDD00FF87AE /* PrayersContentsLoader.swift */,
+				7741187B24F61E0300FF87AE /* PrayersContentsParser.swift */,
+			);
+			path = Contents;
+			sourceTree = "<group>";
+		};
+		7741188424F6642A00FF87AE /* Prayers */ = {
+			isa = PBXGroup;
+			children = (
+				7741188D24F6AB0800FF87AE /* PrayersTableViewController */,
+				7741189824F8E41600FF87AE /* PrayersDetailsTableViewController */,
+				7741188E24F77D6C00FF87AE /* PrayersNavigationController.swift */,
+				773F685624F9338500B4E61A /* PushAnimationController.swift */,
+				773F685824F9349200B4E61A /* PopAnimationController.swift */,
+				77AB6EAE24F2C02A005AFE17 /* PrayersViewController.swift */,
+				77AB6EB024F2C080005AFE17 /* PrayersViewController.xib */,
+				7741189224F7857200FF87AE /* FavouritesControl.swift */,
+				7741189024F7821C00FF87AE /* FavouritesControl.xib */,
+				774118A124F8F20F00FF87AE /* PrayersDetailsViewController.swift */,
+				774118A324F8F25300FF87AE /* PrayersDetailsViewController.xib */,
+				7774A61A24FBF6B200492DDA /* PrayerViewController.swift */,
+				7774A61C24FBF6C200492DDA /* PrayerViewController.xib */,
+				7774A61E24FC0C8100492DDA /* PrayerReadingViewController.swift */,
+				7774A62024FC0C8E00492DDA /* PrayerReadingViewController.xib */,
+				7774A62224FD196E00492DDA /* ToggleButton.swift */,
+			);
+			path = Prayers;
+			sourceTree = "<group>";
+		};
+		7741188D24F6AB0800FF87AE /* PrayersTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				77AB6EC424F43320005AFE17 /* PrayersTableViewController.swift */,
+				77AB6EC524F43320005AFE17 /* PrayersTableViewController.xib */,
+				7741187D24F6204800FF87AE /* PrayersTableDataSource.swift */,
+				7741189424F8DFCF00FF87AE /* PrayersTableDelegate.swift */,
+				7741188124F642E300FF87AE /* PrayerCell.swift */,
+				7741187F24F642D300FF87AE /* PrayerCell.xib */,
+				7741188524F6670900FF87AE /* PrayerSectionHeader.swift */,
+				7741188924F6674E00FF87AE /* PrayerSectionHeader.xib */,
+			);
+			path = PrayersTableViewController;
+			sourceTree = "<group>";
+		};
+		7741189824F8E41600FF87AE /* PrayersDetailsTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7741189624F8E40700FF87AE /* PrayersDetailsTableViewController.swift */,
+				7741189D24F8EFFA00FF87AE /* PrayersDetailsTableViewController.xib */,
+				773F685C24FAB7FE00B4E61A /* PrayersDetailsTableDataSource.swift */,
+				7741189924F8E59C00FF87AE /* PrayersDetailsTableDelegate.swift */,
+				7741189B24F8EFFA00FF87AE /* PrayerDetailsCell.swift */,
+				7741189C24F8EFFA00FF87AE /* PrayerDetailsCell.xib */,
+			);
+			path = PrayersDetailsTableViewController;
+			sourceTree = "<group>";
+		};
 		775ACD1924E3C26D0072EB3F = {
 			isa = PBXGroup;
 			children = (
@@ -127,20 +258,19 @@
 		775ACD2424E3C26D0072EB3F /* OrthodoxPrayers */ = {
 			isa = PBXGroup;
 			children = (
-				775ACD3324E3C26F0072EB3F /* Info.plist */,
 				775ACD2524E3C26D0072EB3F /* AppDelegate.swift */,
 				775ACD2724E3C26D0072EB3F /* SceneDelegate.swift */,
 				775ACD2924E3C26D0072EB3F /* MainViewController.swift */,
 				775ACD2B24E3C26D0072EB3F /* Main.storyboard */,
 				77AB6EBE24F3E59F005AFE17 /* LaunchScreen.storyboard */,
 				77AB6E9724F2A6D6005AFE17 /* TabBarController.swift */,
-				77AB6EAE24F2C02A005AFE17 /* PrayersViewController.swift */,
-				77AB6EB024F2C080005AFE17 /* PrayersViewController.xib */,
+				7741188424F6642A00FF87AE /* Prayers */,
 				77AB6EB224F2C13F005AFE17 /* IconViewController.swift */,
 				77AB6EB424F2C15F005AFE17 /* IconViewController.xib */,
 				77AB6EB624F2C1E1005AFE17 /* TextViewController.swift */,
 				77AB6EB824F2C206005AFE17 /* TextViewController.xib */,
-				77AB6E9B24F2A9CC005AFE17 /* Common */,
+				7741187824F61DDD00FF87AE /* Contents */,
+				7741185924F5091500FF87AE /* Model */,
 				77AB6EA524F2B231005AFE17 /* Extension */,
 				77AB6EA224F2ABA0005AFE17 /* Utils */,
 				775ACD5724E3CDB10072EB3F /* Resources */,
@@ -170,24 +300,18 @@
 			isa = PBXGroup;
 			children = (
 				775ACD5824E3CDB10072EB3F /* Assets.xcassets */,
+				7741188B24F672C600FF87AE /* Arhaic.ttf */,
+				77AB6F0924F502BF005AFE17 /* Info.plist */,
+				77AB6EC824F4D31B005AFE17 /* PrayersContents.plist */,
+				7741187124F549D400FF87AE /* PrayersDataModel.xcdatamodeld */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		77AB6E9B24F2A9CC005AFE17 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				77AB6E9C24F2A9CC005AFE17 /* UIStyle.swift */,
-				77AB6E9E24F2A9CC005AFE17 /* Notifications.swift */,
-			);
-			path = Common;
 			sourceTree = "<group>";
 		};
 		77AB6EA224F2ABA0005AFE17 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				77AB6EA324F2ABAF005AFE17 /* Logs.swift */,
-				77AB6EBC24F3CEF0005AFE17 /* ScreenResolution.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -198,6 +322,7 @@
 				77AB6EA624F2B246005AFE17 /* NSLayoutConstraint+Extension.swift */,
 				77AB6EA824F2B2A4005AFE17 /* UIViewController+Extension.swift */,
 				77AB6EAA24F2B3B3005AFE17 /* UIView+Extension.swift */,
+				773F685A24F9457B00B4E61A /* CALayer+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -307,11 +432,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				77AB6EB924F2C206005AFE17 /* TextViewController.xib in Resources */,
+				7741188C24F672E300FF87AE /* Arhaic.ttf in Resources */,
 				775ACD5A24E3CDB10072EB3F /* Assets.xcassets in Resources */,
+				77AB6EC724F43320005AFE17 /* PrayersTableViewController.xib in Resources */,
+				7741189F24F8EFFB00FF87AE /* PrayerDetailsCell.xib in Resources */,
+				7774A62124FC0C8E00492DDA /* PrayerReadingViewController.xib in Resources */,
+				774118A424F8F25300FF87AE /* PrayersDetailsViewController.xib in Resources */,
 				77AB6EB524F2C15F005AFE17 /* IconViewController.xib in Resources */,
 				77AB6EBF24F3E59F005AFE17 /* LaunchScreen.storyboard in Resources */,
+				7741188A24F6674E00FF87AE /* PrayerSectionHeader.xib in Resources */,
+				77AB6EC924F4D31B005AFE17 /* PrayersContents.plist in Resources */,
+				7741189124F7821C00FF87AE /* FavouritesControl.xib in Resources */,
+				7741188024F642D300FF87AE /* PrayerCell.xib in Resources */,
+				7774A61D24FBF6C200492DDA /* PrayerViewController.xib in Resources */,
 				775ACD2D24E3C26D0072EB3F /* Main.storyboard in Resources */,
 				77AB6EB124F2C080005AFE17 /* PrayersViewController.xib in Resources */,
+				774118A024F8EFFB00FF87AE /* PrayersDetailsTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,18 +472,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7741187A24F61DDD00FF87AE /* PrayersContentsLoader.swift in Sources */,
+				773F685924F9349200B4E61A /* PopAnimationController.swift in Sources */,
+				7741189524F8DFCF00FF87AE /* PrayersTableDelegate.swift in Sources */,
+				7741189324F7857200FF87AE /* FavouritesControl.swift in Sources */,
 				77AB6EA924F2B2A4005AFE17 /* UIViewController+Extension.swift in Sources */,
-				77AB6EA124F2A9CC005AFE17 /* Notifications.swift in Sources */,
 				77AB6EA424F2ABAF005AFE17 /* Logs.swift in Sources */,
+				7741189724F8E40700FF87AE /* PrayersDetailsTableViewController.swift in Sources */,
+				7741187E24F6204800FF87AE /* PrayersTableDataSource.swift in Sources */,
+				7741188F24F77D6C00FF87AE /* PrayersNavigationController.swift in Sources */,
+				774118A224F8F20F00FF87AE /* PrayersDetailsViewController.swift in Sources */,
 				77AB6EA724F2B246005AFE17 /* NSLayoutConstraint+Extension.swift in Sources */,
-				77AB6E9F24F2A9CC005AFE17 /* UIStyle.swift in Sources */,
+				773F685724F9338600B4E61A /* PushAnimationController.swift in Sources */,
+				7741186324F5219800FF87AE /* ManagedPrayerItem.swift in Sources */,
+				7741185624F5053300FF87AE /* PrayersDataProvider.swift in Sources */,
 				77AB6EAF24F2C02A005AFE17 /* PrayersViewController.swift in Sources */,
 				775ACD2A24E3C26D0072EB3F /* MainViewController.swift in Sources */,
-				77AB6EBD24F3CEF0005AFE17 /* ScreenResolution.swift in Sources */,
+				7741188224F642E300FF87AE /* PrayerCell.swift in Sources */,
+				7741187324F549D400FF87AE /* PrayersDataModel.xcdatamodeld in Sources */,
 				775ACD2624E3C26D0072EB3F /* AppDelegate.swift in Sources */,
 				775ACD2824E3C26D0072EB3F /* SceneDelegate.swift in Sources */,
+				7741188624F6670900FF87AE /* PrayerSectionHeader.swift in Sources */,
+				7774A62324FD196E00492DDA /* ToggleButton.swift in Sources */,
+				7741187C24F61E0300FF87AE /* PrayersContentsParser.swift in Sources */,
 				77AB6EAB24F2B3B3005AFE17 /* UIView+Extension.swift in Sources */,
+				773F685B24F9457B00B4E61A /* CALayer+Extension.swift in Sources */,
+				7774A61B24FBF6B200492DDA /* PrayerViewController.swift in Sources */,
+				7774A61F24FC0C8100492DDA /* PrayerReadingViewController.swift in Sources */,
+				773F685D24FAB7FE00B4E61A /* PrayersDetailsTableDataSource.swift in Sources */,
+				77AB6EC624F43320005AFE17 /* PrayersTableViewController.swift in Sources */,
+				7741189A24F8E59C00FF87AE /* PrayersDetailsTableDelegate.swift in Sources */,
 				77AB6E9824F2A6D6005AFE17 /* TabBarController.swift in Sources */,
+				7741189E24F8EFFB00FF87AE /* PrayerDetailsCell.swift in Sources */,
 				77AB6EB324F2C13F005AFE17 /* IconViewController.swift in Sources */,
 				77AB6EB724F2C1E1005AFE17 /* TextViewController.swift in Sources */,
 			);
@@ -516,7 +672,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F7U94HT3F7;
-				INFOPLIST_FILE = OrthodoxPrayers/Info.plist;
+				INFOPLIST_FILE = OrthodoxPrayers/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -534,7 +690,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F7U94HT3F7;
-				INFOPLIST_FILE = OrthodoxPrayers/Info.plist;
+				INFOPLIST_FILE = OrthodoxPrayers/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -670,6 +826,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7741187124F549D400FF87AE /* PrayersDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7741187224F549D400FF87AE /* PrayersDataModel.xcdatamodel */,
+			);
+			currentVersion = 7741187224F549D400FF87AE /* PrayersDataModel.xcdatamodel */;
+			path = PrayersDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 775ACD1A24E3C26D0072EB3F /* Project object */;
 }

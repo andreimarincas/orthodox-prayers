@@ -20,4 +20,28 @@ extension UIView {
         addConstraints(constraints)
         layoutIfNeeded()
     }
+    
+    /**
+     Load view from nib without owner. The outlets link directly to the view itself.
+     */
+    static func fromNib<T: UIView>(named nibName: String, bundle: Bundle = .main) -> T {
+        guard let view = bundle.loadNibNamed(nibName, owner: nil, options: nil)?.first as? T else {
+            fatalError("Nib not found: \(nibName)")
+        }
+        return view
+    }
+    
+    /**
+     Load a custom view from nib.
+     
+     - Precondition: The nib name and the class name are the same.
+     
+     Example:
+     
+         let myView = MyView.fromNib()
+         myView.someCustomProperty = 5
+     */
+    static func fromNib() -> Self {
+        return fromNib(named: String(describing: self))
+    }
 }
