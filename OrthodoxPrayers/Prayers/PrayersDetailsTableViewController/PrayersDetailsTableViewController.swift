@@ -9,13 +9,7 @@
 import UIKit
 
 class PrayersDetailsTableViewController: UITableViewController {
-    
-    var dataSource: PrayersDetailsTableDataSource? {
-        didSet {
-            tableView?.reloadData()
-        }
-    }
-    
+    var dataSource: PrayersDetailsTableDataSource?
     weak var delegate: PrayersDetailsTableDelegate?
     
     // MARK: View life-cycle

@@ -8,8 +8,7 @@
 
 import UIKit
 
-class PrayersNavigationController: UINavigationController, UINavigationControllerDelegate {
-    let pushAnimationDuration: TimeInterval = 0.5
+class PrayersNavigationController: UINavigationController {
     
     // MARK: Initialization
     
@@ -20,30 +19,5 @@ class PrayersNavigationController: UINavigationController, UINavigationControlle
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: View life-cycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //self.delegate = self
-    }
-    
-    // MARK: Navigation Controller Delegate
-    
-    func navigationController(_ navigationController: UINavigationController,
-                              animationControllerFor operation: UINavigationController.Operation,
-                              from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        switch operation {
-        case .push:
-            return PushAnimationController(duration: pushAnimationDuration)
-        case .pop:
-            return PopAnimationController(duration: pushAnimationDuration)
-        case .none:
-            return nil
-        @unknown default:
-            logError("Unsupported navigation operation.")
-            return nil
-        }
     }
 }

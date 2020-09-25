@@ -8,25 +8,30 @@
 
 import Foundation
 
-class PrayersDetailsTableDataSource: NSObject {
-    private var detailedPrayer: String?
-    private var detailedPrayerItems = [String]()
+class PrayersDetailsTableDataSource {
+    let title: String
+    private let prayerItems: [String]
     
-    init(prayer: String, section: String) {
-        let parser = PrayersContentsParser.shared
-        self.detailedPrayerItems = parser.parsePrayerDetailedItems(forPrayer: prayer, inSection: section)
-        super.init()
+    init(title: String, prayerItems: [String]) {
+        self.title = title
+        self.prayerItems = prayerItems
     }
     
-    var prayer: String {
-        return detailedPrayer ?? ""
+    convenience init(prayer: String, section: String, favouritesOnly: Bool) {
+        let parser = PrayersContentsParser.shared
+        var prayerItems = parser.parsePrayerDetailedItems(forPrayer: prayer, inSection: section)
+        if favouritesOnly {
+            let favouritePrayers = Set(Prayer.favourites.map { $0.title })
+            prayerItems = prayerItems.filter { favouritePrayers.contains($0) }
+        }
+        self.init(title: prayer, prayerItems: prayerItems)
     }
     
     var numberOfPrayers: Int {
-        return detailedPrayerItems.count
+        return prayerItems.count
     }
     
     func prayerItem(at index: Int) -> String {
-        return detailedPrayerItems[index]
+        return prayerItems[index]
     }
 }

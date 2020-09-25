@@ -25,6 +25,18 @@ class ManagedPrayerItem: NSManagedObject {
         return prayerItem
     }
     
+    static func fetchPrayer(withTitle title: String, from context: NSManagedObjectContext) -> ManagedPrayerItem? {
+        let request = makeFetchRequest()
+        request.predicate = NSPredicate(format: "title = %@", title)
+        do {
+            let fetchedPrayers = try context.fetch(request)
+            return fetchedPrayers.first
+        } catch {
+            logError("Failed to fetch all managed prayer items: \(error)") // TODO: Handle error
+            return nil
+        }
+    }
+    
     static func fetchAll(from context: NSManagedObjectContext) -> [ManagedPrayerItem]? {
         let request = makeFetchRequest()
         do {
@@ -33,6 +45,19 @@ class ManagedPrayerItem: NSManagedObject {
             return fetchedPrayers
         } catch {
             logError("Failed to fetch all managed prayer items: \(error)") // TODO: Handle error
+            return nil
+        }
+    }
+    
+    static func fetchAny(from context: NSManagedObjectContext) -> ManagedPrayerItem? {
+        let request = makeFetchRequest()
+        request.fetchLimit = 1
+        do {
+            let fetchedPrayers = try context.fetch(request)
+            log("Fetched \(fetchedPrayers.count) managed prayer items.")
+            return fetchedPrayers.first
+        } catch {
+            logError("Failed to fetch any managed prayer item: \(error)") // TODO: Handle error
             return nil
         }
     }

@@ -13,8 +13,8 @@ class PrayersContentsLoader {
         let url = Bundle.main.url(forResource: "PrayersContents", withExtension: "plist")!
         do {
             let data = try Data(contentsOf: url)
-            let plistDictionary = try PropertyListSerialization.propertyList(from: data, format: nil) as! [String: Any]
-            return plistDictionary
+            let root = try PropertyListSerialization.propertyList(from: data, format: nil) as! [String: Any]
+            return root
         } catch {
             fatalError("Unresolved error: \(error)") // TODO: Handle error
         }

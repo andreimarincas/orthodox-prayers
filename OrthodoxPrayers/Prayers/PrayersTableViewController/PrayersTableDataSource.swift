@@ -8,29 +8,40 @@
 
 import Foundation
 
-class PrayersTableDataSource: NSObject {
-    private var sections = [String]()
-    private var prayerItemsPerSection = [String: [String]]()
+protocol PrayersTableDataSourceProtocol {
+    var numberOfSections: Int { get }
+    func title(forSectionAt sectionIndex: Int) -> String
+    func numberOfPrayers(inSectionAt sectionIndex: Int) -> Int
+    func prayerItem(at index: Int, inSectionAt sectionIndex: Int) -> String
+}
+
+class PrayersTableDataSource: PrayersTableDataSourceProtocol {
+    var sections: [String]
+    var prayerItemsPerSection: [String: [String]]
     
-    override init() {
-        let parser = PrayersContentsParser.shared
-        self.sections = parser.parsePrayerSections()
-        self.prayerItemsPerSection = parser.parsePrayerItemsPerSection()
-        super.init()
+    init(parser: PrayersContentsParser = .shared) {
+        sections = parser.parsePrayerSections()
+        prayerItemsPerSection = parser.parsePrayerItemsPerSection()
     }
+    
+    var isEmpty: Bool {
+        return sections.isEmpty
+    }
+    
+    // MARK: Prayers Table Data Source Protocol
     
     var numberOfSections: Int {
         return sections.count
+    }
+    
+    func title(forSectionAt sectionIndex: Int) -> String {
+        return sections[sectionIndex]
     }
     
     func numberOfPrayers(inSectionAt sectionIndex: Int) -> Int {
         let sectionTitle = sections[sectionIndex]
         let prayerItems = prayerItemsPerSection[sectionTitle]
         return prayerItems?.count ?? 0
-    }
-    
-    func sectionTitle(forSectionAt sectionIndex: Int) -> String {
-        return sections[sectionIndex]
     }
     
     func prayerItem(at index: Int, inSectionAt sectionIndex: Int) -> String {

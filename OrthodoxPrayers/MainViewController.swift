@@ -22,9 +22,7 @@ class MainViewController: UIViewController {
     
     private func configureTabBarController() {
         let tabBarController = TabBarController()
-        addChild(tabBarController)
-        view.addSubviewAligned(tabBarController.view)
-        tabBarController.didMove(toParent: self)
+        addChildController(tabBarController)
         self.tabBarVC = tabBarController
     }
     

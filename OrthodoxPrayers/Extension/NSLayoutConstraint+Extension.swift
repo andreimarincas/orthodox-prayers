@@ -9,6 +9,7 @@
 import UIKit
 
 extension NSLayoutConstraint {
+    
     static func constraints(aligning view1: UIView, to view2: UIView) -> [NSLayoutConstraint] {
         return [constraint(aligningLeading: view1, to: view2),
                 constraint(aligningTop: view1, to: view2),

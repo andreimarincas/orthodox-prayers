@@ -9,13 +9,7 @@
 import UIKit
 
 class PrayersTableViewController: UITableViewController {
-    
-    var dataSource: PrayersTableDataSource? {
-        didSet {
-            tableView?.reloadData()
-        }
-    }
-    
+    private var dataSource: PrayersTableDataSourceProtocol?
     weak var delegate: PrayersTableDelegate?
     
     // MARK: View life-cycle
@@ -23,6 +17,42 @@ class PrayersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+    }
+    
+    // MARK: Public methods
+    
+    func updateTableView(data newDataSource: PrayersTableDataSource, animated: Bool) {
+        let oldDataSource = self.dataSource
+        self.dataSource = newDataSource
+        if !animated {
+            tableView?.reloadData()
+            return
+        }
+        var sectionsToInsert = IndexSet()
+        var sectionsToDelete = IndexSet()
+        var sectionsToReload = IndexSet()
+        let m = oldDataSource?.numberOfSections ?? 0
+        let n = newDataSource.numberOfSections
+        if m < n {
+            sectionsToInsert.insert(integersIn: m..<n)
+        } else if m > n {
+            sectionsToDelete.insert(integersIn: n..<m)
+        }
+        for i in 0..<min(m, n) {
+            let oldTitle = oldDataSource!.title(forSectionAt: i)
+            let newTitle = newDataSource.title(forSectionAt: i)
+            if newTitle == oldTitle {
+                sectionsToReload.insert(i)
+            } else {
+                sectionsToInsert.insert(i)
+                sectionsToDelete.insert(i)
+            }
+        }
+        tableView?.performBatchUpdates({
+            tableView?.insertSections(sectionsToInsert, with: .fade)
+            tableView?.deleteSections(sectionsToDelete, with: .fade)
+            tableView?.reloadSections(sectionsToReload, with: .fade)
+        })
     }
     
     // MARK: Private methods
@@ -69,7 +99,7 @@ class PrayersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: PrayerSectionHeader.reuseID) as? PrayerSectionHeader ?? PrayerSectionHeader(reuseIdentifier: PrayerSectionHeader.reuseID)
-        sectionHeader.titleLabel.text = dataSource?.sectionTitle(forSectionAt: section)
+        sectionHeader.titleLabel.text = dataSource?.title(forSectionAt: section)
         return sectionHeader
     }
     
@@ -80,7 +110,7 @@ class PrayersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let dataSource = dataSource else { return }
         let prayerItem = dataSource.prayerItem(at: indexPath.row, inSectionAt: indexPath.section)
-        let sectionTitle = dataSource.sectionTitle(forSectionAt: indexPath.section)
+        let sectionTitle = dataSource.title(forSectionAt: indexPath.section)
         delegate?.didSelectPrayer(prayerItem, inSection: sectionTitle)
     }
 }

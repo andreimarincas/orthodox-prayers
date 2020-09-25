@@ -8,37 +8,47 @@
 
 import UIKit
 
+protocol PrayerViewControllerDelegate: NSObjectProtocol {
+    func didChangePrayer(_ prayer: Prayer)
+}
+
 class PrayerViewController: UIViewController {
-    var prayer: String?
     private var prayerReadingViewController: PrayerReadingViewController?
+    weak var delegate: PrayerViewControllerDelegate?
+    var prayer: Prayer?
     
     // MARK: View life-cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBar()
+        configureFavouriteButton()
         configurePrayerReadingViewController()
     }
     
     // MARK: Private methods
     
-    private func configureNavigationBar() {
+    private func configureFavouriteButton() {
         let favouriteButton = ToggleButton()
         favouriteButton.image = UIImage(named: "heartIcon")
         favouriteButton.selectedImage = UIImage(named: "heartIconSelected")
+        favouriteButton.isSelected = prayer?.isFavourite ?? false
         favouriteButton.addTarget(self, action: #selector(favouriteButtonTapped(_:)), for: .touchUpInside)
         let favouriteBarButton = UIBarButtonItem(customView: favouriteButton)
         navigationItem.rightBarButtonItem = favouriteBarButton
     }
     
-    private func configurePrayerReadingViewController() {
-        let prayerReadingViewController = PrayerReadingViewController()
-        addChildController(prayerReadingViewController)
-        self.prayerReadingViewController = prayerReadingViewController
-    }
-    
     @objc private func favouriteButtonTapped(_ favouriteButton: ToggleButton) {
         log("is selected: \(favouriteButton.isSelected)")
         favouriteButton.toggle()
+        if let prayer = prayer {
+            prayer.isFavourite = favouriteButton.isSelected
+            delegate?.didChangePrayer(prayer)
+        }
+    }
+    
+    private func configurePrayerReadingViewController() {
+        let prayerReadingViewController = PrayerReadingViewController.fromNib()
+        addChildController(prayerReadingViewController)
+        self.prayerReadingViewController = prayerReadingViewController
     }
 }

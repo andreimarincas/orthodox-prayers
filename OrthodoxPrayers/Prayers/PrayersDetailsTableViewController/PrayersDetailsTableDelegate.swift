@@ -9,5 +9,6 @@
 import Foundation
 
 protocol PrayersDetailsTableDelegate: class {
+    
     func didSelectPrayer(_ prayer: String)
 }

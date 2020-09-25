@@ -11,29 +11,20 @@ import UIKit
 class PrayersDetailsViewController: UIViewController, PrayersDetailsTableDelegate {
     private var prayersDetailsTableViewController: PrayersDetailsTableViewController?
     
-    var data: (prayer: String, section: String)? {
-        didSet {
-            reloadTableViewData()
-        }
-    }
+    var prayer: String?
+    var section: String?
+    var favouritesOnly: Bool = false
     
     // MARK: View life-cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBar()
+        configureBackButton()
         configureTableViewController()
         reloadTableViewData()
     }
     
     // MARK: Private methods
-    
-    private func configureNavigationBar() {
-        navigationItem.titleView = FavouritesControl.fromNib()
-        let backButton = UIBarButtonItem(title: "ÎNAPOI", style: .plain, target: nil, action: nil)
-        backButton.tintColor = UIColor(named: "navigationBarTintColor")
-        navigationItem.backBarButtonItem = backButton
-    }
     
     private func configureTableViewController() {
         let prayersDetailsTableViewController = PrayersDetailsTableViewController.fromNib()
@@ -42,12 +33,17 @@ class PrayersDetailsViewController: UIViewController, PrayersDetailsTableDelegat
         self.prayersDetailsTableViewController = prayersDetailsTableViewController
     }
     
-    private func reloadTableViewData() {
-        guard let _ = self.prayersDetailsTableViewController else { return }
-        let prayer = self.data?.prayer ?? ""
-        let section = self.data?.section ?? ""
-        let dataSource = PrayersDetailsTableDataSource(prayer: prayer, section: section)
-        self.prayersDetailsTableViewController?.dataSource = dataSource
+    func reloadTableViewData() {
+        let prayer = self.prayer ?? ""
+        let section = self.section ?? ""
+        let dataSource = PrayersDetailsTableDataSource(prayer: prayer, section: section, favouritesOnly: favouritesOnly)
+        prayersDetailsTableViewController?.dataSource = dataSource
+    }
+    
+    private func configureBackButton() {
+        let backButton = UIBarButtonItem(title: "ÎNAPOI", style: .plain, target: nil, action: nil)
+        backButton.tintColor = UIColor(named: "navigationBarTintColor")
+        navigationItem.backBarButtonItem = backButton
     }
     
     // MARK: Prayers Details Table Delegate
@@ -55,7 +51,17 @@ class PrayersDetailsViewController: UIViewController, PrayersDetailsTableDelegat
     func didSelectPrayer(_ prayer: String) {
         log("did select prayer: \(prayer)")
         let prayerViewController = PrayerViewController.fromNib()
-        prayerViewController.prayer = prayer
+        prayerViewController.prayer = Prayer(title: prayer)
+        prayerViewController.delegate = self
         navigationController?.pushViewController(prayerViewController, animated: true)
+    }
+}
+
+extension PrayersDetailsViewController: PrayerViewControllerDelegate {
+    func didChangePrayer(_ prayer: Prayer) {
+        if favouritesOnly {
+            let prayersViewController = navigationController?.viewControllers.first as? PrayersViewController
+            prayersViewController?.needsTableViewUpdate = true
+        }
     }
 }

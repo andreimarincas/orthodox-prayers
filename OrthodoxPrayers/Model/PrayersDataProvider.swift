@@ -16,8 +16,6 @@ class PrayersDataProvider {
         prepopulate()
     }
     
-    // MARK: - Core Data stack
-    
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
@@ -45,10 +43,11 @@ class PrayersDataProvider {
         return container
     }()
     
-    // MARK: - Core Data Saving support
+    var context: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
     
     func saveContext() {
-        let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
                 try context.save()
@@ -61,17 +60,13 @@ class PrayersDataProvider {
         }
     }
     
-    // MARK: -
-    
-    var isEmpty: Bool? {
-        let context = persistentContainer.viewContext
-        let fetchedPrayers = ManagedPrayerItem.fetchAll(from: context)
-        return fetchedPrayers?.isEmpty
+    var isEmpty: Bool {
+        let prayer = ManagedPrayerItem.fetchAny(from: context)
+        return prayer == nil
     }
     
     private func prepopulate() {
-        guard let empty = isEmpty, empty else { return }
-        let context = persistentContainer.viewContext
+        guard isEmpty else { return }
         let parser = PrayersContentsParser.shared
         let plistPrayers = parser.parseAllPrayers()
         for prayer in plistPrayers {

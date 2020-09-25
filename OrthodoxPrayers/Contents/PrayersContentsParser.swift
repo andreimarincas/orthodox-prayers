@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PrayersContentsParser: NSObject {
+class PrayersContentsParser {
     
     static let shared: PrayersContentsParser = {
         let loader = PrayersContentsLoader()
