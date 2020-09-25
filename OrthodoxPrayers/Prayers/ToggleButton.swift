@@ -9,7 +9,6 @@
 import UIKit
 
 class ToggleButton: UIButton {
-    
     var image: UIImage? {
         didSet {
             updateImages()

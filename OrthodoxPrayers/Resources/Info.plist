@@ -65,6 +65,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Arhaic.ttf</string>
+		<string>Arhaic-Filled.ttf</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>

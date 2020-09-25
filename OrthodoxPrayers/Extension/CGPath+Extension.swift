@@ -9,7 +9,6 @@
 import CoreGraphics
 
 extension CGPath {
-    
     func translated(by offset: CGPoint) -> CGPath? {
         var t = CGAffineTransform(translationX: offset.x, y: offset.y)
         return copy(using: &t)

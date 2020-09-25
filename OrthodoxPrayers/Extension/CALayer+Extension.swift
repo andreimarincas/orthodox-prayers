@@ -10,7 +10,6 @@ import Foundation
 import QuartzCore
 
 extension CALayer {
-    
     func watchAnimations() {
         CALayer.checkAnimations(forLayer: self)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.15) {

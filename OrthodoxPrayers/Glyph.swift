@@ -19,13 +19,6 @@ struct Glyph {
         return glyph
     }
     
-//    var position: CGPoint {
-//        let range = CFRangeMake(index, 1)
-//        var pos = CGPoint()
-//        CTRunGetPositions(run, range, &pos)
-//        return pos
-//    }
-    
     var font: CTFont? {
         let attributes = CTRunGetAttributes(run) as! [CFString: Any]
         guard let font = attributes[kCTFontAttributeName] else { return nil }
@@ -46,11 +39,4 @@ struct Glyph {
         CTFontGetBoundingRectsForGlyphs(font, .default, [cgGlyph], &boundingRects, 1)
         return boundingRects[0]
     }
-    
-//    var opticalBounds: CGRect {
-//        guard let font = self.font else { return .zero }
-//        var boundingRects = [CGRect()]
-//        CTFontGetOpticalBoundsForGlyphs(font, [cgGlyph], &boundingRects, 1, 0)
-//        return boundingRects[0]
-//    }
 }

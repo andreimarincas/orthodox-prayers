@@ -41,7 +41,7 @@ class PrayersDetailsTableViewController: UITableViewController {
         let prayer = dataSource?.prayerItem(at: indexPath.row) ?? ""
         prayerDetailsCell.textLabel?.text = prayer
         if !prayer.isEmpty {
-            prayerDetailsCell.backgroundColor = UIColor(named: "prayerCellBgColor")
+            prayerDetailsCell.backgroundColor = .prayerCellBackgroundColor
             prayerDetailsCell.selectionStyle = .default
             prayerDetailsCell.accessoryType = .disclosureIndicator
             prayerDetailsCell.isUserInteractionEnabled = true

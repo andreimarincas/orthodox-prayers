@@ -9,70 +9,31 @@
 import UIKit
 
 class PrayerReadingViewController: UIViewController {
+    private var textView: DropCapTextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        textView = DropCapTextView()
+        textView.bodyFont = UIFont(name: "Georgia", size: 17)!
+        textView.glyphFont = UIFont(name: "Arhaic", size: 70)!
+        textView.backgroundColor = .clear
         
-        //let text = "D"
-        //let text = "RUGĂCIUNI"
-        //let text = "AĂÂÎȚȘ"
-        //let text = "RUGĂCIUNI AĂÂÎȚȘ"
-        //let text = "SSSSSSSSSSSSSSSS"
-        let text = "C"
-        //let font = UIFont.systemFont(ofSize: 50)
-        let font = UIFont(name: "Arhaic", size: 180)!
-        let color = UIColor(named: "textHighlightColor")!
-        //let attributes = [NSAttributedString.Key.font: font]
-        //let attributedText = NSAttributedString(string: text, attributes: attributes)
+//        textView.text = "Tatăl nostru, Care ești în ceruri, sfințească-Se numele Tău, vie împărăția Ta, facă-se voia Ta, precum în cer așa și pe pământ. Pâinea noastră cea de toate zilele, dă-ne-o nouă astăzi, și ne iartă nouă greșalele noastre, precum și noi iertăm greșiților noștri. Și nu ne duce pe noi în ispită, ci ne izbăvește de cel rău."
         
-//        let label = UILabel()
-//        label.attributedText = attributedText
-//        label.sizeToFit()
-//        label.center = CGPoint(x: 200, y: 200)
-//        view.addSubview(label)
-//
-//        let textView = CustomTextView()
-//        textView.text = attributedText
-//        textView.sizeToFit()
-//        textView.center = CGPoint(x: 200, y: 300)
-//        view.addSubview(textView)
+        textView.text = "Doamne Iisuse Hristoase, Fiul lui Dumnezeu, pentru rugăciunile Preacuratei Maicii Tale și ale tuturor Sfinților, miluiește-ne pe noi. Amin."
         
-        let label = UILabel()
-        label.text = text
-        label.font = font
-        label.textColor = color
-        label.backgroundColor = .black
-        label.sizeToFit()
-        label.center = CGPoint(x: 100, y: 200)
-        view.addSubview(label)
-//        log("label.bounds: \(label.bounds)")
-//        log("label.bounds.size: \(label.bounds.size)")
-//        log("label.frame: \(label.frame)")
-//        log("label.frame.size: \(label.frame.size)")
+//        textView.text = "Împărate Ceresc, Mângâietorule, Duhul Adevărului, Care pretutindenea ești și toate le plinești, Vistierul bunătăților și Dătătorule de viață, vino și Te sălășluiește întru noi și ne curățește pe noi de toată spurcăciunea și mântuiește, Bunule, sufletele noastre."
         
-        /*let textView = CustomTextView()
-        textView.text = text
-        textView.font = font
-        textView.textColor = color
-        textView.backgroundColor = .black
+//        textView.text = "Sfinte Dumnezeule, Sfinte tare, Sfinte fără de moarte, miluiește-ne pe noi (de 3 ori)."
+        
+//        textView.text = "Sfinte Dumnezeule, Sfinte tare, Sfinte fără de moarte, miluiește-ne pe noi. Sfinte Dumnezeule, Sfinte tare, Sfinte fără de moarte, miluiește-ne pe noi. Sfinte Dumnezeule, Sfinte tare, Sfinte fără de moarte, miluiește-ne pe noi."
+        
+        view.addSubview(textView)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         textView.sizeToFit()
-        //textView.updateUI()
-        textView.center = CGPoint(x: 250, y: 200)
-        view.addSubview(textView)*/
-//        log("textView.bounds: \(textView.bounds)")
-//        log("textView.bounds.size: \(textView.bounds.size)")
-//        log("textView.frame: \(textView.frame)")
-//        log("textView.frame.size: \(textView.frame.size)")
-        
-        let glyphs: [Character] = ["A", "Ă", "Â", "B", "C", "D", "E", "F", "G", "H", "I", "Î", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "Ș", "T", "Ț", "U", "V", "W", "X", "Y", "Z"]
-        
-        //let glyphView = GlyphView("A")
-        let glyphView = GlyphView("Ș")
-        glyphView.font = font
-        glyphView.textColor = color
-        glyphView.backgroundColor = .black
-        glyphView.sizeToFit()
-        glyphView.center = CGPoint(x: 250, y: 200)
-        view.addSubview(glyphView)
+        textView.center = CGPoint(x: view.frame.width / 2, y: view.frame.height / 2)
     }
 }

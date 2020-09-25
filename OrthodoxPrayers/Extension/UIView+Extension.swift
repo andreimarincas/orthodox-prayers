@@ -21,6 +21,22 @@ extension UIView {
         layoutIfNeeded()
     }
     
+    // MARK: Load view from nib
+    
+    /**
+     Load view from nib where the view is also the owner. The outlets link to the owner.
+     The loaded view will be of the same type and it will be added as a subview.
+     */
+    func loadFromNib() {
+        let bundle = Bundle.init(for: type(of: self))
+        let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
+        if let view = nib.instantiate(withOwner: self, options: nil)[0] as? UIView {
+            addSubviewAligned(view)
+        } else {
+            logWarn("Could not load view from nib: \(String(describing: type(of: self)))")
+        }
+    }
+    
     /**
      Load view from nib without owner. The outlets link directly to the view itself.
      */

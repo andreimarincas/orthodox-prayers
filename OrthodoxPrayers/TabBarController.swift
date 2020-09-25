@@ -38,7 +38,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     private func configureTabBar() {
-        tabBar.tintColor = UIColor(named: "activeColor")
+        tabBar.tintColor = .activeColor
     }
     
     // MARK: - UITabBarControllerDelegate

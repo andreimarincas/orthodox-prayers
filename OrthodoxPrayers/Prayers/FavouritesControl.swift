@@ -17,9 +17,9 @@ class FavouritesControl: UISegmentedControl {
         insertSegment(withTitle: "Toate", at: 0, animated: false)
         insertSegment(withTitle: "Favorite", at: 1, animated: false)
         selectedSegmentIndex = 0
-        backgroundColor = UIColor(named: "favouritesBgColor") // default background color
-        tintColor = UIColor(named: "favouritesBgColor") // selected background color
-        selectedSegmentTintColor = UIColor(named: "favouritesSelectedColor")
+        backgroundColor = .favouritesBackgroundColor
+        tintColor = .favouritesBackgroundColor // selected background color
+        selectedSegmentTintColor = .favouritesSelectedColor
     }
     
     required init?(coder: NSCoder) {

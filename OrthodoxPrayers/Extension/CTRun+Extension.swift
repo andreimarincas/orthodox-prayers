@@ -9,11 +9,6 @@
 import CoreText
 
 extension CTRun {
-    
-    var numberOfGlyphs: CFIndex {
-        return CTRunGetGlyphCount(self)
-    }
-    
     func glyphs() -> [Glyph] {
         var glyphs = [Glyph]()
         for glyphIndex in 0..<numberOfGlyphs {
@@ -21,5 +16,9 @@ extension CTRun {
             glyphs.append(glyph)
         }
         return glyphs
+    }
+    
+    var numberOfGlyphs: CFIndex {
+        return CTRunGetGlyphCount(self)
     }
 }

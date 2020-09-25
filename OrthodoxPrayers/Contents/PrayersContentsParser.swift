@@ -9,7 +9,6 @@
 import Foundation
 
 class PrayersContentsParser {
-    
     static let shared: PrayersContentsParser = {
         let loader = PrayersContentsLoader()
         if let plistData = loader.loadPrayersPlistData() {

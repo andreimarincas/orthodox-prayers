@@ -9,7 +9,6 @@
 import Foundation
 
 extension UserDefaults {
-    
     static func configure() {
         standard.register(defaults: defaults)
     }
@@ -19,7 +18,7 @@ extension UserDefaults {
     }
     
     static var defaults: [String : Any] {
-        let url = Bundle.main.url(forResource: "Defaults", withExtension: "plist")!
+        let url = Bundle.main.url(forResource: "UserDefaults", withExtension: "plist")!
         do {
             let data = try Data(contentsOf: url)
             let root = try PropertyListSerialization.propertyList(from: data, format: nil) as! [String: Any]

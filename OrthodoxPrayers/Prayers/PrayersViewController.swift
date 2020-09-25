@@ -83,7 +83,7 @@ class PrayersViewController: UIViewController, PrayersTableDelegate {
     
     private func configureBackButton() {
         let backButton = UIBarButtonItem(title: "ÎNAPOI", style: .plain, target: nil, action: nil)
-        backButton.tintColor = UIColor(named: "navigationBarTintColor")
+        backButton.tintColor = .navigationBarTintColor
         navigationItem.backBarButtonItem = backButton
     }
     

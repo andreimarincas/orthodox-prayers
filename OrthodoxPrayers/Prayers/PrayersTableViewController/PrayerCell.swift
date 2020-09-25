@@ -23,7 +23,7 @@ class PrayerCell: UITableViewCell {
     
     private func configureSelectionColor() {
         let selectedBackgroundView = UIView()
-        selectedBackgroundView.backgroundColor = UIColor(named: "prayerCellHighlightColor")
+        selectedBackgroundView.backgroundColor = .prayerCellHighlightColor
         self.selectedBackgroundView = selectedBackgroundView
     }
 }
