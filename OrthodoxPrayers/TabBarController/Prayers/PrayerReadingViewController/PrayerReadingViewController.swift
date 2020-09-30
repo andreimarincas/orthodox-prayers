@@ -34,6 +34,20 @@ class PrayerReadingViewController: UIViewController {
         configureTableViewController()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // If text size has changed, cross-fade to a new PrayerReadingTableViewController
+        let currentTextSize = tableViewController.dataSource.textSize
+        let userTextSize = CGFloat(UserDefaults.standard.textSize)
+        if currentTextSize != userTextSize {
+            let newTableViewController = PrayerReadingTableViewController(prayerTitle: prayer.title, parentPrayerTitle: parentPrayer, section: section)
+            newTableViewController.verticalContentOffset = tableViewController.tableView.verticalContentOffset
+            transition(from: tableViewController, to: newTableViewController, duration: 0.4, options: .transitionCrossDissolve) { finished in
+                self.tableViewController = newTableViewController
+            }
+        }
+    }
+    
     // MARK: Private methods
     
     private func configureFavouriteButton() {

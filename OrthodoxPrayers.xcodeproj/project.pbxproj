@@ -42,7 +42,6 @@
 		775ACD3D24E3C2700072EB3F /* OrthodoxPrayersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775ACD3C24E3C2700072EB3F /* OrthodoxPrayersTests.swift */; };
 		775ACD4824E3C2700072EB3F /* OrthodoxPrayersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775ACD4724E3C2700072EB3F /* OrthodoxPrayersUITests.swift */; };
 		775ACD5A24E3CDB10072EB3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 775ACD5824E3CDB10072EB3F /* Assets.xcassets */; };
-		7774A62724FEB45300492DDA /* UserDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7774A62624FEB45300492DDA /* UserDefaults.plist */; };
 		7774A62924FFAAB900492DDA /* Prayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7774A62824FFAAB900492DDA /* Prayer.swift */; };
 		777F1F53251A0DC9007AF025 /* PrayerReadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A7CD9B2508D1B900920B86 /* PrayerReadingViewController.swift */; };
 		777F1F66251A143F007AF025 /* AllPrayersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778011BB25133DF200B0CAC3 /* AllPrayersDataSource.swift */; };
@@ -50,6 +49,7 @@
 		777F1F84251A28AF007AF025 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F1F83251A28AF007AF025 /* TabBarController.swift */; };
 		778011BE25133FB600B0CAC3 /* FavouritePrayersDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778011BD25133FB600B0CAC3 /* FavouritePrayersDetailsDataSource.swift */; };
 		778011C025134A5C00B0CAC3 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778011BF25134A5C00B0CAC3 /* NotificationName.swift */; };
+		77875F0B251E2E26004615C9 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77875F0A251E2E26004615C9 /* TextView.swift */; };
 		7790105A250DB97E00788BAD /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77901059250DB97E00788BAD /* TableView.swift */; };
 		7790105F250DBEA600788BAD /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790105E250DBEA600788BAD /* TableViewController.swift */; };
 		7790106F2510CCF000788BAD /* PrayerDetailsSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7790106E2510CCF000788BAD /* PrayerDetailsSectionHeader.swift */; };
@@ -59,6 +59,7 @@
 		7794BDE0250B5602000301DD /* PrayerReadingTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7794BDDF250B5602000301DD /* PrayerReadingTableDataSource.swift */; };
 		7794BDE2250B5DA1000301DD /* RTFPrayerLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7794BDE1250B5DA1000301DD /* RTFPrayerLoader.swift */; };
 		7794BDE4250B60AB000301DD /* RTFPrayerParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7794BDE3250B60AB000301DD /* RTFPrayerParser.swift */; };
+		779784AB2520FD3700E5FAB5 /* PrayerReadingAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779784AA2520FD3700E5FAB5 /* PrayerReadingAttributes.swift */; };
 		77A7CD8E2508CD2E00920B86 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A7CD8D2508CD2E00920B86 /* ToggleButton.swift */; };
 		77A7CD902508CD4700920B86 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A7CD8F2508CD4700920B86 /* SegmentedControl.swift */; };
 		77A7CD932508D06800920B86 /* UIGlyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A7CD912508D06800920B86 /* UIGlyph.swift */; };
@@ -153,12 +154,12 @@
 		775ACD4724E3C2700072EB3F /* OrthodoxPrayersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthodoxPrayersUITests.swift; sourceTree = "<group>"; };
 		775ACD4924E3C2700072EB3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		775ACD5824E3CDB10072EB3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7774A62624FEB45300492DDA /* UserDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = UserDefaults.plist; sourceTree = "<group>"; };
 		7774A62824FFAAB900492DDA /* Prayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prayer.swift; sourceTree = "<group>"; };
 		777F1F83251A28AF007AF025 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		778011BB25133DF200B0CAC3 /* AllPrayersDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllPrayersDataSource.swift; sourceTree = "<group>"; };
 		778011BD25133FB600B0CAC3 /* FavouritePrayersDetailsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePrayersDetailsDataSource.swift; sourceTree = "<group>"; };
 		778011BF25134A5C00B0CAC3 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
+		77875F0A251E2E26004615C9 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		77901059250DB97E00788BAD /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		7790105E250DBEA600788BAD /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		7790106E2510CCF000788BAD /* PrayerDetailsSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerDetailsSectionHeader.swift; sourceTree = "<group>"; };
@@ -167,6 +168,7 @@
 		7794BDDF250B5602000301DD /* PrayerReadingTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerReadingTableDataSource.swift; sourceTree = "<group>"; };
 		7794BDE1250B5DA1000301DD /* RTFPrayerLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTFPrayerLoader.swift; sourceTree = "<group>"; };
 		7794BDE3250B60AB000301DD /* RTFPrayerParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTFPrayerParser.swift; sourceTree = "<group>"; };
+		779784AA2520FD3700E5FAB5 /* PrayerReadingAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerReadingAttributes.swift; sourceTree = "<group>"; };
 		77A7CD8D2508CD2E00920B86 /* ToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		77A7CD8F2508CD4700920B86 /* SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		77A7CD912508D06800920B86 /* UIGlyph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIGlyph.swift; sourceTree = "<group>"; };
@@ -330,7 +332,6 @@
 				77A7CDF72509051300920B86 /* Colors.xcassets */,
 				770F43242504F29C000E988D /* Fonts */,
 				77AB6F0924F502BF005AFE17 /* Info.plist */,
-				7774A62624FEB45300492DDA /* UserDefaults.plist */,
 				77AB6EC824F4D31B005AFE17 /* PrayersContents.plist */,
 				7791E9A325060ADB00C37C99 /* Prayers */,
 				7741187124F549D400FF87AE /* PrayersDataModel.xcdatamodeld */,
@@ -387,6 +388,7 @@
 				77E678AA2515848100889904 /* BackBarButtonItem.swift */,
 				778011BF25134A5C00B0CAC3 /* NotificationName.swift */,
 				77A7CD922508D06800920B86 /* Glyph.swift */,
+				779784AA2520FD3700E5FAB5 /* PrayerReadingAttributes.swift */,
 				77A7CD8F2508CD4700920B86 /* SegmentedControl.swift */,
 				77A7CD8D2508CD2E00920B86 /* ToggleButton.swift */,
 				77A7CD912508D06800920B86 /* UIGlyph.swift */,
@@ -477,6 +479,7 @@
 			children = (
 				77A7CDB82508D1B900920B86 /* TextViewController.swift */,
 				77A7CDB92508D1B900920B86 /* TextViewController.xib */,
+				77875F0A251E2E26004615C9 /* TextView.swift */,
 			);
 			path = Text;
 			sourceTree = "<group>";
@@ -644,7 +647,6 @@
 				77A7CDC02508D1B900920B86 /* PrayerReadingViewController.xib in Resources */,
 				77A7CDC92508D1BA00920B86 /* PrayerSectionHeader.xib in Resources */,
 				77A7CDD82508D1BA00920B86 /* IconViewController.xib in Resources */,
-				7774A62724FEB45300492DDA /* UserDefaults.plist in Resources */,
 				77A7CDCE2508D1BA00920B86 /* PrayersDetailsViewController.xib in Resources */,
 				775ACD5A24E3CDB10072EB3F /* Assets.xcassets in Resources */,
 				77A7CDD02508D1BA00920B86 /* PrayersDetailsTableViewController.xib in Resources */,
@@ -705,6 +707,7 @@
 				777F1F66251A143F007AF025 /* AllPrayersDataSource.swift in Sources */,
 				774E9D16251A43AE00963CCC /* UIFont+Extension.swift in Sources */,
 				774E9D21251A43AE00963CCC /* UIColor+Extension.swift in Sources */,
+				779784AB2520FD3700E5FAB5 /* PrayerReadingAttributes.swift in Sources */,
 				7741185624F5053300FF87AE /* PrayersDataProvider.swift in Sources */,
 				77E678AB2515848100889904 /* BackBarButtonItem.swift in Sources */,
 				774E9D1B251A43AE00963CCC /* UITableView+Extension.swift in Sources */,
@@ -724,6 +727,7 @@
 				774E9D1D251A43AE00963CCC /* NSAttributedString+Extension.swift in Sources */,
 				7741187C24F61E0300FF87AE /* PrayersContentsParser.swift in Sources */,
 				77A7CDD62508D1BA00920B86 /* TextViewController.swift in Sources */,
+				77875F0B251E2E26004615C9 /* TextView.swift in Sources */,
 				77A7CDDC2508E7DF00920B86 /* PrayerReadingTableViewController.swift in Sources */,
 				774E9D22251A43AE00963CCC /* UIViewController+Extension.swift in Sources */,
 				77C83D0125172610000F6079 /* PrayersDetailsDataSourceProtocol.swift in Sources */,

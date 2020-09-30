@@ -9,27 +9,30 @@
 import UIKit
 
 class PrayerReadingTableViewController: TableViewController {
-    private var prayerTitle: String!
-    private var parentPrayerTitle: String?
-    private var section: String!
-    
-    private var dataSource: PrayerReadingTableDataSource!
+    private(set) var dataSource: PrayerReadingTableDataSource!
+    var verticalContentOffset: (row: Int, percent: CGFloat)?
     
     // MARK: Initialization
     
     convenience init(prayerTitle: String, parentPrayerTitle: String?, section: String) {
         self.init()
-        self.prayerTitle = prayerTitle
-        self.parentPrayerTitle = parentPrayerTitle
-        self.section = section
+        dataSource = PrayerReadingTableDataSource(prayer: prayerTitle, parent: parentPrayerTitle, section: section)
     }
     
     // MARK: View life-cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataSource = PrayerReadingTableDataSource(prayer: prayerTitle, parent: parentPrayerTitle, section: section)
         tableView.footerView = PrayerReadingFooter()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if let offset = self.verticalContentOffset {
+            tableView.layoutIfNeeded()
+            tableView.scrollToRow(at: offset.row, percent: offset.percent)
+            self.verticalContentOffset = nil
+        }
     }
     
     // MARK: TableViewDataSource

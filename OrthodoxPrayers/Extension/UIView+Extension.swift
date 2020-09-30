@@ -64,4 +64,8 @@ extension UIView {
     var safeAreaSize: CGSize {
         return frame.size.insetBy(safeAreaInsets)
     }
+    
+    static var noIntrinsicSize: CGSize {
+        return CGSize(width: UIView.noIntrinsicMetric, height: UIView.noIntrinsicMetric)
+    }
 }

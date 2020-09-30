@@ -89,4 +89,27 @@ class TableView: UIScrollView {
         super.layoutSubviews()
         layoutManager.layoutSubviews()
     }
+    
+    // MARK: Vertical offset
+    
+    var verticalContentOffset: (row: Int, percent: CGFloat)? {
+        for index in 0..<cells.count {
+            let cellFrame = cells[index].frame
+            let adjustedBounds = bounds.offsetBy(dx: 0, dy: contentInset.top)
+            if cellFrame.intersects(adjustedBounds) {
+                let rect = cellFrame.intersection(adjustedBounds)
+                let offset = rect.origin.y - cellFrame.origin.y
+                let percent = offset / cellFrame.height
+                return (index, percent)
+            }
+        }
+        return nil
+    }
+    
+    func scrollToRow(at index: Int, percent: CGFloat) {
+        let cellFrame = cells[index].frame
+        let offsetY = cellFrame.origin.y + percent * cellFrame.height
+        let cappedOffsetY = min(offsetY, maximumContentOffset.y)
+        contentOffset = CGPoint(x: 0, y: cappedOffsetY - contentInset.top)
+    }
 }

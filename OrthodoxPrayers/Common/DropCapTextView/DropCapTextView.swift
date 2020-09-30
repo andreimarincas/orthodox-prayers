@@ -19,16 +19,12 @@ class DropCapTextView: UIView {
     
     // MARK: Initialization
     
-    init() {
-        super.init(frame: .zero)
+    convenience init() {
+        self.init(frame: .zero)
         backgroundColor = .clear
+        layoutManager = DropCapLayoutManager(view: self)
         configureTextView()
         configureGlyphView()
-        layoutManager = DropCapLayoutManager(view: self)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: Layout
@@ -48,7 +44,7 @@ class DropCapTextView: UIView {
         self.attributedText = attrText
         self.dropCap = dropCap
         updateGlyph()
-        updateTextBody()
+        updateBodyText()
         // Update glyph exclusion path
         if let glyphPath = layoutManager.glyphExclusionPath {
             textView.textContainer.exclusionPaths = [glyphPath]
@@ -93,7 +89,7 @@ class DropCapTextView: UIView {
         glyphView.setNeedsDisplay()
     }
     
-    private func updateTextBody() {
+    private func updateBodyText() {
         guard let attrText = self.attributedText else {
             textView.attributedText = nil
             return

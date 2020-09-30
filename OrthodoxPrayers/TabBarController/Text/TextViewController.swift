@@ -9,83 +9,71 @@
 import UIKit
 
 class TextViewController: UIViewController {
-    private var dropCapTextView: DropCapTextView!
+    @IBOutlet weak var textView: TextView!
     @IBOutlet weak var slider: UISlider!
     
-    private let textMargin: CGFloat = 16
+    let minBodyTextSize: CGFloat = 15
+    let maxBodyTextSize: CGFloat = 26
     
-    let minBodyTextFontSize: CGFloat = 12
-    let maxBodyTextFontSize: CGFloat = 28
-    let defaultBodyTextFontSize: CGFloat = 16.5
-    let defaultDropCapLetterFontSize: CGFloat = 60
+    private let prayerReadingAttributes: PrayerReadingAttributes = {
+        let defaultAttributes = PrayerReadingAttributes.default
+        let textSize = CGFloat(UserDefaults.standard.textSize)
+        return defaultAttributes.scaledTo(normalFontSize: textSize)
+    }()
+    
+    private var lastSliderValue: Float = 0
+    private let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
     
     override func viewDidLoad() {
-        let dropCapTextView = DropCapTextView()
-        dropCapTextView.setAttributedText(attributedText, dropCap: true)
-        view.addSubview(dropCapTextView)
-        self.dropCapTextView = dropCapTextView
-        
-        let max = maxBodyTextFontSize
-        let min = minBodyTextFontSize
-        slider.value = Float(1 - (max - defaultBodyTextFontSize) / (max - min))
+        super.viewDidLoad()
+        configureTextView()
+        configureSlider()
     }
     
-    private lazy var dropCapLetterFont: UIFont = {
-        return UIFont(name: "Arhaic", size: defaultDropCapLetterFontSize)!
-    }()
-    
-    private lazy var bodyTextFont: UIFont = {
-        return UIFont(name: "Georgia", size: defaultBodyTextFontSize)!
-    }()
-    
-    private lazy var attributedText: NSMutableAttributedString = {
-        let text = "Tatăl nostru, Care ești în ceruri, sfințească-Se numele Tău, vie împărăția Ta, facă-se voia Ta, precum în cer așa și pe pământ. Pâinea noastră cea de toate zilele, dă-ne-o nouă astăzi, și ne iartă nouă greșalele noastre, precum și noi iertăm greșiților noștri. Și nu ne duce pe noi în ispită, ci ne izbăvește de cel rău."
-        
-        let dropCapLetterAttrs: [NSAttributedString.Key : Any] =
-            [.font: dropCapLetterFont,
-             .foregroundColor: UIColor.readingTextHighlightColor]
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .justified
-        paragraphStyle.hyphenationFactor = 0.9
-        
-        let bodyAttrs: [NSAttributedString.Key : Any] =
-            [.font: bodyTextFont,
-             .foregroundColor: UIColor.readingTextColor,
-             .paragraphStyle: paragraphStyle]
-        
-        let attrText = NSMutableAttributedString(string: text)
-        attrText.addAttributes(dropCapLetterAttrs, range: NSRange(location: 0, length: 1))
-        attrText.addAttributes(bodyAttrs, range: NSRange(location: 1, length: attrText.length - 1))
-        return attrText
-    }()
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        let fitWidth = view.safeAreaSize.width - 2 * textMargin
-        let fitSize = dropCapTextView.sizeThatFits(CGSize(width: fitWidth, height: -1))
-        let posY = (view.safeAreaSize.height - fitSize.height) / 2
-        dropCapTextView.frame = CGRect(x: textMargin, y: posY, width: fitWidth, height: fitSize.height)
+    private func configureTextView() {
+        textView.dropCapLetterFont = prayerReadingAttributes.dropCapLetterFont
+        textView.bodyTextFont = prayerReadingAttributes.normalFont
+        textView.text = "Tatăl nostru, Care ești în ceruri, sfințească-Se numele Tău, vie împărăția Ta, facă-se voia Ta, precum în cer așa și pe pământ. Pâinea noastră cea de toate zilele, dă-ne-o nouă astăzi, și ne iartă nouă greșalele noastre, precum și noi iertăm greșiților noștri. Și nu ne duce pe noi în ispită, ci ne izbăvește de cel rău."
     }
     
-    @IBAction func sliderValueChanged(_ sender: UISlider) {
-        log("\(sender.value)")
-        let min = minBodyTextFontSize
-        let max = maxBodyTextFontSize
-        let newBodyTextFontSize = min + CGFloat(slider.value) * (max - min)
+    private func configureSlider() {
+        let max = maxBodyTextSize
+        let min = minBodyTextSize
+        let bodyTextSize = prayerReadingAttributes.normalFont.pointSize
+        slider.value = Float(1 - (max - bodyTextSize) / (max - min))
+        lastSliderValue = slider.value
+        slider.addTarget(self, action: #selector(handleSliderTouch(_:forEvent:)), for: .allTouchEvents)
+    }
+    
+    @IBAction func sliderValueChanged() {
+        // Update font size for body text & drop cap letter
+        let min = minBodyTextSize
+        let max = maxBodyTextSize
+        let newBodyTextSize = min + CGFloat(slider.value) * (max - min)
         
-        let r = defaultDropCapLetterFontSize / defaultBodyTextFontSize
-        let newDropCapLetterFont = dropCapLetterFont.withSize(r * newBodyTextFontSize)
-        let firstLetterRange = NSRange(location: 0, length: 1)
-        attributedText.addAttribute(.font, value: newDropCapLetterFont, range: firstLetterRange)
+        let defaultAttributes = PrayerReadingAttributes.default
+        let attrs = defaultAttributes.scaledTo(normalFontSize: newBodyTextSize)
+        let newDropCapLetterSize = attrs.dropCapLetterFont.pointSize
         
-        let newBodyTextFont = bodyTextFont.withSize(newBodyTextFontSize)
-        let bodyTextRange = NSRange(location: 1, length: attributedText.length - 1)
-        attributedText.addAttribute(.font, value: newBodyTextFont, range: bodyTextRange)
+        textView.updateFontSize(dropCapSize: newDropCapLetterSize, bodyTextSize: newBodyTextSize)
         
-        dropCapTextView.setAttributedText(attributedText, dropCap: true)
-        
-        view.setNeedsLayout()
-        view.layoutIfNeeded()
+        // Generate haptic feedback when slider value reaches min/max
+        let reachedMinimumValue = (slider.value == slider.minimumValue) && (lastSliderValue > slider.minimumValue)
+        let reachedMaximumValue = (slider.value == slider.maximumValue) && (lastSliderValue < slider.maximumValue)
+        if reachedMinimumValue || reachedMaximumValue {
+            feedbackGenerator.impactOccurred()
+        }
+        lastSliderValue = slider.value
+    }
+    
+    @objc func handleSliderTouch(_ slider: UISlider, forEvent event: UIEvent) {
+        guard let touch = event.allTouches?.first else { return }
+        switch touch.phase {
+        case .ended:
+            let textSize = Float(textView.bodyTextFont.pointSize)
+            UserDefaults.standard.textSize = textSize
+        default:
+            break
+        }
     }
 }

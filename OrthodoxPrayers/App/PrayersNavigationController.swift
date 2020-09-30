@@ -28,9 +28,9 @@ class PrayersNavigationController: UINavigationController {
     
     // MARK: Favourites control
     
-    private(set) var favouritesOnly = UserDefaults.isFavouritesSelected {
+    private(set) var favouritesOnly = UserDefaults.standard.isFavouritesSelected {
         didSet {
-            UserDefaults.isFavouritesSelected = favouritesOnly
+            UserDefaults.standard.isFavouritesSelected = favouritesOnly
         }
     }
     

@@ -20,4 +20,11 @@ extension UIScrollView {
         showsVerticalScrollIndicator = false
         showsVerticalScrollIndicator = shows
     }
+    
+    var maximumContentOffset: CGPoint {
+        let adjustedContentSize = contentSize.outsetBy(contentInset)
+        let x = max(adjustedContentSize.width - frame.width, 0)
+        let y = max(adjustedContentSize.height - frame.height, 0)
+        return CGPoint(x: x, y: y)
+    }
 }

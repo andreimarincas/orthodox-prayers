@@ -24,6 +24,7 @@ extension UIColor {
     static let readingTextColor = UIColor(named: "readingTextColor")!
     static let readingTextHighlightColor = UIColor(named: "readingTextHighlightColor")!
     static let tabBarItemUnselectedColor = UIColor(named: "tabBarItemUnselectedColor")!
+    static let sliderLabelColor = UIColor(named: "sliderLabelColor")!
     
     static let rtfTextColor = UIColor(red: 0.13725, green: 0.12157, blue: 0.12549, alpha: 1)
     static let rtfTextHighlightColor = UIColor(red: 0.92549, green: 0, blue: 0.54902, alpha: 1)

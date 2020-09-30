@@ -9,7 +9,6 @@
 import UIKit
 
 class PrayersViewController: UIViewController {
-    @IBOutlet weak var tableViewContainer: UIView!
     @IBOutlet weak var noFavouritesLabel: UILabel!
     private var tableViewController: PrayersTableViewController!
     private var needsReload = false

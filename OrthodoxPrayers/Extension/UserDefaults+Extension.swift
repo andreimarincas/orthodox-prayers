@@ -9,33 +9,35 @@
 import Foundation
 
 extension UserDefaults {
-    static func configure() {
-        standard.register(defaults: defaults)
+    
+    func registerDefaults() {
+        register(defaults: defaults)
     }
     
-    static func save() {
-        standard.synchronize()
+    private var defaults: [String : Any] {
+        var defaults = [String : Any]()
+        let attrs = PrayerReadingAttributes.default
+        defaults["textSize"] = Float(attrs.normalFont.pointSize)
+        return defaults
     }
     
-    static var defaults: [String : Any] {
-        let url = Bundle.main.url(forResource: "UserDefaults", withExtension: "plist")!
-        do {
-            let data = try Data(contentsOf: url)
-            let root = try PropertyListSerialization.propertyList(from: data, format: nil) as! [String: Any]
-            log("\(root)")
-            return root
-        } catch {
-            fatalError("Unresolved error: \(error)") // TODO: Handle error
-        }
-    }
-    
-    static var isFavouritesSelected: Bool {
-        set {
-            standard.set(newValue, forKey: "isFavouritesSelected")
-            standard.synchronize()
-        }
+    var isFavouritesSelected: Bool {
         get {
-            return standard.bool(forKey: "isFavouritesSelected")
+            return bool(forKey: "isFavouritesSelected")
+        }
+        set {
+            set(newValue, forKey: "isFavouritesSelected")
+            synchronize()
+        }
+    }
+    
+    var textSize: Float {
+        get {
+            return float(forKey: "textSize")
+        }
+        set {
+            set(newValue, forKey: "textSize")
+            synchronize()
         }
     }
 }

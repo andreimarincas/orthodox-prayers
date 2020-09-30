@@ -16,4 +16,8 @@ extension UIFont {
     var isArhaic: Bool {
         return familyName == "Arhaic"
     }
+    
+    func scaledBy(factor: CGFloat) -> UIFont {
+        return self.withSize(factor * pointSize)
+    }
 }

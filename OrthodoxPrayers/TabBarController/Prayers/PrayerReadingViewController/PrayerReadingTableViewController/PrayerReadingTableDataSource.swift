@@ -7,14 +7,18 @@
 //
 
 import Foundation
+import CoreGraphics
 
 class PrayerReadingTableDataSource {
     private let prayerItems: [NSAttributedString]
+    let textSize = CGFloat(UserDefaults.standard.textSize)
     
     init(prayer: String, parent: String?, section: String) {
         let loader = RTFPrayerLoader()
         if let rtfPrayer = loader.loadPrayerFromRtf(fileNamed: prayer, parent: parent, section: section) {
-            let parser = RTFPrayerParser()
+            let defaultAttributes = PrayerReadingAttributes.default
+            let attrs = defaultAttributes.scaledTo(normalFontSize: textSize)
+            let parser = RTFPrayerParser(attributes: attrs)
             prayerItems = parser.parsePrayer(rtfPrayer)
         } else {
             logError("Failed to parse rtf prayer: \(prayer)")

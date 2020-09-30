@@ -9,16 +9,11 @@
 import UIKit
 
 class RTFPrayerParser {
-    let subtitleFont = UIFont(name: "Georgia-BoldItalic", size: 15)!
-    let normalFont = UIFont(name: "Georgia", size: 16.5)!
-    let boldFont = UIFont(name: "Georgia-Bold", size: 16.5)!
-    let commentFont = UIFont(name: "Georgia-Italic", size: 16.5)!
-    let dropCapLetterFont = UIFont(name: "Arhaic", size: 60)!
+    let prayerReadingAttributes: PrayerReadingAttributes
     
-    let paragraphSpacing: CGFloat = 22
-    let minimumParagraphSpacing: CGFloat = 8
-    let hyphenationFactor: Float = 0.9
-    let firstLineHeadIndent: CGFloat = 20
+    init(attributes: PrayerReadingAttributes = .default) {
+        self.prayerReadingAttributes = attributes
+    }
     
     func parsePrayer(_ rtfPrayer: NSAttributedString) -> [NSAttributedString] {
         let prayer = updatePrayer(rtfPrayer: rtfPrayer)
@@ -52,15 +47,15 @@ class RTFPrayerParser {
     private func updateFont(_ attributes: inout [NSAttributedString.Key : Any]) {
         guard let font = attributes[.font] as? UIFont else { return }
         if font.fontName == "TimesNewRomanPSMT" {
-            attributes[.font] = normalFont
+            attributes[.font] = prayerReadingAttributes.normalFont
         } else if font.fontName == "TimesNewRomanPS-ItalicMT" { // comment
-            attributes[.font] = commentFont
+            attributes[.font] = prayerReadingAttributes.commentFont
         } else if font.fontName == "TimesNewRomanPS-BoldMT" { // title (all caps) OR non-arhaic first letter (capital)
-            attributes[.font] = boldFont
+            attributes[.font] = prayerReadingAttributes.boldFont
         } else if font.fontName == "TimesNewRomanPS-BoldItalicMT" { // subtitle
-            attributes[.font] = subtitleFont
+            attributes[.font] = prayerReadingAttributes.subtitleFont
         } else if font.fontName == "Arhaic" { // drop cap letter
-            attributes[.font] = dropCapLetterFont
+            attributes[.font] = prayerReadingAttributes.dropCapLetterFont
         }
     }
     
@@ -77,10 +72,10 @@ class RTFPrayerParser {
         guard let paragraphStyle = attributes[.paragraphStyle] as? NSParagraphStyle else { return }
         let newParagraphStyle = paragraphStyle.mutableCopy() as! NSMutableParagraphStyle
         if paragraphStyle.paragraphSpacing > 0 {
-            newParagraphStyle.paragraphSpacing = paragraphSpacing
+            newParagraphStyle.paragraphSpacing = prayerReadingAttributes.paragraphSpacing
         }
         if paragraphStyle.alignment != .center {
-            newParagraphStyle.hyphenationFactor = hyphenationFactor
+            newParagraphStyle.hyphenationFactor = prayerReadingAttributes.hyphenationFactor
         }
         attributes[.paragraphStyle] = newParagraphStyle
     }
@@ -88,19 +83,19 @@ class RTFPrayerParser {
     private func adjustParagraphSpacing(_ lines: inout [NSAttributedString]) {
         guard !lines.isEmpty else { return }
         // Add paragraph spacing before title
-        lines[0] = lines[0].addingParagraphSpacingBefore(paragraphSpacing)
+        lines[0] = lines[0].addingParagraphSpacingBefore(prayerReadingAttributes.paragraphSpacing)
         for i in 1..<lines.count {
             if lines[i].isFirstLetterArhaic {
                 // Adjust paragraph spacing for the drop cap letter
                 let dropCapTopOffset = lines[i].dropCapTopOffset
                 let paragraphSpacing = lines[i - 1].paragraphSpacing.after
-                let minParagraphSpacing: CGFloat = minimumParagraphSpacing
+                let minParagraphSpacing: CGFloat = prayerReadingAttributes.minimumParagraphSpacing
                 let newParagraphSpacing = max(paragraphSpacing - dropCapTopOffset, minParagraphSpacing)
                 if newParagraphSpacing != paragraphSpacing {
                     lines[i - 1] = lines[i - 1].addingParagraphSpacing(newParagraphSpacing)
                 }
             } else if lines[i].isParagraph {
-                lines[i] = lines[i].addingFirstLineHeadIndent(firstLineHeadIndent)
+                lines[i] = lines[i].addingFirstLineHeadIndent(prayerReadingAttributes.firstLineHeadIndent)
             }
         }
     }
