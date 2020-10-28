@@ -10,7 +10,7 @@
 			<key>Items</key>
 			<array>
 				<string>Rugăciunile începătoare</string>
-				<string>Rugăciunile dimineții</string>
+				<string>Rugăciunile de dimineață</string>
 				<dict>
 					<key>Title</key>
 					<string>Rugăciunile meselor</string>
@@ -18,10 +18,8 @@
 					<array>
 						<string>Rugăciune înaintea gustării de dimineață</string>
 						<string>Rugăciune după gustarea de dimineață</string>
-						<string></string>
 						<string>Rugăciune înaintea mesei de prânz</string>
 						<string>Rugăciune după masa de prânz</string>
-						<string></string>
 						<string>Rugăciune înainte de cină</string>
 						<string>Rugăciune după cină</string>
 					</array>

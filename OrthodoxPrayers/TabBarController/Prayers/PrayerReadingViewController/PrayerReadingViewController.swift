@@ -21,7 +21,7 @@ class PrayerReadingViewController: UIViewController {
     
     convenience init(prayer: String, parentPrayer: String?, section: String) {
         self.init()
-        self.prayer = Prayer(title: prayer)
+        self.prayer = Prayer(title: prayer)!
         self.parentPrayer = parentPrayer
         self.section = section
     }

@@ -61,9 +61,15 @@ class RTFPrayerParser {
     
     private func updateTextColor(_ attributes: inout [NSAttributedString.Key : Any]) {
         guard let textColor = attributes[.foregroundColor] as? UIColor else { return }
-        if textColor.cgColor.components == UIColor.rtfTextColor.cgColor.components {
+//        if textColor.cgColor.components == UIColor.rtfTextColor.cgColor.components {
+//            attributes[.foregroundColor] = UIColor.readingTextColor
+//        } else if textColor.cgColor.components == UIColor.rtfTextHighlightColor.cgColor.components {
+//            attributes[.foregroundColor] = UIColor.readingTextHighlightColor
+//        }
+        log("red: \(textColor.redValue)")
+        if textColor.redValue < 0.5 {
             attributes[.foregroundColor] = UIColor.readingTextColor
-        } else if textColor.cgColor.components == UIColor.rtfTextHighlightColor.cgColor.components {
+        } else {
             attributes[.foregroundColor] = UIColor.readingTextHighlightColor
         }
     }

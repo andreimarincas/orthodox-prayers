@@ -26,6 +26,24 @@ extension UIColor {
     static let tabBarItemUnselectedColor = UIColor(named: "tabBarItemUnselectedColor")!
     static let sliderLabelColor = UIColor(named: "sliderLabelColor")!
     
-    static let rtfTextColor = UIColor(red: 0.13725, green: 0.12157, blue: 0.12549, alpha: 1)
-    static let rtfTextHighlightColor = UIColor(red: 0.92549, green: 0, blue: 0.54902, alpha: 1)
+//    static let rtfTextColor = UIColor(red: 0.13725, green: 0.12157, blue: 0.12549, alpha: 1)
+//    static let rtfTextHighlightColor = UIColor(red: 0.92549, green: 0, blue: 0.54902, alpha: 1)
+    
+//    var luminance: CGFloat {
+//        var red: CGFloat = 0
+//        var green: CGFloat = 0
+//        var blue: CGFloat = 0
+//        getRed(&red, green: &green, blue: &blue, alpha: nil)
+//        return 0.2126 * red + 0.7152 * green + 0.0722 * blue
+//    }
+    
+//    var isLight: Bool {
+//        return luminance > 0.7
+//    }
+    
+    var redValue: CGFloat {
+        var red: CGFloat = 0
+        getRed(&red, green: nil, blue: nil, alpha: nil)
+        return red
+    }
 }
